@@ -27,6 +27,20 @@ jobs:
         run: |
           python3 -c "import json; json.load(open('data/snapshot.json')); print('snapshot.json is valid JSON')"
 
+      - name: Validate history snapshots
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          idx = json.load(open("data/history/index.json"))
+          assert "snapshots" in idx
+          for s in idx["snapshots"]:
+              path = pathlib.Path("data/history") / s["file"]
+              assert path.exists(), path
+              json.load(open(path))
+              print("OK", path)
+          print("History index and files valid")
+          PY
+
       - name: Basic HTML sanity
         run: |
           grep -q "regulated-ai-wars" index.html

@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "snapshotDate": "2026-08-25",
+    "version": "0.2",
+    "note": "Relative influence estimates for visualization only — not precise market shares."
+  },
+  "players": {
+    "google":     { "id": "google",     "name": "Google",               "short": "G",   "hex": "#4285F4", "role": "Hyperscaler – Industry Solutions",   "momentum": "up" },
+    "microsoft":  { "id": "microsoft",  "name": "Microsoft",            "short": "MS",  "hex": "#F25022", "role": "Hyperscaler – Copilot Ecosystem",   "momentum": "stable" },
+    "anthropic":  { "id": "anthropic",  "name": "Anthropic",            "short": "A",   "hex": "#C15F3C", "role": "Foundation Lab – Enterprise LLM",  "momentum": "up" },
+    "openai":     { "id": "openai",     "name": "OpenAI",               "short": "OAI", "hex": "#10A37F", "role": "Foundation Lab",                    "momentum": "down" },
+    "aws":        { "id": "aws",        "name": "AWS",                  "short": "AWS", "hex": "#FF9900", "role": "Hyperscaler – Bedrock",             "momentum": "stable" },
+    "specialist": { "id": "specialist", "name": "Vertical Specialists", "short": "VS",  "hex": "#A855F7", "role": "Harvey, Healthcare AI etc.",        "momentum": "up" },
+    "ibm":        { "id": "ibm",        "name": "IBM / Governance",     "short": "IBM", "hex": "#0F62FE", "role": "Governance-first",                  "momentum": "stable" }
+  },
+  "territories": [
+    {
+      "id": "legal",
+      "name": "Legal",
+      "meta": "Contracts • Research • Compliance",
+      "status": "hot",
+      "influence": { "google": 28, "microsoft": 32, "specialist": 25, "anthropic": 10, "openai": 5 },
+      "note": "Google launched Gemini Enterprise for Legal (Preview). Harvey strong. Microsoft via Copilot + partners."
+    },
+    {
+      "id": "finance",
+      "name": "Financial Services",
+      "meta": "Capital Markets • KYC • Risk",
+      "status": "hot",
+      "influence": { "google": 30, "microsoft": 35, "anthropic": 12, "openai": 10, "aws": 8, "specialist": 5 },
+      "note": "Google Gemini Enterprise for FS launched same day. Microsoft deep via Azure + Copilot."
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare",
+      "meta": "EHR • Documentation • Prior Auth",
+      "status": "contested",
+      "influence": { "microsoft": 30, "specialist": 28, "google": 15, "anthropic": 12, "openai": 10, "ibm": 5 },
+      "note": "Next on Google roadmap. Strong specialist presence. Microsoft Copilot adoption high."
+    },
+    {
+      "id": "lifesci",
+      "name": "Life Sciences",
+      "meta": "GxP • R&D • Regulatory",
+      "status": "contested",
+      "influence": { "google": 18, "microsoft": 25, "specialist": 22, "anthropic": 15, "ibm": 12, "openai": 8 },
+      "note": "Explicitly on Google horizon. High governance needs favor controlled platforms."
+    },
+    {
+      "id": "insurance",
+      "name": "Insurance",
+      "meta": "Underwriting • Claims • Compliance",
+      "status": "normal",
+      "influence": { "microsoft": 35, "google": 15, "anthropic": 12, "aws": 12, "openai": 10, "specialist": 16 },
+      "note": "Microsoft strong via existing enterprise footprint."
+    },
+    {
+      "id": "gov",
+      "name": "Government",
+      "meta": "Case Mgmt • Security • Citizens",
+      "status": "normal",
+      "influence": { "microsoft": 40, "google": 18, "ibm": 15, "aws": 12, "anthropic": 10, "openai": 5 },
+      "note": "Long cycles, high trust. Microsoft & IBM historically strong."
+    },
+    {
+      "id": "profsvcs",
+      "name": "Professional Services",
+      "meta": "Consulting • Audit • Tax",
+      "status": "contested",
+      "influence": { "microsoft": 38, "google": 20, "anthropic": 15, "openai": 12, "specialist": 10, "aws": 5 },
+      "note": "Playbook-heavy. Microsoft Copilot advantage."
+    },
+    {
+      "id": "retail",
+      "name": "Retail",
+      "meta": "Customer Data • Supply • Compliance",
+      "status": "normal",
+      "influence": { "google": 25, "microsoft": 30, "aws": 20, "openai": 10, "anthropic": 8, "specialist": 7 },
+      "note": "Listed as coming soon by Google for Gemini Enterprise industry solutions."
+    }
+  ],
+  "geoDominance": {
+    "na": { "dominant": "microsoft", "intensity": 0.85, "note": "Microsoft Copilot + Azure strongest in North American enterprises. Google rising fast with Legal/FS launches." },
+    "sa": { "dominant": "microsoft", "intensity": 0.55, "note": "Microsoft still leads; lower overall enterprise AI maturity." },
+    "eu": { "dominant": "microsoft", "intensity": 0.70, "note": "Strong Microsoft footprint. Google gaining with regulated focus. Anthropic in safety-sensitive deals." },
+    "af": { "dominant": "microsoft", "intensity": 0.40, "note": "Emerging. Microsoft and Google competing for public sector and banking." },
+    "as": { "dominant": "google",    "intensity": 0.65, "note": "Google Cloud strong in APAC. Microsoft and AWS also major." },
+    "oc": { "dominant": "microsoft", "intensity": 0.60, "note": "Microsoft dominant in Australia/NZ. Google increasing presence." }
+  },
+  "events": [
+    { "time": "2026-08-25", "text": "Google launches Gemini Enterprise for Legal + Financial Services. Roadmap: Healthcare, Life Sciences, Retail." },
+    { "time": "2026-08-25", "text": "Menlo Ventures (late 2025): Anthropic ~40% enterprise LLM spend, OpenAI ~27%, Google ~21%." },
+    { "time": "2026-Q2",    "text": "Microsoft continues strong horizontal distribution via M365 Copilot in regulated industries." }
+  ],
+  "pipeline": [
+    "Healthcare (Google)",
+    "Life Sciences (Google)",
+    "Retail (Google)",
+    "More Prof. Services",
+    "Insurance depth",
+    "Gov vertical agents"
+  ]
+}

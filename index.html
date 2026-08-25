@@ -5,53 +5,78 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>regulated-ai-wars — Strategic Conquest Map</title>
 <style>
-:root{--bg:#070b14;--panel:#0f1524;--panel-2:#141c2e;--border:#1e2a40;--text:#eef2ff;--muted:#8b9bb8;--accent:#60a5fa;--google:#4285F4;--microsoft:#F25022;--anthropic:#C15F3C;--openai:#10A37F;--aws:#FF9900;--specialist:#A855F7;--ibm:#0F62FE;--human:#f472b6}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-#intro{position:fixed;inset:0;z-index:1000;background:#030712;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+:root{
+  --bg:#05080f;--panel:#0c1220;--panel-2:#101828;--border:#1a2538;
+  --text:#eef2ff;--muted:#7a8ba8;--accent:#60a5fa;
+  --google:#4285F4;--microsoft:#F25022;--anthropic:#C15F3C;--openai:#10A37F;
+  --aws:#FF9900;--specialist:#A855F7;--ibm:#0F62FE;--human:#f472b6;
+  --hot:#ef4444;--contested:#f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+#intro{position:fixed;inset:0;z-index:1000;background:#02050c;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
 #intro.hide{opacity:0;visibility:hidden;pointer-events:none}
 #intro .stamp{font-size:.7rem;letter-spacing:.35em;color:#ef4444;border:1px solid #ef4444;padding:4px 12px;margin-bottom:20px;opacity:0;animation:fadeIn .6s .2s forwards}
 #intro h1{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:700;text-align:center;opacity:0;animation:fadeIn .7s .5s forwards}
-#intro p{margin-top:12px;color:var(--muted);font-size:.95rem;text-align:center;max-width:420px;opacity:0;animation:fadeIn .7s .9s forwards}
+#intro p{margin-top:12px;color:var(--muted);font-size:.95rem;text-align:center;max-width:440px;opacity:0;animation:fadeIn .7s .9s forwards}
 #intro .enter{margin-top:28px;padding:10px 22px;background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:8px;cursor:pointer;font-size:.85rem;opacity:0;animation:fadeIn .6s 1.3s forwards;transition:.2s}
 #intro .enter:hover{background:var(--accent);color:#0b1220}
 @keyframes fadeIn{to{opacity:1}}
-header{display:flex;justify-content:space-between;align-items:center;padding:12px 22px;background:linear-gradient(90deg,#0a1020,#111827);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 22px;background:linear-gradient(90deg,#070c16,#0e1524);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
 header h1{font-size:1.15rem;font-weight:700}header h1 span{color:var(--accent)}
 .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 button,.view-btn{background:var(--panel);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:.8rem;transition:.2s}
-button:hover,.view-btn:hover{border-color:var(--accent);background:#1a2438}
+button:hover,.view-btn:hover{border-color:var(--accent);background:#152033}
 button.primary,.view-btn.active{background:linear-gradient(135deg,#3b82f6,#2563eb);border-color:transparent;color:#fff}
 .view-btn.human-active{background:linear-gradient(135deg,#db2777,#9d174d);border-color:transparent;color:#fff}
 .timestamp{font-size:.75rem;color:var(--muted)}
-select#snapshotSelect{background:var(--panel);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:8px;font-size:.78rem;max-width:200px}
+select#snapshotSelect{background:var(--panel);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:8px;font-size:.78rem;max-width:210px}
 .main{display:grid;grid-template-columns:250px 1fr 270px;gap:12px;padding:12px;height:calc(100vh - 58px)}
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px;overflow-y:auto}
 .panel h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-.player{display:flex;align-items:center;gap:8px;padding:8px;margin-bottom:5px;border-radius:8px;background:rgba(255,255,255,.02);border-left:3px solid transparent}
+.player{display:flex;align-items:center;gap:8px;padding:8px;margin-bottom:5px;border-radius:8px;background:rgba(255,255,255,.02);border-left:3px solid transparent;transition:.15s}
 .player:hover{background:rgba(255,255,255,.05)}
 .player .token{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.68rem;color:#fff;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.08)}
 .player .name{font-weight:600;font-size:.84rem}.player .role{font-size:.68rem;color:var(--muted)}
 .momentum{font-size:.62rem;padding:2px 5px;border-radius:4px;background:rgba(16,185,129,.15);color:#34d399;margin-left:auto}
 .momentum.down{background:rgba(239,68,68,.15);color:#f87171}.momentum.stable{background:rgba(148,163,184,.12);color:#94a3b8}
 .board-container{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px;display:flex;flex-direction:column;overflow:hidden}
-.board-title{text-align:center;font-size:.95rem;font-weight:600;margin-bottom:10px;color:var(--muted)}
+.board-title{text-align:center;font-size:.95rem;font-weight:600;margin-bottom:10px;color:var(--muted);letter-spacing:.04em}
 .board{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:9px;min-height:0}
-.territory{background:linear-gradient(160deg,#141c2e,#0c1220);border:1.5px solid var(--border);border-radius:10px;padding:10px;display:flex;flex-direction:column;position:relative;transition:all .25s;cursor:pointer}
-.territory:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.35)}
-.territory.hot{border-color:#ef4444}.territory.contested{border-color:#f59e0b}
+.territory{background:linear-gradient(160deg,#121a2c,#0a101c);border:1.5px solid var(--border);border-radius:10px;padding:10px;display:flex;flex-direction:column;position:relative;transition:all .25s;cursor:pointer}
+.territory:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.4)}
+.territory.hot{border-color:var(--hot);box-shadow:0 0 20px rgba(239,68,68,.12)}
+.territory.contested{border-color:var(--contested)}
 .territory .name{font-weight:700;font-size:.88rem;margin-bottom:2px}.territory .meta{font-size:.62rem;color:var(--muted);margin-bottom:6px}
-.influence-bar{height:5px;background:#0c1220;border-radius:3px;overflow:hidden;margin-bottom:6px;display:flex}.influence-bar span{height:100%}
+.influence-bar{height:5px;background:#0a101c;border-radius:3px;overflow:hidden;margin-bottom:6px;display:flex}.influence-bar span{height:100%}
 .tokens{display:flex;flex-wrap:wrap;gap:3px;margin-top:auto}
 .token-mini{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
-.status-badge{position:absolute;top:6px;right:6px;font-size:.58rem;padding:2px 5px;border-radius:4px;background:rgba(0,0,0,.5)}
-.world-view,.human-view{display:none;flex:1;flex-direction:column;min-height:0}.world-view.active,.human-view.active{display:flex}.board.hidden{display:none}
-.world-svg-wrap{flex:1;background:radial-gradient(ellipse at 50% 45%,#121a2e 0%,#060a14 70%);border-radius:10px;border:1px solid var(--border);overflow:hidden}
-.world-svg-wrap svg{width:100%;height:100%;display:block}
-.continent{stroke:#1a2538;stroke-width:1.5;transition:all .35s;cursor:pointer}.continent:hover{stroke:#fff;stroke-width:2.2;filter:brightness(1.18)}
-.continent-label{font-size:11px;font-weight:600;fill:rgba(255,255,255,.8);pointer-events:none;text-anchor:middle}
-.world-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:8px 0 0;font-size:.72rem}
+.status-badge{position:absolute;top:6px;right:6px;font-size:.58rem;padding:2px 5px;border-radius:4px;background:rgba(0,0,0,.55)}
+.world-view,.human-view{display:none;flex:1;flex-direction:column;min-height:0}
+.world-view.active,.human-view.active{display:flex}
+.board.hidden{display:none}
+.world-svg-wrap{flex:1;position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(96,165,250,.18);background:radial-gradient(ellipse 80% 60% at 50% 48%, rgba(30,58,110,.22) 0%, transparent 55%),radial-gradient(ellipse at center, #0a1224 0%, #04070e 72%)}
+.world-svg-wrap::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background-image:linear-gradient(rgba(96,165,250,.04) 1px, transparent 1px),linear-gradient(90deg, rgba(96,165,250,.04) 1px, transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 75%)}
+.world-svg-wrap::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:3;background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.25) 100%);animation:scan 8s linear infinite;background-size:100% 200%}
+@keyframes scan{0%{background-position:0 0}100%{background-position:0 100%}}
+.world-svg-wrap svg{width:100%;height:100%;display:block;position:relative;z-index:1}
+.continent{stroke:rgba(255,255,255,.14);stroke-width:1.2;cursor:pointer;transition:filter .35s, stroke .25s, stroke-width .25s}
+.continent:hover{stroke:#fff;stroke-width:2;filter:brightness(1.25) drop-shadow(0 0 12px currentColor)}
+.continent.high-intensity{animation:pulseGlow 3.2s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{filter:brightness(1) drop-shadow(0 0 4px rgba(255,255,255,.15))}50%{filter:brightness(1.15) drop-shadow(0 0 14px rgba(255,255,255,.35))}}
+.continent-label{font-size:11px;font-weight:700;fill:rgba(255,255,255,.88);pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:#05080f;stroke-width:3px;letter-spacing:.03em}
+.beacon{pointer-events:none}.beacon-core{fill:#fff;opacity:.9}
+.beacon-ring{fill:none;stroke:#fff;stroke-width:1.5;opacity:.5;animation:beaconPulse 2.4s ease-out infinite}
+@keyframes beaconPulse{0%{r:4;opacity:.55}100%{r:16;opacity:0}}
+.world-hud{position:absolute;bottom:10px;left:12px;right:12px;z-index:5;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;pointer-events:none}
+.world-hud .tag{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(147,197,253,.75);border:1px solid rgba(96,165,250,.25);padding:3px 8px;border-radius:4px;background:rgba(5,10,20,.65);backdrop-filter:blur(4px)}
+.world-hud .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#22c55e;margin-right:6px;animation:blink 1.6s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.world-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:10px 0 2px;font-size:.72rem}
 .world-legend span{display:flex;align-items:center;gap:4px}.world-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
-.human-view{background:linear-gradient(160deg,#1a1020 0%,#0c0a14 100%);border-radius:10px;border:1px solid rgba(244,114,182,.25);padding:20px;overflow-y:auto}
+.intensity-bar{display:flex;align-items:center;gap:6px;font-size:.65rem;color:var(--muted);justify-content:center;padding-bottom:4px}
+.intensity-bar .grad{width:80px;height:6px;border-radius:3px;background:linear-gradient(90deg,rgba(255,255,255,.15),rgba(255,255,255,.85))}
+.human-view{background:linear-gradient(160deg,#1a1020 0%,#0a0812 100%);border-radius:12px;border:1px solid rgba(244,114,182,.25);padding:20px;overflow-y:auto}
 .human-view h3{color:var(--human);font-size:1.05rem;margin-bottom:12px}
 .human-view .thesis{font-size:.95rem;line-height:1.55;color:var(--text);margin-bottom:18px;max-width:640px}
 .human-view .chain{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px;align-items:center}
@@ -64,8 +89,8 @@ select#snapshotSelect{background:var(--panel);border:1px solid var(--border);col
 .event-log{margin-top:10px;max-height:200px;overflow-y:auto}.event{font-size:.73rem;padding:7px;border-left:3px solid var(--accent);background:rgba(96,165,250,.06);margin-bottom:5px;border-radius:0 6px 6px 0}.event .time{color:var(--muted);font-size:.62rem}
 .pipeline{display:flex;flex-wrap:wrap;gap:5px}.pipeline-item{font-size:.68rem;padding:3px 7px;background:rgba(255,255,255,.04);border-radius:5px;border:1px solid var(--border)}
 .metrics-box{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(168,85,247,.06));border:1px solid rgba(96,165,250,.22);border-radius:9px;padding:10px;margin-bottom:12px;font-size:.78rem}.metrics-box strong{color:var(--accent)}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px)}.modal.open{display:flex}
-.modal-content{background:var(--panel-2);border:1px solid var(--border);border-radius:14px;padding:22px;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(5px)}.modal.open{display:flex}
+.modal-content{background:var(--panel-2);border:1px solid var(--border);border-radius:14px;padding:22px;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.55)}
 .modal-close{float:right;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
 .classified-dot{width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block;margin-left:6px;opacity:.5;cursor:pointer}.classified-dot:hover{opacity:1;box-shadow:0 0 8px #ef4444}
 @media(max-width:1100px){.main{grid-template-columns:1fr;height:auto}.board{grid-template-columns:repeat(2,1fr);min-height:400px}}
@@ -101,21 +126,28 @@ select#snapshotSelect{background:var(--panel);border:1px solid var(--border);col
     <div class="board" id="board"></div>
     <div class="world-view" id="worldView">
       <div class="world-svg-wrap">
-        <svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
-          <path class="continent" id="na" d="M80,80 L220,60 L280,90 L300,160 L260,220 L180,240 L120,200 L70,150 Z"/>
-          <path class="continent" id="sa" d="M200,260 L270,250 L290,320 L260,400 L200,420 L170,360 L180,290 Z"/>
-          <path class="continent" id="eu" d="M420,70 L520,60 L540,100 L510,150 L450,160 L410,120 Z"/>
-          <path class="continent" id="af" d="M430,170 L530,160 L560,240 L540,340 L470,360 L420,300 L410,220 Z"/>
-          <path class="continent" id="as" d="M540,50 L780,40 L850,100 L820,180 L700,200 L580,170 L540,110 Z"/>
-          <path class="continent" id="oc" d="M760,280 L870,270 L900,320 L850,370 L770,360 L750,310 Z"/>
-          <text class="continent-label" x="175" y="150">North America</text>
-          <text class="continent-label" x="230" y="340">South America</text>
-          <text class="continent-label" x="470" y="115">Europe</text>
-          <text class="continent-label" x="480" y="260">Africa</text>
-          <text class="continent-label" x="680" y="120">Asia</text>
-          <text class="continent-label" x="820" y="325">Oceania</text>
+        <svg id="worldSvg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet">
+          <defs><filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <path class="continent" id="na" d="M95,95 C140,55 210,48 265,70 C310,88 330,130 318,175 C300,230 255,255 200,265 C145,250 105,210 88,160 C78,130 80,110 95,95 Z"/>
+          <path class="continent" id="sa" d="M210,280 C255,268 285,285 295,330 C302,380 275,430 230,445 C195,430 175,380 178,335 C182,300 192,285 210,280 Z"/>
+          <path class="continent" id="eu" d="M430,85 C470,68 520,72 545,100 C555,125 535,155 500,165 C460,168 430,145 420,115 C415,100 420,90 430,85 Z"/>
+          <path class="continent" id="af" d="M445,185 C505,170 555,195 565,250 C570,310 540,365 490,380 C445,370 415,320 412,260 C412,220 425,195 445,185 Z"/>
+          <path class="continent" id="as" d="M555,70 C640,45 760,50 830,95 C870,130 860,185 800,210 C720,230 640,215 585,185 C555,160 540,120 555,70 Z"/>
+          <path class="continent" id="oc" d="M780,300 C840,285 900,300 915,345 C910,385 860,400 800,390 C760,370 755,325 780,300 Z"/>
+          <text class="continent-label" x="200" y="160">NORTH AMERICA</text>
+          <text class="continent-label" x="235" y="360">SOUTH AMERICA</text>
+          <text class="continent-label" x="480" y="125">EUROPE</text>
+          <text class="continent-label" x="490" y="285">AFRICA</text>
+          <text class="continent-label" x="700" y="140">ASIA</text>
+          <text class="continent-label" x="845" y="345">OCEANIA</text>
+          <g id="beacons"></g>
         </svg>
+        <div class="world-hud">
+          <div class="tag"><span class="live-dot"></span>Theater of operations</div>
+          <div class="tag">Regulated AI footprint</div>
+        </div>
       </div>
+      <div class="intensity-bar"><span>Low</span><div class="grad"></div><span>High intensity</span></div>
       <div class="world-legend" id="worldLegend"></div>
     </div>
     <div class="human-view" id="humanView">
@@ -140,7 +172,8 @@ select#snapshotSelect{background:var(--panel);border:1px solid var(--border);col
 <script>
 const PLAYERS={google:{id:'google',name:'Google',short:'G',hex:'#4285F4',role:'Hyperscaler – Industry Solutions',momentum:'up'},microsoft:{id:'microsoft',name:'Microsoft',short:'MS',hex:'#F25022',role:'Hyperscaler – Copilot Ecosystem',momentum:'stable'},anthropic:{id:'anthropic',name:'Anthropic',short:'A',hex:'#C15F3C',role:'Foundation Lab – Enterprise LLM',momentum:'up'},openai:{id:'openai',name:'OpenAI',short:'OAI',hex:'#10A37F',role:'Foundation Lab',momentum:'down'},aws:{id:'aws',name:'AWS',short:'AWS',hex:'#FF9900',role:'Hyperscaler – Bedrock',momentum:'stable'},specialist:{id:'specialist',name:'Vertical Specialists',short:'VS',hex:'#A855F7',role:'Harvey, Healthcare AI etc.',momentum:'up'},ibm:{id:'ibm',name:'IBM / Governance',short:'IBM',hex:'#0F62FE',role:'Governance-first',momentum:'stable'}};
 let territories=[{id:'legal',name:'Legal',meta:'Contracts • Research • Compliance',status:'hot',influence:{google:28,microsoft:32,specialist:25,anthropic:10,openai:5},note:'Google launched Gemini Enterprise for Legal (Preview). Harvey strong.'},{id:'finance',name:'Financial Services',meta:'Capital Markets • KYC • Risk',status:'hot',influence:{google:30,microsoft:35,anthropic:12,openai:10,aws:8,specialist:5},note:'Google Gemini Enterprise for FS launched same day.'},{id:'healthcare',name:'Healthcare',meta:'EHR • Documentation • Prior Auth',status:'contested',influence:{microsoft:30,specialist:28,google:15,anthropic:12,openai:10,ibm:5},note:'Next on Google roadmap.'},{id:'lifesci',name:'Life Sciences',meta:'GxP • R&D • Regulatory',status:'contested',influence:{google:18,microsoft:25,specialist:22,anthropic:15,ibm:12,openai:8},note:'Explicitly on Google horizon.'},{id:'insurance',name:'Insurance',meta:'Underwriting • Claims • Compliance',status:'normal',influence:{microsoft:35,google:15,anthropic:12,aws:12,openai:10,specialist:16},note:'Microsoft strong via enterprise footprint.'},{id:'gov',name:'Government',meta:'Case Mgmt • Security • Citizens',status:'normal',influence:{microsoft:40,google:18,ibm:15,aws:12,anthropic:10,openai:5},note:'Long cycles, high trust.'},{id:'profsvcs',name:'Professional Services',meta:'Consulting • Audit • Tax',status:'contested',influence:{microsoft:38,google:20,anthropic:15,openai:12,specialist:10,aws:5},note:'Playbook-heavy. Microsoft advantage.'},{id:'retail',name:'Retail',meta:'Customer Data • Supply • Compliance',status:'normal',influence:{google:25,microsoft:30,aws:20,openai:10,anthropic:8,specialist:7},note:'Coming soon on Google roadmap.'}];
-let geoDominance={na:{dominant:'microsoft',intensity:.85,note:'Microsoft strongest in NA. Google rising fast.'},sa:{dominant:'microsoft',intensity:.55,note:'Microsoft leads; lower maturity.'},eu:{dominant:'microsoft',intensity:.7,note:'Strong Microsoft. Google gaining.'},af:{dominant:'microsoft',intensity:.4,note:'Emerging.'},as:{dominant:'google',intensity:.65,note:'Google Cloud strong in APAC.'},oc:{dominant:'microsoft',intensity:.6,note:'Microsoft dominant in AU/NZ.'}};
+let geoDominance={na:{dominant:'microsoft',intensity:.85,note:'Microsoft Copilot + Azure densest in North American enterprises. Google rising fast after Legal/FS launches.',focus:['Legal','Financial Services','Healthcare']},sa:{dominant:'microsoft',intensity:.55,note:'Microsoft still leads; overall regulated AI maturity lower. Early specialist footholds.',focus:['Financial Services','Government']},eu:{dominant:'microsoft',intensity:.70,note:'Strong Microsoft footprint. Google gaining with regulated focus. Anthropic in safety-sensitive deals.',focus:['Legal','Professional Services','Government']},af:{dominant:'microsoft',intensity:.40,note:'Emerging theater. Microsoft and Google compete for public sector and banking.',focus:['Government','Financial Services']},as:{dominant:'google',intensity:.65,note:'Google Cloud strong in APAC. Microsoft and AWS major. High enterprise density in key hubs.',focus:['Financial Services','Retail','Life Sciences']},oc:{dominant:'microsoft',intensity:.60,note:'Microsoft dominant in Australia/NZ. Google increasing presence in enterprise.',focus:['Government','Professional Services']}};
+const CENTROIDS={na:[200,160],sa:[235,355],eu:[480,120],af:[490,275],as:[700,135],oc:[845,345]};
 let events=[{time:'2026-08-25',text:'Google launches Gemini Enterprise for Legal + Financial Services.'},{time:'2026-08-25',text:'Menlo Ventures: Anthropic ~40% enterprise LLM spend, OpenAI ~27%, Google ~21%.'},{time:'2026-Q2',text:'Microsoft strong via M365 Copilot in regulated industries.'}];
 const pipeline=['Healthcare (Google)','Life Sciences (Google)','Retail (Google)','More Prof. Services','Insurance depth','Gov vertical agents'];
 function enterWarRoom(){document.getElementById('intro').classList.add('hide');try{localStorage.setItem('raw_entered','1')}catch(e){}}
@@ -148,17 +181,17 @@ function triggerSurprise(){document.getElementById('modalBody').innerHTML='<div 
 function renderPlayers(){document.getElementById('playersList').innerHTML=Object.values(PLAYERS).map(p=>`<div class="player" style="border-left-color:${p.hex}"><div class="token" style="background:${p.hex}">${p.short}</div><div><div class="name">${p.name}</div><div class="role">${p.role}</div></div><div class="momentum ${p.momentum}">${p.momentum==='up'?'↑':p.momentum==='down'?'↓':'→'}</div></div>`).join('')}
 function renderLegend(){document.getElementById('legendList').innerHTML=Object.values(PLAYERS).map(p=>`<div class="legend-item"><div class="legend-swatch" style="background:${p.hex}"></div>${p.name}</div>`).join('')+`<div class="legend-item" style="margin-top:8px"><div class="legend-swatch" style="background:var(--human)"></div>Human Feedback Layer</div>`}
 function renderBoard(){document.getElementById('board').innerHTML=territories.map(t=>{const total=Object.values(t.influence).reduce((a,b)=>a+b,0)||1;const sorted=Object.entries(t.influence).sort((a,b)=>b[1]-a[1]);const bars=sorted.map(([pid,val])=>`<span style="width:${(val/total*100).toFixed(0)}%;background:${PLAYERS[pid].hex}" title="${PLAYERS[pid].name}: ${val}"></span>`).join('');const tokens=sorted.slice(0,5).map(([pid])=>`<div class="token-mini" style="background:${PLAYERS[pid].hex}" title="${PLAYERS[pid].name}">${PLAYERS[pid].short}</div>`).join('');const sc=t.status==='hot'?'hot':t.status==='contested'?'contested':'';return `<div class="territory ${sc}" onclick="showDetail('${t.id}')"><div class="status-badge">${t.status==='hot'?'🔥 HOT':t.status==='contested'?'⚔ Contested':'Stable'}</div><div class="name">${t.name}</div><div class="meta">${t.meta}</div><div class="influence-bar">${bars}</div><div class="tokens">${tokens}</div></div>`}).join('')}
-function renderWorld(){Object.entries(geoDominance).forEach(([id,data])=>{const el=document.getElementById(id);if(!el)return;el.style.fill=PLAYERS[data.dominant].hex;el.style.opacity=.42+data.intensity*.5;el.onclick=()=>showGeoDetail(id)});document.getElementById('worldLegend').innerHTML=Object.values(PLAYERS).map(p=>`<span><i style="background:${p.hex}"></i>${p.short}</span>`).join('')}
+function renderWorld(){const beacons=document.getElementById('beacons');beacons.innerHTML='';Object.entries(geoDominance).forEach(([id,data])=>{const el=document.getElementById(id);if(!el)return;const p=PLAYERS[data.dominant];el.style.fill=p.hex;el.style.opacity=0.38+data.intensity*0.52;el.classList.toggle('high-intensity', data.intensity>=0.7);el.onclick=()=>showGeoDetail(id);const [cx,cy]=CENTROIDS[id]||[0,0];const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('class','beacon');g.innerHTML=`<circle class="beacon-ring" cx="${cx}" cy="${cy}" r="4" stroke="${p.hex}"/><circle class="beacon-ring" cx="${cx}" cy="${cy}" r="4" stroke="${p.hex}" style="animation-delay:.8s"/><circle class="beacon-core" cx="${cx}" cy="${cy}" r="3.2" fill="${p.hex}"/>`;beacons.appendChild(g)});document.getElementById('worldLegend').innerHTML=Object.values(PLAYERS).map(p=>`<span><i style="background:${p.hex}"></i>${p.short}</span>`).join('')}
 function renderMetrics(){const hot=territories.filter(t=>t.status==='hot').map(t=>t.name).join(' · ')||'—';const contested=territories.filter(t=>t.status==='contested').map(t=>t.name).join(' · ')||'—';const leaders={};territories.forEach(t=>{const top=Object.entries(t.influence).sort((a,b)=>b[1]-a[1])[0];if(top)leaders[top[0]]=(leaders[top[0]]||0)+1});const top=Object.entries(leaders).sort((a,b)=>b[1]-a[1])[0];document.getElementById('metricsText').innerHTML=`Hot: <strong>${hot}</strong><br>Contested: <strong>${contested}</strong><br>Most territory leads: <strong>${top?PLAYERS[top[0]].name:'—'}</strong>`}
 function renderPipeline(){const pipe=window._pipeline||pipeline;document.getElementById('pipeline').innerHTML=pipe.map(p=>`<div class="pipeline-item">${p}</div>`).join('')}
 function renderEvents(){document.getElementById('eventLog').innerHTML=events.map(e=>`<div class="event"><div class="time">${e.time}</div>${e.text}</div>`).join('')}
 function showDetail(id){const t=territories.find(x=>x.id===id);if(!t)return;const total=Object.values(t.influence).reduce((a,b)=>a+b,0)||1;const rows=Object.entries(t.influence).sort((a,b)=>b[1]-a[1]).map(([pid,val])=>{const p=PLAYERS[pid];return `<div style="display:flex;justify-content:space-between;margin:5px 0"><span><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:${p.hex};margin-right:7px"></span>${p.name}</span><span>${val} (${(val/total*100).toFixed(1)}%)</span></div>`}).join('');document.getElementById('modalBody').innerHTML=`<h3>${t.name}</h3><p style="color:var(--muted);margin-bottom:10px">${t.meta}</p><p style="margin-bottom:14px;font-size:.9rem">${t.note}</p><h4 style="margin-bottom:6px">Relative Influence</h4>${rows}<p style="margin-top:12px;font-size:.72rem;color:var(--muted)">Relative estimates only.</p>`;document.getElementById('modal').classList.add('open')}
-function showGeoDetail(id){const data=geoDominance[id];const names={na:'North America',sa:'South America',eu:'Europe',af:'Africa',as:'Asia',oc:'Oceania'};const p=PLAYERS[data.dominant];document.getElementById('modalBody').innerHTML=`<h3>${names[id]}</h3><p style="margin:10px 0">Dominant: <strong style="color:${p.hex}">${p.name}</strong></p><p style="font-size:.9rem">${data.note}</p><p style="margin-top:10px;font-size:.75rem;color:var(--muted)">Intensity: ${(data.intensity*100).toFixed(0)}%</p>`;document.getElementById('modal').classList.add('open')}
+function showGeoDetail(id){const data=geoDominance[id];const names={na:'North America',sa:'South America',eu:'Europe',af:'Africa',as:'Asia',oc:'Oceania'};const p=PLAYERS[data.dominant];const foci=(data.focus||[]).map(f=>`<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-size:.75rem">${f}</span>`).join('');document.getElementById('modalBody').innerHTML=`<div style="font-size:.65rem;letter-spacing:.2em;color:#ef4444;margin-bottom:8px">THEATER REPORT</div><h3 style="margin-bottom:6px">${names[id]}</h3><p style="margin:8px 0">Dominant force: <strong style="color:${p.hex}">${p.name}</strong></p><p style="font-size:.9rem;line-height:1.5;color:var(--muted)">${data.note}</p><div style="margin-top:12px;font-size:.78rem">Intensity: <strong>${(data.intensity*100).toFixed(0)}%</strong><div style="margin-top:6px;height:6px;background:#0a101c;border-radius:3px;overflow:hidden"><div style="width:${(data.intensity*100).toFixed(0)}%;height:100%;background:${p.hex};border-radius:3px"></div></div></div><div style="margin-top:14px"><div style="font-size:.72rem;color:var(--muted);margin-bottom:6px">Priority verticals in this theater</div>${foci}</div>`;document.getElementById('modal').classList.add('open')}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
-function switchView(view){const board=document.getElementById('board'),world=document.getElementById('worldView'),human=document.getElementById('humanView'),btnB=document.getElementById('btnBoard'),btnW=document.getElementById('btnWorld'),btnH=document.getElementById('btnHuman');board.classList.add('hidden');world.classList.remove('active');human.classList.remove('active');btnB.classList.remove('active');btnW.classList.remove('active');btnH.classList.remove('active');btnH.classList.remove('human-active');if(view==='world'){world.classList.add('active');btnW.classList.add('active');document.getElementById('viewTitle').textContent='WORLD MAP — Geographic Dominance';renderWorld()}else if(view==='human'){human.classList.add('active');btnH.classList.add('human-active');document.getElementById('viewTitle').textContent='HUMAN LAYER — The Feedback Engine'}else{board.classList.remove('hidden');btnB.classList.add('active');document.getElementById('viewTitle').textContent='THE BOARD — Regulated AI Verticals'}}
-function simulateUpdate(){territories.forEach(t=>Object.keys(t.influence).forEach(pid=>{t.influence[pid]=Math.max(2,Math.min(50,t.influence[pid]+(Math.random()-.48)*3))}));Object.keys(geoDominance).forEach(k=>{geoDominance[k].intensity=Math.max(.3,Math.min(.95,geoDominance[k].intensity+(Math.random()-.5)*.06))});const msgs=['Influence drift.','Specialist pressure in Healthcare.','Google expands Legal connectors.','Microsoft deepens vertical agents.','Anthropic enterprise win.'];events.unshift({time:new Date().toISOString().slice(0,16).replace('T',' '),text:'Simulated: '+msgs[Math.floor(Math.random()*msgs.length)]});if(events.length>12)events.pop();document.getElementById('lastUpdate').textContent='Snapshot: '+new Date().toISOString().slice(0,16).replace('T',' ')+' (sim)';renderBoard();renderWorld();renderMetrics();renderEvents()}
+function switchView(view){const board=document.getElementById('board'),world=document.getElementById('worldView'),human=document.getElementById('humanView'),btnB=document.getElementById('btnBoard'),btnW=document.getElementById('btnWorld'),btnH=document.getElementById('btnHuman');board.classList.add('hidden');world.classList.remove('active');human.classList.remove('active');btnB.classList.remove('active');btnW.classList.remove('active');btnH.classList.remove('active');btnH.classList.remove('human-active');if(view==='world'){world.classList.add('active');btnW.classList.add('active');document.getElementById('viewTitle').textContent='WORLD MAP — Theater of Operations';renderWorld()}else if(view==='human'){human.classList.add('active');btnH.classList.add('human-active');document.getElementById('viewTitle').textContent='HUMAN LAYER — The Feedback Engine'}else{board.classList.remove('hidden');btnB.classList.add('active');document.getElementById('viewTitle').textContent='THE BOARD — Regulated AI Verticals'}}
+function simulateUpdate(){territories.forEach(t=>Object.keys(t.influence).forEach(pid=>{t.influence[pid]=Math.max(2,Math.min(50,t.influence[pid]+(Math.random()-.48)*3))}));Object.keys(geoDominance).forEach(k=>{geoDominance[k].intensity=Math.max(.3,Math.min(.95,geoDominance[k].intensity+(Math.random()-.5)*.06))});const msgs=['Influence drift across theaters.','Specialist pressure rises in Healthcare.','Google expands Legal connectors.','Microsoft deepens vertical agents.','Anthropic enterprise win in regulated sector.'];events.unshift({time:new Date().toISOString().slice(0,16).replace('T',' '),text:'Simulated: '+msgs[Math.floor(Math.random()*msgs.length)]});if(events.length>12)events.pop();document.getElementById('lastUpdate').textContent='Snapshot: '+new Date().toISOString().slice(0,16).replace('T',' ')+' (sim)';renderBoard();renderWorld();renderMetrics();renderEvents()}
 function resetBoard(){location.reload()}
-function applySnapshot(data){if(data.players)Object.keys(data.players).forEach(k=>{if(PLAYERS[k])Object.assign(PLAYERS[k],data.players[k]);else PLAYERS[k]=data.players[k]});if(data.territories)territories=data.territories;if(data.geoDominance)geoDominance=data.geoDominance;if(data.events)events=data.events;if(data.pipeline)window._pipeline=data.pipeline;if(data.meta&&data.meta.snapshotDate){const el=document.getElementById('lastUpdate');if(el)el.textContent='Snapshot: '+data.meta.snapshotDate}}
+function applySnapshot(data){if(data.players)Object.keys(data.players).forEach(k=>{if(PLAYERS[k])Object.assign(PLAYERS[k],data.players[k]);else PLAYERS[k]=data.players[k]});if(data.territories)territories=data.territories;if(data.geoDominance){Object.keys(data.geoDominance).forEach(k=>{geoDominance[k]=Object.assign(geoDominance[k]||{}, data.geoDominance[k])})}if(data.events)events=data.events;if(data.pipeline)window._pipeline=data.pipeline;if(data.meta&&data.meta.snapshotDate){const el=document.getElementById('lastUpdate');if(el)el.textContent='Snapshot: '+data.meta.snapshotDate}}
 function renderAll(){renderPlayers();renderLegend();renderBoard();renderWorld();renderMetrics();renderPipeline();renderEvents()}
 async function loadExternalSnapshot(){try{const res=await fetch('data/snapshot.json',{cache:'no-store'});if(!res.ok)throw new Error('no snapshot');const data=await res.json();applySnapshot(data);renderAll();console.info('Loaded data/snapshot.json')}catch(e){renderAll();console.info('Using embedded snapshot')}await populateSnapshotSelect()}
 async function populateSnapshotSelect(){const sel=document.getElementById('snapshotSelect');if(!sel)return;try{const res=await fetch('data/history/index.json',{cache:'no-store'});if(!res.ok)return;const idx=await res.json();sel.innerHTML='';const optCurrent=document.createElement('option');optCurrent.value='current';optCurrent.textContent='Current';sel.appendChild(optCurrent);(idx.snapshots||[]).slice().reverse().forEach(s=>{const opt=document.createElement('option');opt.value=s.id;opt.textContent=s.date+(s.label?' — '+s.label.slice(0,40):'');sel.appendChild(opt)});sel.value='current'}catch(e){console.info('History index not available')}}

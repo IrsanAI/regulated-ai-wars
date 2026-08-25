@@ -17,8 +17,8 @@ Status: **Seed → Core transition** (as of 2026-08-25)
 - [ ] First external contributions
 
 ## Medium-term (3–6 months)
-- [ ] Modular structure (clear separation of data, logic, views)
-- [ ] Stronger Human Layer (metrics, narrative depth)
+- [x] Modular structure (assets/map.css + assets/app.js + data/snapshot.json)
+- [x] Stronger Human Layer (live metrics bridging board + theater)
 - [ ] Optional public update pipeline (signal → scoring)
 - [ ] Deeper integration into the IrsanAI stack
 

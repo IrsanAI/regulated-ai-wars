@@ -21,6 +21,8 @@ jobs:
           test -f ROADMAP.md
           test -f index.html
           test -f data/snapshot.json
+          test -f assets/map.css
+          test -f assets/app.js
           echo "Required files present."
 
       - name: Validate snapshot.json
@@ -46,4 +48,6 @@ jobs:
           grep -q "regulated-ai-wars" index.html
           grep -q "Human Layer" index.html || grep -q "Human Feedback Layer" index.html
           grep -q "btnHuman" index.html
+          grep -q "renderHumanLayer" assets/app.js
+          grep -q "hotPulse" assets/map.css
           echo "HTML sanity checks passed."

@@ -6,9 +6,9 @@ Status: **Seed → Core transition** (as of 2026-08-25)
 - [x] MIT License
 - [x] CONTRIBUTING.md
 - [x] .gitignore
-- [ ] Basic GitHub Issue templates
-- [ ] Separate data from presentation (`data/snapshot.json`)
-- [ ] Lightweight CI (HTML validation / link check)
+- [x] Basic GitHub Issue templates
+- [x] Separate data from presentation (`data/snapshot.json`)
+- [x] Lightweight CI (HTML validation / JSON check)
 
 ## Short-term (1–3 months)
 - [ ] Document data sources and update cadence

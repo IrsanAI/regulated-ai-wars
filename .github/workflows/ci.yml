@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          test -f LICENSE
+          test -f README.md
+          test -f README.de.md
+          test -f CONTRIBUTING.md
+          test -f ROADMAP.md
+          test -f index.html
+          test -f data/snapshot.json
+          echo "Required files present."
+
+      - name: Validate snapshot.json
+        run: |
+          python3 -c "import json; json.load(open('data/snapshot.json')); print('snapshot.json is valid JSON')"
+
+      - name: Basic HTML sanity
+        run: |
+          grep -q "regulated-ai-wars" index.html
+          grep -q "Human Layer" index.html || grep -q "Human Feedback Layer" index.html
+          grep -q "btnHuman" index.html
+          echo "HTML sanity checks passed."

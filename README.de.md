@@ -62,6 +62,11 @@ Dieses Repository macht genau diesen Kampf sichtbar — und die menschliche Feed
 
 ---
 
+### Daten & Quellen
+
+Einflusswerte sind **relative Schätzungen** zur Visualisierung, keine präzisen Marktanteile.  
+Methodik und primäre Signale: [`data/SOURCES.md`](./data/SOURCES.md)
+
 ### Das Brett
 
 - **Territorien** = Premium-regulierte Verticals

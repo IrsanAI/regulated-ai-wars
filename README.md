@@ -62,6 +62,11 @@ This repository visualizes that battle — and the human feedback loop that feed
 
 ---
 
+### Data & sources
+
+Influence scores are **relative estimates** for visualization, not precise market shares.  
+Methodology and primary signals: [`data/SOURCES.md`](./data/SOURCES.md)
+
 ### The Board
 
 - **Territories** = Premium regulated verticals

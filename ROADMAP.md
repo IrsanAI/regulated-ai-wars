@@ -13,7 +13,7 @@ Status: **Seed → Core transition** (as of 2026-08-25)
 ## Short-term (1–3 months)
 - [x] Document data sources and update cadence (`data/SOURCES.md`)
 - [x] Historical snapshots + simple playback (`data/history/`, selector in UI)
-- [ ] Improve World Map geometry / readability
+- [x] Improve World Map geometry / readability (immersive theater view)
 - [ ] First external contributions
 
 ## Medium-term (3–6 months)

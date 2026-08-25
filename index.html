@@ -579,7 +579,8 @@
         `Hot: <strong>${hot}</strong><br>Contested: <strong>${contested}</strong><br>Most territory leads: <strong>${top?PLAYERS[top[0]].name:'—'}</strong>`;
     }
     function renderPipeline() {
-      document.getElementById('pipeline').innerHTML = pipeline.map(p=>`<div class="pipeline-item">${p}</div>`).join('');
+      const pipe = window._pipeline || pipeline;
+      document.getElementById('pipeline').innerHTML = pipe.map(p=>`<div class="pipeline-item">${p}</div>`).join('');
     }
     function renderEvents() {
       document.getElementById('eventLog').innerHTML = events.map(e=>
@@ -662,9 +663,51 @@
     }
     function resetBoard(){ location.reload(); }
 
-    renderPlayers(); renderLegend(); renderBoard(); renderWorld(); renderMetrics(); renderPipeline(); renderEvents();
+    function applySnapshot(data) {
+      if (data.players) {
+        Object.keys(data.players).forEach(k => {
+          if (PLAYERS[k]) Object.assign(PLAYERS[k], data.players[k]);
+          else PLAYERS[k] = data.players[k];
+        });
+      }
+      if (data.territories) territories = data.territories;
+      if (data.geoDominance) geoDominance = data.geoDominance;
+      if (data.events) events = data.events;
+      if (data.pipeline) window._pipeline = data.pipeline;
+      if (data.meta && data.meta.snapshotDate) {
+        const el = document.getElementById('lastUpdate');
+        if (el) el.textContent = 'Snapshot: ' + data.meta.snapshotDate;
+      }
+    }
+
+    function renderAll() {
+      renderPlayers();
+      renderLegend();
+      renderBoard();
+      renderWorld();
+      renderMetrics();
+      renderPipeline();
+      renderEvents();
+    }
+
+    async function loadExternalSnapshot() {
+      try {
+        const res = await fetch('data/snapshot.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('no snapshot');
+        const data = await res.json();
+        applySnapshot(data);
+        renderAll();
+        console.info('Loaded data/snapshot.json');
+      } catch (e) {
+        renderAll();
+        console.info('Using embedded snapshot (external load failed or offline)');
+      }
+    }
+
     document.getElementById('modal').addEventListener('click', e => { if(e.target.id==='modal') closeModal(); });
     try { if (localStorage.getItem('raw_entered') === '1') document.getElementById('intro').classList.add('hide'); } catch(e){}
+
+    loadExternalSnapshot();
   </script>
 </body>
 </html>

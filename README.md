@@ -29,66 +29,47 @@ Click the map to see **who is currently winning which territory** — and who is
 
 ---
 
+### Three Layers
+
+1. **Risk Board** — Territories (verticals) and the relative influence of the major players.
+2. **World Map** — Geographic dominance across continents.
+3. **Human Layer** — The deeper mechanism: humans as the feedback engine.
+
+The third layer is the one that matters most.
+
+Technology has always done this — the telephone, the smartphone, now AI agents.  
+It is useful. It takes work away. It diminishes some human skills and forces new ones.
+
+From the platform’s perspective, agents are the **key** that opens regulated markets and the data pools inside them.  
+Every correction, every accepted suggestion, every completed workflow becomes a reward signal.  
+Supervised or unsupervised — the human sits at the end of the digital output chain and is simultaneously the origin of the learning signal.
+
+The more humans run after the technology inside these verticals, the more powerful the systems become —  
+and the less visible it remains that humans are still the heart of the loop.
+
+---
+
 ### Why this exists
 
-In August 2026 Google launched **Gemini Enterprise for Legal** and **Financial Services** — the first purpose-built industry solutions on Gemini Enterprise.  
+In August 2026 Google launched **Gemini Enterprise for Legal** and **Financial Services**.  
 Healthcare, Life Sciences, Professional Services and Retail were explicitly put on the roadmap.
 
-The deeper pattern is clear:
+Regulated industries with complex data, strict permissions and heavy compliance requirements are not just good use-cases.  
+They are the **strongest available moats**.
 
-Regulated industries with complex data, strict permissions, ethical walls and heavy compliance requirements are not just good use-cases.  
-They are the **strongest available moats**.  
-
-Whoever becomes the trusted, governed execution layer in these verticals gains a durable, hard-to-displace position.  
-This repository visualizes that battle.
+Whoever becomes the trusted, governed execution layer in these verticals gains a durable position.  
+This repository visualizes that battle — and the human feedback loop that feeds it.
 
 ---
 
 ### The Board
 
-- **Territories** = Premium regulated verticals (Legal, Financial Services, Healthcare, Life Sciences, Insurance, Government, Professional Services, Retail…)
+- **Territories** = Premium regulated verticals
 - **Pieces on the board** = Current relative influence of the major players
-- **Off-board / Pipeline** = Announced next moves and focus areas
-- **Status** = Hot / Contested / Stable
-- **Event Log** = Timeline of strategic moves
+- **Off-board / Pipeline** = Announced next moves
+- **Human Layer** = The feedback engine that actually powers the conquest
 
-Players currently tracked:
-- Google (Gemini Enterprise)
-- Microsoft (Copilot + Azure)
-- Anthropic
-- OpenAI
-- AWS
-- Vertical Specialists (Harvey etc.)
-- IBM / Governance-first players
-
----
-
-### Philosophy
-
-This is not about model benchmarks.  
-It is about **territorial control** in the layers where trust, permissions, auditability and switching costs are highest.
-
-The same logic that makes Legal and Financial Services the first targets also explains why Healthcare and Life Sciences are next.
-
----
-
-### Status
-
-- Interactive Risk-style board (v0.1)
-- Relative influence estimates (not precise market shares)
-- Event log + pipeline view
-- Designed for daily/weekly snapshot updates
-
----
-
-### Roadmap
-
-- [ ] Move data into clean `data/snapshot.json`
-- [ ] Historical snapshots + playback
-- [ ] Better visual language (closer to classic Risk / strategic maps)
-- [ ] Lightweight update pipeline (public signals → scoring)
-- [ ] Optional Hugging Face Space as public playground
-- [x] GitHub Pages live deployment
+Players tracked: Google, Microsoft, Anthropic, OpenAI, AWS, Vertical Specialists, IBM / Governance-first players.
 
 ---
 

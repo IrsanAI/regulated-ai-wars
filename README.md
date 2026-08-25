@@ -6,6 +6,8 @@
 > A living Risk-style board that makes the real war visible:  
 > Who is taking the high ground in the most sticky, high-governance, high-value enterprise AI territories?
 
+**Languages:** [English](#regulated-ai-wars) · [Deutsch](./README.de.md)
+
 ---
 
 ### Why this exists
@@ -78,6 +80,7 @@ The same logic that makes Legal and Financial Services the first targets also ex
 - [ ] Better visual language (closer to classic Risk / strategic maps)
 - [ ] Lightweight update pipeline (public signals → scoring)
 - [ ] Optional Hugging Face Space as public playground
+- [ ] GitHub Pages live deployment
 
 ---
 

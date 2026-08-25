@@ -10,6 +10,25 @@
 
 ---
 
+### 🔥 Live-Map
+
+**→ [Zum Live-Eroberungsbrett](https://irsanai.github.io/regulated-ai-wars/)**
+
+Aktuelle Snapshot-Signale:
+
+| Signal | Status |
+|--------|--------|
+| **Heiße Territorien** | Legal · Financial Services |
+| **Am härtesten umkämpft** | Healthcare · Life Sciences · Professional Services |
+| **Stärkstes Momentum** | Google (Industry Solutions) · Anthropic (Enterprise LLM) |
+| **Underdog-Druck** | Vertical Specialists steigen in Legal & Healthcare |
+| **Nächste Schlachtfelder** | Healthcare · Life Sciences · Retail |
+
+Diese Zahlen bewegen sich. Das Brett aktualisiert sich.  
+Öffne die Map, um zu sehen, **wer gerade welches Territorium dominiert** — und wer leise Figuren außerhalb des Bretts verschiebt.
+
+---
+
 ### Warum es das gibt
 
 Im August 2026 hat Google **Gemini Enterprise for Legal** und **Financial Services** gestartet – die ersten branchenspezifischen Lösungen auf der Gemini-Enterprise-Plattform.  
@@ -44,17 +63,6 @@ Aktuell getrackte Player:
 
 ---
 
-### Live-Map
-
-Die interaktive Karte öffnen:
-
-→ **[Zur Map](./index.html)**
-
-Klick auf ein Territory für Details.  
-Mit „Simulate Update“ die selbstaktualisierende Logik testen.
-
----
-
 ### Philosophie
 
 Es geht nicht um Model-Benchmarks.  
@@ -80,7 +88,7 @@ Dieselbe Logik, die Legal und Financial Services zu den ersten Zielen macht, erk
 - [ ] Bessere visuelle Sprache (näher an klassischem Risk / Strategiekarten)
 - [ ] Leichte Update-Pipeline (öffentliche Signale → Scoring)
 - [ ] Optional Hugging Face Space als öffentlicher Playground
-- [ ] GitHub Pages Live-Deployment
+- [x] GitHub Pages Live-Deployment
 
 ---
 

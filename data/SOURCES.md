@@ -90,3 +90,9 @@ Most current board values sit between **Medium** and **Directional**, with the G
 
 This project visualizes power, intent, and control structures in regulated AI verticals.  
 The numbers are a lens, not a ledger. Treat them as such.
+
+---
+
+## Snapshot history
+
+Past board states live under [`history/`](./history/) — see [`HISTORY.md`](./HISTORY.md).

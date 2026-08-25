@@ -1,0 +1,19 @@
+# Snapshot history
+
+Board state over time. Each file in `history/` is a full snapshot compatible with `snapshot.json`.
+
+| Date | File | Label |
+|------|------|--------|
+| 2026-08-25 | [`history/2026-08-25.json`](./history/2026-08-25.json) | Initial board — Gemini Enterprise Legal & FS launch |
+
+**Current live board:** [`snapshot.json`](./snapshot.json) (should match the latest history entry unless a draft is in progress).
+
+## How to add a snapshot
+
+1. Copy `snapshot.json` → `history/YYYY-MM-DD.json`
+2. Update scores / events / pipeline as needed
+3. Append an entry to `history/index.json`
+4. Point `snapshot.json` at the new state (or replace it)
+5. Prefer citing signals in [`SOURCES.md`](./SOURCES.md) or the Event Log
+
+Influence values remain relative estimates for visualization.

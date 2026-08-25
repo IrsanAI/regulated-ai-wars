@@ -1,0 +1,12 @@
+{
+  "snapshots": [
+    {
+      "id": "2026-08-25",
+      "date": "2026-08-25",
+      "label": "Initial board — Gemini Enterprise Legal & FS launch",
+      "file": "2026-08-25.json",
+      "note": "First public snapshot. Google Legal + Financial Services preview; Healthcare/Life Sciences/Retail on roadmap."
+    }
+  ],
+  "current": "2026-08-25"
+}

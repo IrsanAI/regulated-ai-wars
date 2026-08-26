@@ -8,7 +8,7 @@ Optional: xAI if you have credits (keys often start with xai-).
 Env:
   LLM_PROVIDER  (optional) — "groq" (default) | "xai"
   GROQ_API_KEY  (required for groq)
-  GROQ_MODEL    (optional) — default llama-3.3-70b-versatile
+  GROQ_MODEL    (optional) — default openai/gpt-oss-120b
   XAI_API_KEY   (required for xai)
   XAI_MODEL     (optional) — default grok-4-latest
   SIGNAL_TEXT   (optional)
@@ -39,7 +39,8 @@ PROVIDERS = {
         "api_url": "https://api.groq.com/openai/v1/chat/completions",
         "key_env": "GROQ_API_KEY",
         "model_env": "GROQ_MODEL",
-        "default_model": "llama-3.3-70b-versatile",
+        # Llama 3.3 70B free-tier shut down 2026-08-16; see Groq deprecations.
+        "default_model": "openai/gpt-oss-120b",
         "label": "Groq",
     },
     "xai": {

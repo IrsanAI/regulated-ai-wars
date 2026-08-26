@@ -21,8 +21,9 @@ Status: **Core component (active)** (as of 2026-08-26)
 ## Medium-term (3–6 months)
 - [x] Modular structure (assets/map.css + assets/app.js + data/snapshot.json)
 - [x] Stronger Human Layer (live metrics bridging board + theater)
-- [ ] Optional public update pipeline (signal → scoring)
+- [x] Optional public update pipeline (signal → xAI → draft PR) — see `pipeline/`
 - [x] Deeper integration into the IrsanAI stack (STACK.md + Universe meta)
+- [ ] Richer signal ingest (issues → auto-dispatch, optional X/news hooks)
 
 ## Guiding principle
 Keep the project legible.  

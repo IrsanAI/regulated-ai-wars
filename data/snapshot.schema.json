@@ -49,7 +49,26 @@
             "minProperties": 1,
             "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 }
           },
+          "trend": {
+            "type": "object",
+            "additionalProperties": { "type": "string", "enum": ["up", "stable", "down"] }
+          },
           "note": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "movers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["player", "territory", "trend"],
+        "properties": {
+          "player": { "type": "string" },
+          "territory": { "type": "string" },
+          "trend": { "type": "string", "enum": ["up", "stable", "down"] },
+          "delta": { "type": "number" },
+          "label": { "type": "string" }
         },
         "additionalProperties": true
       }
@@ -63,6 +82,7 @@
         "properties": {
           "dominant": { "type": "string" },
           "intensity": { "type": "number", "minimum": 0, "maximum": 1 },
+          "trend": { "type": "string", "enum": ["up", "stable", "down"] },
           "note": { "type": "string" }
         },
         "additionalProperties": true

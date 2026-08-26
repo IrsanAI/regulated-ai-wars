@@ -2,16 +2,65 @@
   "meta": {
     "snapshotDate": "2026-08-26",
     "version": "0.3",
-    "note": "Relative influence estimates for visualization only — not precise market shares. D+1 after Gemini Enterprise Legal & FS launch."
+    "note": "No material public signal; board remains stable."
   },
   "players": {
-    "google":     { "id": "google",     "name": "Google",               "short": "G",   "hex": "#4285F4", "role": "Hyperscaler – Industry Solutions",   "momentum": "up" },
-    "microsoft":  { "id": "microsoft",  "name": "Microsoft",            "short": "MS",  "hex": "#F25022", "role": "Hyperscaler – Copilot Ecosystem",   "momentum": "stable" },
-    "anthropic":  { "id": "anthropic",  "name": "Anthropic",            "short": "A",   "hex": "#C15F3C", "role": "Foundation Lab – Enterprise LLM",  "momentum": "up" },
-    "openai":     { "id": "openai",     "name": "OpenAI",               "short": "OAI", "hex": "#10A37F", "role": "Foundation Lab",                    "momentum": "down" },
-    "aws":        { "id": "aws",        "name": "AWS",                  "short": "AWS", "hex": "#FF9900", "role": "Hyperscaler – Bedrock",             "momentum": "stable" },
-    "specialist": { "id": "specialist", "name": "Vertical Specialists", "short": "VS",  "hex": "#A855F7", "role": "Harvey, Healthcare AI etc.",        "momentum": "up" },
-    "ibm":        { "id": "ibm",        "name": "IBM / Governance",     "short": "IBM", "hex": "#0F62FE", "role": "Governance-first",                  "momentum": "stable" }
+    "google": {
+      "id": "google",
+      "name": "Google",
+      "short": "G",
+      "hex": "#4285F4",
+      "role": "Hyperscaler – Industry Solutions",
+      "momentum": "up"
+    },
+    "microsoft": {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "short": "MS",
+      "hex": "#F25022",
+      "role": "Hyperscaler – Copilot Ecosystem",
+      "momentum": "stable"
+    },
+    "anthropic": {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "short": "A",
+      "hex": "#C15F3C",
+      "role": "Foundation Lab – Enterprise LLM",
+      "momentum": "up"
+    },
+    "openai": {
+      "id": "openai",
+      "name": "OpenAI",
+      "short": "OAI",
+      "hex": "#10A37F",
+      "role": "Foundation Lab",
+      "momentum": "down"
+    },
+    "aws": {
+      "id": "aws",
+      "name": "AWS",
+      "short": "AWS",
+      "hex": "#FF9900",
+      "role": "Hyperscaler – Bedrock",
+      "momentum": "stable"
+    },
+    "specialist": {
+      "id": "specialist",
+      "name": "Vertical Specialists",
+      "short": "VS",
+      "hex": "#A855F7",
+      "role": "Harvey, Healthcare AI etc.",
+      "momentum": "up"
+    },
+    "ibm": {
+      "id": "ibm",
+      "name": "IBM / Governance",
+      "short": "IBM",
+      "hex": "#0F62FE",
+      "role": "Governance-first",
+      "momentum": "stable"
+    }
   },
   "territories": [
     {
@@ -19,7 +68,13 @@
       "name": "Legal",
       "meta": "Contracts • Research • Compliance",
       "status": "hot",
-      "influence": { "google": 31, "microsoft": 31, "specialist": 26, "anthropic": 9, "openai": 3 },
+      "influence": {
+        "google": 31,
+        "microsoft": 31,
+        "specialist": 26,
+        "anthropic": 9,
+        "openai": 3
+      },
       "note": "D+1: Google closes the gap with Microsoft after Gemini Enterprise for Legal preview. Harvey / specialists still strong on pure legal workflows."
     },
     {
@@ -27,7 +82,14 @@
       "name": "Financial Services",
       "meta": "Capital Markets • KYC • Risk",
       "status": "hot",
-      "influence": { "google": 33, "microsoft": 34, "anthropic": 12, "openai": 9, "aws": 7, "specialist": 5 },
+      "influence": {
+        "google": 33,
+        "microsoft": 34,
+        "anthropic": 12,
+        "openai": 9,
+        "aws": 7,
+        "specialist": 5
+      },
       "note": "Google pressure rises post-launch. Microsoft still leads on installed base; contest tightens."
     },
     {
@@ -35,7 +97,14 @@
       "name": "Healthcare",
       "meta": "EHR • Documentation • Prior Auth",
       "status": "hot",
-      "influence": { "microsoft": 29, "specialist": 28, "google": 18, "anthropic": 12, "openai": 9, "ibm": 4 },
+      "influence": {
+        "microsoft": 29,
+        "specialist": 28,
+        "google": 18,
+        "anthropic": 12,
+        "openai": 9,
+        "ibm": 4
+      },
       "note": "Elevated to HOT: market anticipates Google Healthcare move; specialists and Microsoft already dense."
     },
     {
@@ -43,7 +112,14 @@
       "name": "Life Sciences",
       "meta": "GxP • R&D • Regulatory",
       "status": "contested",
-      "influence": { "google": 20, "microsoft": 24, "specialist": 22, "anthropic": 15, "ibm": 12, "openai": 7 },
+      "influence": {
+        "google": 20,
+        "microsoft": 24,
+        "specialist": 22,
+        "anthropic": 15,
+        "ibm": 12,
+        "openai": 7
+      },
       "note": "Google horizon signal increases relative positioning. Governance needs still favor controlled platforms."
     },
     {
@@ -51,7 +127,14 @@
       "name": "Insurance",
       "meta": "Underwriting • Claims • Compliance",
       "status": "normal",
-      "influence": { "microsoft": 35, "google": 16, "anthropic": 12, "aws": 12, "openai": 9, "specialist": 16 },
+      "influence": {
+        "microsoft": 35,
+        "google": 16,
+        "anthropic": 12,
+        "aws": 12,
+        "openai": 9,
+        "specialist": 16
+      },
       "note": "Microsoft strong via existing enterprise footprint. Slow movement."
     },
     {
@@ -59,7 +142,14 @@
       "name": "Government",
       "meta": "Case Mgmt • Security • Citizens",
       "status": "normal",
-      "influence": { "microsoft": 40, "google": 19, "ibm": 15, "aws": 11, "anthropic": 10, "openai": 5 },
+      "influence": {
+        "microsoft": 40,
+        "google": 19,
+        "ibm": 15,
+        "aws": 11,
+        "anthropic": 10,
+        "openai": 5
+      },
       "note": "Long cycles, high trust. Slight Google uptick; structure unchanged."
     },
     {
@@ -67,7 +157,14 @@
       "name": "Professional Services",
       "meta": "Consulting • Audit • Tax",
       "status": "contested",
-      "influence": { "microsoft": 37, "google": 22, "anthropic": 15, "openai": 11, "specialist": 10, "aws": 5 },
+      "influence": {
+        "microsoft": 37,
+        "google": 22,
+        "anthropic": 15,
+        "openai": 11,
+        "specialist": 10,
+        "aws": 5
+      },
       "note": "Google gains on playbook-adjacent work. Microsoft Copilot still primary distribution."
     },
     {
@@ -75,23 +172,70 @@
       "name": "Retail",
       "meta": "Customer Data • Supply • Compliance",
       "status": "normal",
-      "influence": { "google": 26, "microsoft": 29, "aws": 20, "openai": 10, "anthropic": 8, "specialist": 7 },
+      "influence": {
+        "google": 26,
+        "microsoft": 29,
+        "aws": 20,
+        "openai": 10,
+        "anthropic": 8,
+        "specialist": 7
+      },
       "note": "Still on Google roadmap. Early positioning drift only."
     }
   ],
   "geoDominance": {
-    "na": { "dominant": "microsoft", "intensity": 0.83, "note": "Microsoft still densest in NA, but Google Legal/FS launch compresses the gap. Intensity slightly down as contest rises." },
-    "sa": { "dominant": "microsoft", "intensity": 0.55, "note": "Microsoft still leads; lower overall enterprise AI maturity." },
-    "eu": { "dominant": "microsoft", "intensity": 0.68, "note": "Microsoft footprint remains; Google regulated push and Anthropic safety deals keep EU contested." },
-    "af": { "dominant": "microsoft", "intensity": 0.40, "note": "Emerging. Microsoft and Google competing for public sector and banking." },
-    "as": { "dominant": "google",    "intensity": 0.67, "note": "Google Cloud strong in APAC; slight intensity rise after industry-solution narrative." },
-    "oc": { "dominant": "microsoft", "intensity": 0.60, "note": "Microsoft dominant in Australia/NZ. Google increasing presence." }
+    "na": {
+      "dominant": "microsoft",
+      "intensity": 0.83,
+      "note": "Microsoft still densest in NA, but Google Legal/FS launch compresses the gap. Intensity slightly down as contest rises."
+    },
+    "sa": {
+      "dominant": "microsoft",
+      "intensity": 0.55,
+      "note": "Microsoft still leads; lower overall enterprise AI maturity."
+    },
+    "eu": {
+      "dominant": "microsoft",
+      "intensity": 0.68,
+      "note": "Microsoft footprint remains; Google regulated push and Anthropic safety deals keep EU contested."
+    },
+    "af": {
+      "dominant": "microsoft",
+      "intensity": 0.4,
+      "note": "Emerging. Microsoft and Google competing for public sector and banking."
+    },
+    "as": {
+      "dominant": "google",
+      "intensity": 0.67,
+      "note": "Google Cloud strong in APAC; slight intensity rise after industry-solution narrative."
+    },
+    "oc": {
+      "dominant": "microsoft",
+      "intensity": 0.6,
+      "note": "Microsoft dominant in Australia/NZ. Google increasing presence."
+    }
   },
   "events": [
-    { "time": "2026-08-26", "text": "D+1 snapshot: Google closes Legal gap with Microsoft; Healthcare elevated to HOT as market prices next vertical." },
-    { "time": "2026-08-25", "text": "Google launches Gemini Enterprise for Legal + Financial Services. Roadmap: Healthcare, Life Sciences, Retail." },
-    { "time": "2026-08-25", "text": "Menlo Ventures (late 2025): Anthropic ~40% enterprise LLM spend, OpenAI ~27%, Google ~21%." },
-    { "time": "2026-Q2",    "text": "Microsoft continues strong horizontal distribution via M365 Copilot in regulated industries." }
+    {
+      "time": "2026-08-26",
+      "text": "No material public signal; board remains unchanged."
+    },
+    {
+      "time": "2026-08-26",
+      "text": "D+1 snapshot: Google closes Legal gap with Microsoft; Healthcare elevated to HOT as market prices next vertical."
+    },
+    {
+      "time": "2026-08-25",
+      "text": "Google launches Gemini Enterprise for Legal + Financial Services. Roadmap: Healthcare, Life Sciences, Retail."
+    },
+    {
+      "time": "2026-08-25",
+      "text": "Menlo Ventures (late 2025): Anthropic ~40% enterprise LLM spend, OpenAI ~27%, Google ~21%."
+    },
+    {
+      "time": "2026-Q2",
+      "text": "Microsoft continues strong horizontal distribution via M365 Copilot in regulated industries."
+    }
   ],
   "pipeline": [
     "Healthcare (Google) — now priced as near-term",

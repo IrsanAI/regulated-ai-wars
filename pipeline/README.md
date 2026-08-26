@@ -30,9 +30,11 @@ Optional: `XAI_API_KEY` only if you switch provider to `xai` (paid).
 
 1. Actions → **Signal update (LLM)** → **Run workflow**
 2. Provider: **groq**
-3. Model: `llama-3.3-70b-versatile` (default)
+3. Model: `openai/gpt-oss-120b` (default — Llama free-tier models were retired Aug 2026)
 4. Paste public signals
 5. Review draft PR (or disable PR and only fetch artifacts)
+
+Fallbacks if a model is unavailable: `openai/gpt-oss-20b` or `qwen/qwen3.6-27b`.
 
 ## Local dry-run
 
@@ -48,7 +50,7 @@ python pipeline/run_signal_update.py
 
 | Name | Free tier | Key prefix | Default model |
 |------|-----------|------------|---------------|
-| **Groq** | yes | `gsk_` | `llama-3.3-70b-versatile` |
+| **Groq** | yes | `gsk_` | `openai/gpt-oss-120b` |
 | xAI (Grok) | typically paid credits | `xai-` | `grok-4-latest` |
 
 Groq ≠ Grok. Groq is a fast inference host for open models; Grok is xAI’s model family.

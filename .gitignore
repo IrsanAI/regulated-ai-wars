@@ -31,3 +31,6 @@ venv/
 # Local data / secrets
 *.local.json
 secrets/
+
+# Pipeline drafts (CI uploads artifacts; do not commit raw API dumps)
+pipeline/out/

@@ -6,7 +6,14 @@
       "label": "Initial board — Gemini Enterprise Legal & FS launch",
       "file": "2026-08-25.json",
       "note": "First public snapshot. Google Legal + Financial Services preview; Healthcare/Life Sciences/Retail on roadmap."
+    },
+    {
+      "id": "2026-08-26",
+      "date": "2026-08-26",
+      "label": "D+1 — Legal gap closes; Healthcare goes HOT",
+      "file": "2026-08-26.json",
+      "note": "Post-launch pressure: Google matches Microsoft on Legal; Healthcare elevated as market prices next vertical."
     }
   ],
-  "current": "2026-08-25"
+  "current": "2026-08-26"
 }

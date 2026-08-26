@@ -12,10 +12,10 @@ on:
         type: string
         default: ""
       model:
-        description: "Model id (Groq default: llama-3.3-70b-versatile)"
+        description: "Model id (Groq default: openai/gpt-oss-120b)"
         required: false
         type: string
-        default: "llama-3.3-70b-versatile"
+        default: "openai/gpt-oss-120b"
       provider:
         description: "LLM provider"
         required: false
@@ -88,7 +88,7 @@ jobs:
         env:
           LLM_PROVIDER: ${{ github.event.inputs.provider || 'groq' }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          GROQ_MODEL: ${{ github.event.inputs.model || 'llama-3.3-70b-versatile' }}
+          GROQ_MODEL: ${{ github.event.inputs.model || 'openai/gpt-oss-120b' }}
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
           XAI_MODEL: ${{ github.event.inputs.model || 'grok-4-latest' }}
           SIGNAL_TEXT: ${{ github.event.inputs.signals || '' }}

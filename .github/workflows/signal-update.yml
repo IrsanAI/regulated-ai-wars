@@ -2,7 +2,7 @@ name: Signal update (xAI)
 
 on:
   schedule:
-    # Mondays 06:00 UTC — only useful when SIGNAL_TEXT is later wired or signals committed
+    # Placeholder cadence — scheduled runs without signals exit early (no API spend).
     - cron: "0 6 * * 1"
   workflow_dispatch:
     inputs:
@@ -38,7 +38,18 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Early exit on empty schedule
+        id: early
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "Scheduled run without interactive signals — no API call. Use workflow_dispatch and paste signals."
+            echo "skip_all=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip_all=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Require API key
+        if: steps.early.outputs.skip_all != 'true'
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: |
@@ -48,6 +59,7 @@ jobs:
           fi
 
       - name: Run signal → draft pipeline
+        if: steps.early.outputs.skip_all != 'true'
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
           XAI_MODEL: ${{ github.event.inputs.model || 'grok-4-latest' }}
@@ -56,23 +68,17 @@ jobs:
           python pipeline/run_signal_update.py
 
       - name: Upload artifacts
+        if: steps.early.outputs.skip_all != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: signal-draft
           path: pipeline/out/
 
-      - name: Skip PR if no dispatch or open_pr false
+      - name: PR gate
+        if: steps.early.outputs.skip_all != 'true'
         id: gate
         run: |
           OPEN="${{ github.event.inputs.open_pr }}"
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            # Scheduled runs without signals should not spam PRs
-            if [ -z "${{ github.event.inputs.signals }}" ]; then
-              echo "skip=true" >> "$GITHUB_OUTPUT"
-              echo "Scheduled run without interactive signals — artifacts only."
-              exit 0
-            fi
-          fi
           if [ "$OPEN" = "false" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
@@ -80,7 +86,7 @@ jobs:
           fi
 
       - name: Create draft PR
-        if: steps.gate.outputs.skip != 'true'
+        if: steps.early.outputs.skip_all != 'true' && steps.gate.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -91,11 +97,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
 
-          # Stage proposed live snapshot + history candidate + rationale
           cp pipeline/out/draft-snapshot.json "data/history/${DATE}.json"
           cp pipeline/out/draft-snapshot.json data/snapshot.json
 
-          # Update history index (simple Python)
           python - <<'PY'
           import json
           from pathlib import Path
@@ -111,7 +115,6 @@ jobs:
               "file": f"{date}.json",
               "note": note[:240],
           }
-          # replace same-day entry if present
           idx["snapshots"] = [s for s in idx.get("snapshots", []) if s.get("id") != date]
           idx["snapshots"].append(entry)
           idx["snapshots"].sort(key=lambda s: s["date"])
@@ -119,7 +122,11 @@ jobs:
           idx_path.write_text(json.dumps(idx, indent=2) + "\n")
           PY
 
-          git add data/snapshot.json "data/history/${DATE}.json" data/history/index.json pipeline/out/rationale.md pipeline/out/validation.json
+          mkdir -p pipeline/out
+          git add data/snapshot.json "data/history/${DATE}.json" data/history/index.json
+          # rationale may help reviewers — force-add even if out/ is gitignored
+          git add -f pipeline/out/rationale.md pipeline/out/validation.json || true
+
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0

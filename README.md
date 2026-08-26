@@ -14,17 +14,19 @@
 
 **→ [Open the Live Conquest Board](https://irsanai.github.io/regulated-ai-wars/)**
 
-Current snapshot signals:
+Current snapshot signals (**2026-08-26 · D+1**):
 
 | Signal | Status |
 |--------|--------|
-| **Hot Territories** | Legal · Financial Services |
-| **Most Contested** | Healthcare · Life Sciences · Professional Services |
+| **Hot Territories** | Legal · Financial Services · **Healthcare** |
+| **Most Contested** | Life Sciences · Professional Services |
 | **Strongest Momentum** | Google (Industry Solutions) · Anthropic (Enterprise LLM) |
+| **Board move** | Google closes the Legal gap with Microsoft |
 | **Underdog Pressure** | Vertical Specialists rising in Legal & Healthcare |
-| **Next Battlegrounds** | Healthcare · Life Sciences · Retail |
+| **Next Battlegrounds** | Healthcare (priced near-term) · Life Sciences · Retail |
 
 These numbers shift. The board updates.  
+Use the **snapshot selector** to compare 2026-08-25 → 2026-08-26.  
 Click the map to see **who is currently winning which territory** — and who is quietly moving pieces off-board.
 
 ---
@@ -32,8 +34,8 @@ Click the map to see **who is currently winning which territory** — and who is
 ### Three Layers
 
 1. **Risk Board** — Territories (verticals) and the relative influence of the major players.
-2. **World Map** — Geographic dominance across continents.
-3. **Human Layer** — The deeper mechanism: humans as the feedback engine.
+2. **World Map** — Geographic dominance across continents (theater of operations).
+3. **Human Layer** — Live metrics that bridge board heat and theater intensity — humans as the feedback engine.
 
 The third layer is the one that matters most.
 
@@ -42,10 +44,7 @@ It is useful. It takes work away. It diminishes some human skills and forces new
 
 From the platform’s perspective, agents are the **key** that opens regulated markets and the data pools inside them.  
 Every correction, every accepted suggestion, every completed workflow becomes a reward signal.  
-Supervised or unsupervised — the human sits at the end of the digital output chain and is simultaneously the origin of the learning signal.
-
-The more humans run after the technology inside these verticals, the more powerful the systems become —  
-and the less visible it remains that humans are still the heart of the loop.
+The human sits at the end of the digital output chain and is simultaneously the origin of the learning signal.
 
 ---
 
@@ -65,14 +64,7 @@ This repository visualizes that battle — and the human feedback loop that feed
 ### Data & sources
 
 Influence scores are **relative estimates** for visualization, not precise market shares.  
-Methodology and primary signals: [`data/SOURCES.md`](./data/SOURCES.md)
-
-### The Board
-
-- **Territories** = Premium regulated verticals
-- **Pieces on the board** = Current relative influence of the major players
-- **Off-board / Pipeline** = Announced next moves
-- **Human Layer** = The feedback engine that actually powers the conquest
+Methodology: [`data/SOURCES.md`](./data/SOURCES.md) · History: [`data/HISTORY.md`](./data/HISTORY.md)
 
 Players tracked: Google, Microsoft, Anthropic, OpenAI, AWS, Vertical Specialists, IBM / Governance-first players.
 
@@ -80,9 +72,16 @@ Players tracked: Google, Microsoft, Anthropic, OpenAI, AWS, Vertical Specialists
 
 ### Part of the IrsanAI Universe
 
-This project lives inside the broader IrsanAI Human-AI stack — systems that try to make power structures, intent and control legible.
+This project is a **strategy-sensing** node in the IrsanAI Human-AI stack — systems that try to make power structures, intent and control legible.
+
+| Link | What |
+|------|------|
+| [STACK.md](./STACK.md) | How this repo sits next to root-ascent, VERA, Universe |
+| [IrsanAI-Universe](https://github.com/IrsanAI/IrsanAI-Universe) | Central constellation |
+| [Live Universe map](https://irsanai.github.io/IrsanAI-Universe/) | All nodes, one readable system |
+| [root-ascent-method](https://github.com/IrsanAI/root-ascent-method) | Causal ladder used to steer this project |
 
 ---
 
-*Snapshot date of initial board: 2026-08-25*  
+*Current snapshot: 2026-08-26*  
 *All influence numbers are relative estimates for visualization purposes.*

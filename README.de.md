@@ -14,17 +14,19 @@
 
 **→ [Zum Live-Eroberungsbrett](https://irsanai.github.io/regulated-ai-wars/)**
 
-Aktuelle Snapshot-Signale:
+Aktuelle Snapshot-Signale (**2026-08-26 · D+1**):
 
 | Signal | Status |
 |--------|--------|
-| **Heiße Territorien** | Legal · Financial Services |
-| **Am härtesten umkämpft** | Healthcare · Life Sciences · Professional Services |
+| **Heiße Territorien** | Legal · Financial Services · **Healthcare** |
+| **Am härtesten umkämpft** | Life Sciences · Professional Services |
 | **Stärkstes Momentum** | Google (Industry Solutions) · Anthropic (Enterprise LLM) |
+| **Brettzug** | Google schließt den Legal-Abstand zu Microsoft |
 | **Underdog-Druck** | Vertical Specialists steigen in Legal & Healthcare |
-| **Nächste Schlachtfelder** | Healthcare · Life Sciences · Retail |
+| **Nächste Schlachtfelder** | Healthcare (nahefristig eingepreist) · Life Sciences · Retail |
 
 Diese Zahlen bewegen sich. Das Brett aktualisiert sich.  
+Nutze den **Snapshot-Selektor**, um 2026-08-25 → 2026-08-26 zu vergleichen.  
 Öffne die Map, um zu sehen, **wer gerade welches Territorium dominiert** — und wer leise Figuren außerhalb des Bretts verschiebt.
 
 ---
@@ -32,8 +34,8 @@ Diese Zahlen bewegen sich. Das Brett aktualisiert sich.
 ### Drei Schichten
 
 1. **Risk Board** — Territorien (Verticals) und der relative Einfluss der großen Player.
-2. **World Map** — Geografische Dominanz über die Kontinente.
-3. **Human Layer** — Der tiefere Mechanismus: Menschen als Feedback-Engine.
+2. **World Map** — Geografische Dominanz über die Kontinente (Theater of Operations).
+3. **Human Layer** — Live-Metriken zwischen Board-Hitze und Theater-Intensität — Menschen als Feedback-Engine.
 
 Die dritte Schicht ist die entscheidende.
 
@@ -42,10 +44,7 @@ Sie ist nützlich. Sie nimmt Arbeit ab. Sie dezimiert manche menschlichen Fähig
 
 Aus Sicht der Plattform sind Agents der **Schlüssel**, der regulierte Märkte und die darin liegenden Datenpools öffnet.  
 Jede Korrektur, jeder akzeptierte Vorschlag, jeder abgeschlossene Workflow wird zum Reward-Signal.  
-Supervised oder unsupervised — der Mensch sitzt am Ende der digitalen Output-Kette und ist zugleich der Ursprung des Lernsignals.
-
-Je mehr Menschen der Technik in diesen Verticals hinterherlaufen, desto mächtiger werden die Systeme —  
-und desto weniger sichtbar bleibt, dass die Menschen weiterhin das Herzstück der Schleife sind.
+Der Mensch sitzt am Ende der digitalen Output-Kette und ist zugleich der Ursprung des Lernsignals.
 
 ---
 
@@ -65,14 +64,7 @@ Dieses Repository macht genau diesen Kampf sichtbar — und die menschliche Feed
 ### Daten & Quellen
 
 Einflusswerte sind **relative Schätzungen** zur Visualisierung, keine präzisen Marktanteile.  
-Methodik und primäre Signale: [`data/SOURCES.md`](./data/SOURCES.md)
-
-### Das Brett
-
-- **Territorien** = Premium-regulierte Verticals
-- **Figuren auf dem Brett** = Aktueller relativer Einfluss der großen Player
-- **Off-Board / Pipeline** = Angekündigte nächste Züge
-- **Human Layer** = Die Feedback-Engine, die die Eroberung tatsächlich antreibt
+Methodik: [`data/SOURCES.md`](./data/SOURCES.md) · Historie: [`data/HISTORY.md`](./data/HISTORY.md)
 
 Getrackte Player: Google, Microsoft, Anthropic, OpenAI, AWS, Vertical Specialists, IBM / Governance-first Player.
 
@@ -80,9 +72,16 @@ Getrackte Player: Google, Microsoft, Anthropic, OpenAI, AWS, Vertical Specialist
 
 ### Teil des IrsanAI Universe
 
-Dieses Projekt gehört zum breiteren IrsanAI Human-AI Stack – Systeme, die Machtstrukturen, Intent und Kontrolle lesbar machen wollen.
+Dieses Projekt ist ein **Strategy-Sensing**-Knoten im IrsanAI Human-AI Stack — Systeme, die Machtstrukturen, Intent und Kontrolle lesbar machen wollen.
+
+| Link | Was |
+|------|------|
+| [STACK.md](./STACK.md) | Wie dieses Repo neben root-ascent, VERA, Universe sitzt |
+| [IrsanAI-Universe](https://github.com/IrsanAI/IrsanAI-Universe) | Zentrale Konstellation |
+| [Live Universe Map](https://irsanai.github.io/IrsanAI-Universe/) | Alle Knoten, ein lesbares System |
+| [root-ascent-method](https://github.com/IrsanAI/root-ascent-method) | Causal Ladder, mit der dieses Projekt gesteuert wurde |
 
 ---
 
-*Snapshot-Datum des initialen Bretts: 2026-08-25*  
+*Aktueller Snapshot: 2026-08-26*  
 *Alle Einflusszahlen sind relative Schätzungen zu Visualisierungszwecken.*

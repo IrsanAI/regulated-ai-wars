@@ -113,7 +113,7 @@ jobs:
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create draft PR
+      - name: Push draft branch + try PR
         if: steps.early.outputs.skip_all != 'true' && steps.gate.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -161,6 +161,9 @@ jobs:
           git commit -m "chore(data): signal draft snapshot ${DATE}"
           git push -u origin "$BRANCH"
 
+          echo "Branch pushed: $BRANCH"
+          echo "Manual PR link: https://github.com/${{ github.repository }}/compare/main...${BRANCH}?expand=1"
+
           BODY_FILE=$(mktemp)
           {
             echo "## Automated signal draft"
@@ -180,9 +183,17 @@ jobs:
             echo "Sources methodology: \`data/SOURCES.md\`"
           } > "$BODY_FILE"
 
-          gh pr create \
+          if gh pr create \
             --draft \
             --title "Signal draft: board ${DATE}" \
             --body-file "$BODY_FILE" \
             --base main \
-            --head "$BRANCH"
+            --head "$BRANCH"; then
+            echo "Draft PR created."
+          else
+            echo "::warning::Could not auto-create PR (often: Actions not allowed to create PRs)."
+            echo "Enable: Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests"
+            echo "Or open manually: https://github.com/${{ github.repository }}/compare/main...${BRANCH}?expand=1"
+            # Do not fail the job — draft branch + artifact are enough
+            exit 0
+          fi

@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """
-regulated-ai-wars — signal → draft snapshot via xAI API.
+regulated-ai-wars — signal → draft snapshot via OpenAI-compatible LLM API.
 
-Reads current data/snapshot.json + methodology, optional signals,
-calls xAI chat completions, writes draft artifacts under pipeline/out/.
+Default provider: Groq (free developer tier, keys often start with gsk_).
+Optional: xAI if you have credits (keys often start with xai-).
 
 Env:
-  XAI_API_KEY   (required) — never commit this
+  LLM_PROVIDER  (optional) — "groq" (default) | "xai"
+  GROQ_API_KEY  (required for groq)
+  GROQ_MODEL    (optional) — default llama-3.3-70b-versatile
+  XAI_API_KEY   (required for xai)
   XAI_MODEL     (optional) — default grok-4-latest
-  SIGNAL_TEXT   (optional) — free-text public signals
-  SIGNAL_FILE   (optional) — path to a text file with signals
-  SNAPSHOT_PATH (optional) — default data/snapshot.json
-  OUT_DIR       (optional) — default pipeline/out
+  SIGNAL_TEXT   (optional)
+  SIGNAL_FILE   (optional)
+  SNAPSHOT_PATH (optional)
+  OUT_DIR       (optional)
 """
 
 from __future__ import annotations
@@ -30,7 +33,23 @@ DEFAULT_SNAPSHOT = ROOT / "data" / "snapshot.json"
 DEFAULT_SOURCES = ROOT / "data" / "SOURCES.md"
 DEFAULT_PROMPT = ROOT / "pipeline" / "PROMPT.md"
 DEFAULT_OUT = ROOT / "pipeline" / "out"
-API_URL = "https://api.x.ai/v1/chat/completions"
+
+PROVIDERS = {
+    "groq": {
+        "api_url": "https://api.groq.com/openai/v1/chat/completions",
+        "key_env": "GROQ_API_KEY",
+        "model_env": "GROQ_MODEL",
+        "default_model": "llama-3.3-70b-versatile",
+        "label": "Groq",
+    },
+    "xai": {
+        "api_url": "https://api.x.ai/v1/chat/completions",
+        "key_env": "XAI_API_KEY",
+        "model_env": "XAI_MODEL",
+        "default_model": "grok-4-latest",
+        "label": "xAI",
+    },
+}
 
 
 def die(msg: str, code: int = 1) -> None:
@@ -102,7 +121,6 @@ def extract_blocks(content: str) -> tuple[str, dict]:
     rationale = md_blocks[0].strip() if md_blocks else content.split("```json")[0].strip()
 
     if not json_blocks:
-        # last resort: whole response as JSON
         try:
             return rationale, json.loads(content)
         except json.JSONDecodeError as e:
@@ -118,7 +136,7 @@ def extract_blocks(content: str) -> tuple[str, dict]:
     raise AssertionError("unreachable")
 
 
-def call_xai(system: str, user: str, model: str, api_key: str) -> str:
+def call_chat(api_url: str, label: str, system: str, user: str, model: str, api_key: str) -> str:
     payload = {
         "model": model,
         "temperature": 0.2,
@@ -129,12 +147,12 @@ def call_xai(system: str, user: str, model: str, api_key: str) -> str:
     }
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
-        API_URL,
+        api_url,
         data=data,
         headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}",
-            "User-Agent": "regulated-ai-wars-pipeline/0.1",
+            "User-Agent": "regulated-ai-wars-pipeline/0.2",
         },
         method="POST",
     )
@@ -143,23 +161,35 @@ def call_xai(system: str, user: str, model: str, api_key: str) -> str:
             body = json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="replace")
-        die(f"xAI HTTP {e.code}: {err_body[:800]}")
+        die(f"{label} HTTP {e.code}: {err_body[:800]}")
     except urllib.error.URLError as e:
-        die(f"xAI network error: {e}")
+        die(f"{label} network error: {e}")
 
     try:
         return body["choices"][0]["message"]["content"]
     except (KeyError, IndexError, TypeError):
-        die(f"unexpected xAI response shape: {json.dumps(body)[:500]}")
+        die(f"unexpected {label} response shape: {json.dumps(body)[:500]}")
     raise AssertionError("unreachable")
 
 
-def main() -> None:
-    api_key = os.environ.get("XAI_API_KEY", "").strip()
+def resolve_provider() -> tuple[str, dict, str, str]:
+    name = os.environ.get("LLM_PROVIDER", "groq").strip().lower()
+    if name not in PROVIDERS:
+        die(f"unknown LLM_PROVIDER={name!r}; use: {', '.join(PROVIDERS)}")
+    cfg = PROVIDERS[name]
+    api_key = os.environ.get(cfg["key_env"], "").strip()
     if not api_key:
-        die("XAI_API_KEY is not set")
+        die(
+            f"{cfg['key_env']} is not set. "
+            f"For free tier use Groq (console.groq.com) and set GROQ_API_KEY."
+        )
+    model = os.environ.get(cfg["model_env"], cfg["default_model"]).strip()
+    return name, cfg, api_key, model
 
-    model = os.environ.get("XAI_MODEL", "grok-4-latest").strip()
+
+def main() -> None:
+    provider_name, cfg, api_key, model = resolve_provider()
+
     snapshot_path = Path(os.environ.get("SNAPSHOT_PATH", str(DEFAULT_SNAPSHOT)))
     out_dir = Path(os.environ.get("OUT_DIR", str(DEFAULT_OUT)))
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -171,7 +201,6 @@ def main() -> None:
 
     previous = load_json(snapshot_path)
     sources = load_text(DEFAULT_SOURCES)
-    # Keep prompt compact — methodology head only
     sources_head = "\n".join(sources.splitlines()[:80])
     contract = load_text(DEFAULT_PROMPT)
 
@@ -186,19 +215,23 @@ def main() -> None:
         "```",
         "",
         "New public signals to consider:",
-        signals if signals else "(none provided — only propose changes if you have high-confidence public knowledge; otherwise keep board stable and say so)",
+        signals
+        if signals
+        else (
+            "(none provided — only propose changes if you have high-confidence "
+            "public knowledge; otherwise keep board stable and say so)"
+        ),
         "",
         "Produce the next snapshot following the contract.",
     ]
     user = "\n".join(user_parts)
 
-    print(f"Calling xAI model={model} …")
-    content = call_xai(system, user, model, api_key)
+    print(f"Calling {cfg['label']} model={model} …")
+    content = call_chat(cfg["api_url"], cfg["label"], system, user, model, api_key)
     (out_dir / "raw_response.md").write_text(content, encoding="utf-8")
 
     rationale, draft = extract_blocks(content)
 
-    # Normalize meta date if model forgot
     meta = draft.setdefault("meta", {})
     if not meta.get("snapshotDate"):
         meta["snapshotDate"] = today
@@ -207,6 +240,7 @@ def main() -> None:
 
     errors = rough_validate(draft, previous)
     report = {
+        "provider": provider_name,
         "model": model,
         "snapshotDate": meta.get("snapshotDate"),
         "validation_errors": errors,

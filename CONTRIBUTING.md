@@ -4,17 +4,36 @@ Thank you for your interest in contributing.
 
 This project visualizes the competitive landscape of regulated AI verticals and the deeper human feedback loop that powers it. It is part of the [IrsanAI](https://github.com/IrsanAI) Human-AI stack.
 
-**Status:** Active prototype — signal pipeline validated (see ROADMAP.md).
+**Status:** Active prototype — signal pipeline validated (see [ROADMAP.md](./ROADMAP.md)).
 
-## How to contribute
+## Quick start for first-time contributors
+
+1. **Look around**  
+   Open the live map and read the short methodology in [`data/SOURCES.md`](./data/SOURCES.md).
+
+2. **Choose the lightest path**  
+   - Just a question or idea? → [Discussions](https://github.com/IrsanAI/regulated-ai-wars/discussions)  
+   - Concrete data/signal change? → Open a **Data / signal update** issue (template is ready)  
+   - Bug or UI improvement? → Use the Bug or Feature template
+
+3. **Keep it small**  
+   One clear concern per issue or PR. Reference a public source whenever you propose a board change.
+
+4. **Human gate**  
+   All board updates go through review. The signal pipeline produces draft PRs only — nothing lands on `main` without a human merge.
+
+That’s it. You do not need to understand the whole stack to help.
+
+## How to contribute (detailed)
 
 ### 1. Issues first
 - Prefer an issue before larger changes.
 - Use clear titles and describe the intent.
 - For data updates (influence scores, new players, events, territory promotion): reference public sources where possible.
-- Use the **Data / signal update** template when available.
+- Use the **Data / signal update** template — it guides you through the required fields.
 
-**Issue permissions:** Issue creation is currently open to **All users**. If this ever changes (anti-spam / early-phase restriction), you can still contribute via:
+**Issue permissions:** Issue creation is open to **All users**.  
+If this ever changes, you can still contribute via:
 1. A **pull request** with a clear description and linked public sources, or
 2. Opening a discussion on the PR itself, or
 3. Contact via the [IrsanAI](https://github.com/IrsanAI) profile.
@@ -55,5 +74,5 @@ By contributing you agree that your contributions will be licensed under the MIT
 
 ---
 
-Questions? Open an issue or a small PR.  
+Questions? Open an issue, start a Discussion, or open a small PR.  
 Part of the IrsanAI Universe · steered with [Root-Ascent](https://github.com/IrsanAI/root-ascent-method).

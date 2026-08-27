@@ -1,23 +1,48 @@
 ---
 name: Data / signal update
-about: Propose a change to influence scores, players, events or pipeline
+about: Propose a change to influence scores, players, events, territory status or pipeline
 title: "[Data] "
 labels: data
 ---
 
-**What should change?**
-- Territory / Player / Event / Pipeline item:
+## What should change?
 
-**Proposed values or text**
+- **Type** (tick one):
+  - [ ] Influence score / trend for an existing player + territory
+  - [ ] New event in the Event Log
+  - [ ] Territory status change (normal → contested → hot or demotion)
+  - [ ] Pipeline item (add / update / remove)
+  - [ ] New player or other structural change
 
+- **Affected territory / player / item**:
 
-**Public source(s)**
-Link or reference to the signal (announcement, report, etc.).
+## Proposed change
 
-**Confidence**
-- [ ] High (clear public signal)
-- [ ] Medium
-- [ ] Speculative / directional only
+Describe the new values or text as clearly as possible.
 
-**Note**
-Influence numbers remain relative estimates for visualization, not precise market shares.
+Example:
+```
+Legal – Google influence: 33 → 35 (trend: up)
+Mover label: "Additional connector depth confirmed"
+```
+
+## Public source(s)
+
+**Required.** Link to the announcement, blog post, analyst note, press release, or other citable public signal.
+
+- 
+
+## Confidence
+
+- [ ] **High** – clear primary-source product launch or official announcement
+- [ ] **Medium** – credible secondary reporting or consistent multi-source pattern
+- [ ] **Directional** – informed judgment only (please explain why)
+
+## Extra notes (optional)
+
+Anything else the maintainers should know?
+
+---
+
+**Reminder:** Influence numbers are *relative estimates for visualization*, not precise market shares.  
+See `data/SOURCES.md` for the full methodology (movers, full player coverage, territory promotion rules).

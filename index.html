@@ -23,6 +23,7 @@
     <button class="view-btn active" id="btnBoard" onclick="switchView('board')" data-i18n="nav.board">Risk Board</button>
     <button class="view-btn" id="btnWorld" onclick="switchView('world')" data-i18n="nav.world">World Map</button>
     <button class="view-btn" id="btnHuman" onclick="switchView('human')" data-i18n="nav.human">Human Layer</button>
+    <button class="view-btn" id="btnDoctrine" onclick="switchView('doctrine')" data-i18n="nav.doctrine">Why</button>
     <select id="snapshotSelect" onchange="loadSnapshotFromSelect()" title="Board snapshot"><option value="current">Current</option></select>
     <span class="timestamp" id="lastUpdate">Snapshot: —</span>
     <button onclick="replayIntro()" data-i18n="nav.intro" title="Replay intro">Intro</button>
@@ -94,6 +95,24 @@
         <span data-i18n-html="human.insightBody"></span>
         <span id="humanBridgeNote" class="human-live-note"></span>
       </div>
+    </div>
+    <div class="doctrine-view" id="doctrineView">
+      <div class="doctrine-hero">
+        <div class="stamp" data-i18n="why.stamp">WHY THESE MARKETS</div>
+        <h3 data-i18n="why.title">The high ground is regulated</h3>
+        <p class="thesis" data-i18n-html="why.thesis"></p>
+      </div>
+      <div class="why-dims">
+        <div class="why-dim"><span class="k" data-i18n="why.dim.data">Data density</span><span class="v" data-i18n="why.dim.dataV">Sticky records, workflows, audit trails</span></div>
+        <div class="why-dim"><span class="k" data-i18n="why.dim.reg">Regulation</span><span class="v" data-i18n="why.dim.regV">Compliance gates lock platforms in</span></div>
+        <div class="why-dim"><span class="k" data-i18n="why.dim.hitl">Human-in-the-loop</span><span class="v" data-i18n="why.dim.hitlV">Experts reward or reject every agent move</span></div>
+        <div class="why-dim"><span class="k" data-i18n="why.dim.switch">Switching cost</span><span class="v" data-i18n="why.dim.switchV">Once embedded, hard to rip out</span></div>
+      </div>
+      <h4 class="why-section" data-i18n="why.hotTitle">Contested high ground</h4>
+      <div class="why-grid" id="whyHotGrid"></div>
+      <h4 class="why-section cold" data-i18n="why.coldTitle">Low contest / not the prize</h4>
+      <p class="why-cold-lead" data-i18n="why.coldLead">These markets may use AI — but they are not the sticky, regulated high ground this board tracks.</p>
+      <div class="why-grid cold" id="whyColdGrid"></div>
     </div>
   </div>
   <div class="panel">

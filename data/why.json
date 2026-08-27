@@ -1,0 +1,114 @@
+{
+  "territories": {
+    "legal": {
+      "gravity": 95,
+      "en": {
+        "why": "Contracts, research memos and compliance opinions are high-stakes text. Lawyers correct agents constantly — dense feedback. Regulation (privilege, liability) makes generic chat insufficient.",
+        "prize": "Workflow lock-in + professional judgment data"
+      },
+      "de": {
+        "why": "Verträge, Recherche und Compliance-Meinungen sind high-stakes Text. Anwälte korrigieren Agenten ständig — dichtes Feedback. Regulierung (Privilege, Haftung) macht generischen Chat unzureichend.",
+        "prize": "Workflow-Lock-in + professionelle Urteilsdaten"
+      }
+    },
+    "finance": {
+      "gravity": 94,
+      "en": {
+        "why": "KYC, risk, capital markets ops sit behind audit and capital rules. Models that touch money need governance. Humans sign off — every day.",
+        "prize": "Regulated ops data + risk acceptance loops"
+      },
+      "de": {
+        "why": "KYC, Risiko, Capital Markets sitzen hinter Audit- und Kapitalregeln. Modelle am Geld brauchen Governance. Menschen geben täglich den Freigabe-Stempel.",
+        "prize": "Regulierte Ops-Daten + Risiko-Akzeptanz-Loops"
+      }
+    },
+    "healthcare": {
+      "gravity": 93,
+      "en": {
+        "why": "EHR, prior auth, clinical documentation: privacy law + clinical liability. Clinicians in the loop create precious labeled correction signals.",
+        "prize": "Clinical workflow + PHI-grade control surface"
+      },
+      "de": {
+        "why": "EHR, Prior Auth, klinische Doku: Datenschutz + Haftung. Kliniker im Loop erzeugen kostbare, gelabelte Korrektursignale.",
+        "prize": "Klinischer Workflow + PHI-Kontrollfläche"
+      }
+    },
+    "lifesci": {
+      "gravity": 88,
+      "en": {
+        "why": "GxP, trial ops, regulatory submissions. Slow cycles, extreme documentation burden — platforms that survive audits stick for years.",
+        "prize": "GxP process data + regulatory narrative control"
+      },
+      "de": {
+        "why": "GxP, Studienops, Regulatory Submissions. Langsame Zyklen, extreme Dokumentationslast — Plattformen, die Audits überleben, kleben Jahre.",
+        "prize": "GxP-Prozessdaten + regulatorische Narrativkontrolle"
+      }
+    },
+    "insurance": {
+      "gravity": 82,
+      "en": {
+        "why": "Underwriting and claims are judgment + regulation. Carrier systems are sticky; agent assist must respect product and legal constraints.",
+        "prize": "Claims/underwriting decision trails"
+      },
+      "de": {
+        "why": "Underwriting und Claims sind Urteil + Regulierung. Carrier-Systeme sind sticky; Agent-Assist muss Produkt- und Rechtsgrenzen respektieren.",
+        "prize": "Claims-/Underwriting-Entscheidungsspuren"
+      }
+    },
+    "gov": {
+      "gravity": 86,
+      "en": {
+        "why": "Citizen data, security clearances, procurement. Trust cycles are long; once a stack is certified, switching is political and technical.",
+        "prize": "Public-sector trust + certified stacks"
+      },
+      "de": {
+        "why": "Bürgerdaten, Clearances, Beschaffung. Vertrauenszyklen sind lang; einmal zertifiziert, ist Wechsel politisch und technisch teuer.",
+        "prize": "Public-Sector-Trust + zertifizierte Stacks"
+      }
+    },
+    "profsvcs": {
+      "gravity": 84,
+      "en": {
+        "why": "Audit, tax, consulting playbooks. Partner review is the human reward channel. Firms that adopt a stack train it on their institutional voice.",
+        "prize": "Playbook IP + partner review feedback"
+      },
+      "de": {
+        "why": "Audit, Steuer, Consulting-Playbooks. Partner-Review ist der Human-Reward-Kanal. Firmen trainieren den Stack auf ihre institutionelle Stimme.",
+        "prize": "Playbook-IP + Partner-Review-Feedback"
+      }
+    },
+    "retail": {
+      "gravity": 70,
+      "en": {
+        "why": "Customer and supply data matter, but contest is broader and less locked by profession-specific regulation than Legal/Health/FS.",
+        "prize": "Customer graph — contested, less regulated lock"
+      },
+      "de": {
+        "why": "Kunden- und Supply-Daten zählen, der Contest ist aber breiter und weniger durch berufs-spezifische Regulierung verriegelt als Legal/Health/FS.",
+        "prize": "Kundengraph — umkämpft, weniger regulatorischer Lock"
+      }
+    }
+  },
+  "cold": [
+    {
+      "id": "consumer_chat",
+      "en": { "name": "Generic consumer chat", "why": "High volume, low switching cost, thin compliance surface. Not a regulated data moat." },
+      "de": { "name": "Generischer Consumer-Chat", "why": "Hohes Volumen, geringe Wechselkosten, dünne Compliance-Fläche. Kein regulierter Daten-Moat." }
+    },
+    {
+      "id": "meme_social",
+      "en": { "name": "Meme / social toys", "why": "Attention markets move fast; little durable enterprise governance or professional liability." },
+      "de": { "name": "Meme- / Social-Spielzeuge", "why": "Aufmerksamkeitsmärkte bewegen sich schnell; wenig dauerhafte Enterprise-Governance oder Berufshaftung." }
+    },
+    {
+      "id": "hobby_codegen",
+      "en": { "name": "Hobby code assistants", "why": "Useful, competitive, but weak on regulated workflow lock-in compared to Legal or Healthcare." },
+      "de": { "name": "Hobby-Code-Assistenten", "why": "Nützlich und kompetitiv, aber schwach beim regulierten Workflow-Lock-in gegenüber Legal oder Healthcare." }
+    },
+    {
+      "id": "open_web_search",
+      "en": { "name": "Open-web novelty demos", "why": "Impressive demos; rarely the system of record inside a regulated firm." },
+      "de": { "name": "Open-Web-Novelty-Demos", "why": "Beeindruckende Demos; selten System of Record in einem regulierten Unternehmen." }
+    }
+  ]
+}

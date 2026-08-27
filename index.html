@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +8,39 @@
 </head>
 <body>
 <div id="intro">
-  <div class="stamp">CLASSIFIED // REGULATED VERTICALS</div>
+  <div class="stamp" data-i18n="intro.stamp">CLASSIFIED // REGULATED VERTICALS</div>
   <h1>regulated-ai-wars</h1>
-  <p>The high ground is under contest.<br>Markets. Players. And the humans who feed the loop.</p>
-  <button class="enter" onclick="enterWarRoom()">ENTER WAR ROOM</button>
+  <p data-i18n-html="intro.tagline">The high ground is under contest.<br>Markets. Players. And the humans who feed the loop.</p>
+  <button class="enter" onclick="enterWarRoom()" data-i18n="intro.enter">ENTER WAR ROOM</button>
 </div>
 <header>
-  <h1>regulated-ai-wars <span>— Strategic Conquest Map</span><span class="classified-dot" title="Classified layer" onclick="triggerSurprise()"></span></h1>
+  <h1>regulated-ai-wars <span data-i18n="header.subtitle">— Strategic Conquest Map</span><span class="classified-dot" title="Classified layer" onclick="triggerSurprise()"></span></h1>
   <div class="controls">
-    <button class="view-btn active" id="btnBoard" onclick="switchView('board')">Risk Board</button>
-    <button class="view-btn" id="btnWorld" onclick="switchView('world')">World Map</button>
-    <button class="view-btn" id="btnHuman" onclick="switchView('human')">Human Layer</button>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="langEn" class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button type="button" id="langDe" class="lang-btn" onclick="setLang('de')">DE</button>
+    </div>
+    <button class="view-btn active" id="btnBoard" onclick="switchView('board')" data-i18n="nav.board">Risk Board</button>
+    <button class="view-btn" id="btnWorld" onclick="switchView('world')" data-i18n="nav.world">World Map</button>
+    <button class="view-btn" id="btnHuman" onclick="switchView('human')" data-i18n="nav.human">Human Layer</button>
     <select id="snapshotSelect" onchange="loadSnapshotFromSelect()" title="Board snapshot"><option value="current">Current</option></select>
-    <span class="timestamp" id="lastUpdate">Snapshot: 2026-08-25</span>
-    <button onclick="simulateUpdate()">↻ Update</button>
-    <button class="primary" onclick="resetBoard()">Reset</button>
+    <span class="timestamp" id="lastUpdate">Snapshot: —</span>
+    <button onclick="replayIntro()" data-i18n="nav.intro" title="Replay intro">Intro</button>
+    <button onclick="simulateUpdate()" data-i18n="nav.sim">↻ Update</button>
+    <button class="primary" onclick="resetBoard()" data-i18n="nav.reset">Reset</button>
   </div>
 </header>
 <div class="main">
   <div class="panel">
-    <h2>Big Players & Contenders</h2>
+    <h2 data-i18n="panel.players">Big Players & Contenders</h2>
     <div id="playersList"></div>
-    <div style="margin-top:14px"><h2>Off-Board / Pipeline</h2><div class="pipeline" id="pipeline"></div></div>
+    <div style="margin-top:14px"><h2 data-i18n="panel.pipeline">Off-Board / Pipeline</h2><div class="pipeline" id="pipeline"></div></div>
+    <div class="cycle-box" id="cycleBox">
+      <h2 data-i18n="cycle.title">Data cycle</h2>
+      <p class="cycle-how" data-i18n-html="cycle.how"></p>
+      <div class="cycle-next"><span data-i18n="cycle.next">Next scheduled check</span><strong id="cycleCountdown">—</strong></div>
+      <div class="cycle-meta" id="cycleMeta"></div>
+    </div>
   </div>
   <div class="board-container">
     <div class="board-title" id="viewTitle">THE BOARD — Regulated AI Verticals</div>
@@ -44,65 +55,58 @@
           <path class="continent" id="af" d="M445,185 C505,170 555,195 565,250 C570,310 540,365 490,380 C445,370 415,320 412,260 C412,220 425,195 445,185 Z"/>
           <path class="continent" id="as" d="M555,70 C640,45 760,50 830,95 C870,130 860,185 800,210 C720,230 640,215 585,185 C555,160 540,120 555,70 Z"/>
           <path class="continent" id="oc" d="M780,300 C840,285 900,300 915,345 C910,385 860,400 800,390 C760,370 755,325 780,300 Z"/>
-          <text class="continent-label" x="200" y="160">NORTH AMERICA</text>
-          <text class="continent-label" x="235" y="360">SOUTH AMERICA</text>
-          <text class="continent-label" x="480" y="125">EUROPE</text>
-          <text class="continent-label" x="490" y="285">AFRICA</text>
-          <text class="continent-label" x="700" y="140">ASIA</text>
-          <text class="continent-label" x="845" y="345">OCEANIA</text>
+          <text class="continent-label" data-continent="na" x="200" y="160">NORTH AMERICA</text>
+          <text class="continent-label" data-continent="sa" x="235" y="360">SOUTH AMERICA</text>
+          <text class="continent-label" data-continent="eu" x="480" y="125">EUROPE</text>
+          <text class="continent-label" data-continent="af" x="490" y="285">AFRICA</text>
+          <text class="continent-label" data-continent="as" x="700" y="140">ASIA</text>
+          <text class="continent-label" data-continent="oc" x="845" y="345">OCEANIA</text>
           <g id="beacons"></g>
         </svg>
         <div class="world-hud">
-          <div class="tag"><span class="live-dot"></span>Theater of operations</div>
-          <div class="tag">Regulated AI footprint</div>
+          <div class="tag"><span class="live-dot"></span><span data-i18n="world.theater">Theater of operations</span></div>
+          <div class="tag" data-i18n="world.footprint">Regulated AI footprint</div>
         </div>
       </div>
-      <div class="intensity-bar"><span>Low</span><div class="grad"></div><span>High intensity</span></div>
+      <div class="intensity-bar"><span data-i18n="world.low">Low</span><div class="grad"></div><span data-i18n="world.high">High intensity</span></div>
       <div class="world-legend" id="worldLegend"></div>
     </div>
     <div class="human-view" id="humanView">
-      <h3>The Human Feedback Layer</h3>
-      <p class="thesis">Technology has always done this: the telephone, the smartphone, now AI agents. Useful. Work taken away. Some skills diminished — new ones forced. From the platform’s view, agents are the <strong style="color:var(--human)">key</strong> that opens regulated markets and the data pools inside them.</p>
-
+      <h3 data-i18n="human.title">The Human Feedback Layer</h3>
+      <p class="thesis" data-i18n-html="human.thesis1"></p>
       <div class="human-loop" id="humanLoop">
-        <div class="node">Board signals</div>
+        <div class="node" data-i18n="human.node1">Board signals</div>
         <span class="arrow">→</span>
-        <div class="node active">Human feedback</div>
+        <div class="node active" data-i18n="human.node2">Human feedback</div>
         <span class="arrow">→</span>
-        <div class="node">Theater pressure</div>
+        <div class="node" data-i18n="human.node3">Theater pressure</div>
         <span class="arrow">↻</span>
       </div>
-
-      <div class="human-metrics" id="humanMetrics">
-      </div>
-
+      <div class="human-metrics" id="humanMetrics"></div>
       <div class="chain">
-        <div class="chain-node markets">Markets / Verticals</div><span class="chain-arrow">→</span>
-        <div class="chain-node players">Players (Keys & Platforms)</div><span class="chain-arrow">→</span>
-        <div class="chain-node humans">Humans (Feedback Engine)</div>
+        <div class="chain-node markets" data-i18n="human.chain1">Markets / Verticals</div><span class="chain-arrow">→</span>
+        <div class="chain-node players" data-i18n="human.chain2">Players (Keys & Platforms)</div><span class="chain-arrow">→</span>
+        <div class="chain-node humans" data-i18n="human.chain3">Humans (Feedback Engine)</div>
       </div>
-
-      <p class="thesis">Every correction, every accepted suggestion, every completed workflow becomes a reward signal. The human sits at the end of the digital output chain — and is the origin of the learning signal.</p>
-
+      <p class="thesis" data-i18n-html="human.thesis2"></p>
       <div class="insight-box">
-        <strong>Why this layer matters for both maps:</strong><br>
-        The Risk Board shows who holds which vertical. The World Map shows where that hold is dense.
-        Neither moves without humans in the loop — adoption, correction, compliance acceptance.
+        <strong data-i18n="human.insightTitle">Why this layer matters for both maps:</strong><br>
+        <span data-i18n-html="human.insightBody"></span>
         <span id="humanBridgeNote" class="human-live-note"></span>
       </div>
     </div>
   </div>
   <div class="panel">
-    <div class="metrics-box"><strong>Live Signals</strong><br><span id="metricsText">Loading…</span></div>
-    <h2>Market Movers</h2>
+    <div class="metrics-box"><strong data-i18n="panel.signals">Live Signals</strong><br><span id="metricsText">…</span></div>
+    <h2 data-i18n="panel.movers">Market Movers</h2>
     <div class="movers-legend">
-      <span class="trend-pill up">▲ Climbing</span>
-      <span class="trend-pill stable">● Holding</span>
-      <span class="trend-pill down">▼ Fading</span>
+      <span class="trend-pill up" data-i18n="trend.up">▲ Climbing</span>
+      <span class="trend-pill stable" data-i18n="trend.stable">● Holding</span>
+      <span class="trend-pill down" data-i18n="trend.down">▼ Fading</span>
     </div>
     <div id="moversList" class="movers-list"></div>
-    <h2 style="margin-top:12px">Legend</h2><div id="legendList"></div>
-    <h2 style="margin-top:12px">Event Log</h2><div class="event-log" id="eventLog"></div>
+    <h2 style="margin-top:12px" data-i18n="panel.legend">Legend</h2><div id="legendList"></div>
+    <h2 style="margin-top:12px" data-i18n="panel.events">Event Log</h2><div class="event-log" id="eventLog"></div>
   </div>
 </div>
 <div class="modal" id="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>

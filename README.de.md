@@ -31,20 +31,12 @@ Nutze den **Snapshot-Selektor**, um 2026-08-25 → 2026-08-26 zu vergleichen.
 
 ---
 
-### Drei Schichten
+### Vier Schichten auf dem Brett
 
-1. **Risk Board** — Territorien (Verticals) und der relative Einfluss der großen Player.
+1. **Risk Board** — Territorien (Verticals) und relativer Einfluss der großen Player.
 2. **World Map** — Geografische Dominanz über die Kontinente (Theater of Operations).
 3. **Human Layer** — Live-Metriken zwischen Board-Hitze und Theater-Intensität — Menschen als Feedback-Engine.
-
-Die dritte Schicht ist die entscheidende.
-
-Technologie hat das schon immer getan — das Telefon, das Smartphone, jetzt AI-Agents.  
-Sie ist nützlich. Sie nimmt Arbeit ab. Sie dezimiert manche menschlichen Fähigkeiten und zwingt neue zu erlernen.
-
-Aus Sicht der Plattform sind Agents der **Schlüssel**, der regulierte Märkte und die darin liegenden Datenpools öffnet.  
-Jede Korrektur, jeder akzeptierte Vorschlag, jeder abgeschlossene Workflow wird zum Reward-Signal.  
-Der Mensch sitzt am Ende der digitalen Output-Kette und ist zugleich der Ursprung des Lernsignals.
+4. **Why / Doktrin** — Warum diese Märkte das Hochland sind (und welche bewusst low contest bleiben).
 
 ---
 
@@ -58,6 +50,19 @@ Sie sind die **stärksten verfügbaren Moats**.
 
 Wer die vertrauenswürdige, governancestarke Ausführungsschicht in diesen Verticals wird, verschafft sich eine langlebige Position.  
 Dieses Repository macht genau diesen Kampf sichtbar — und die menschliche Feedback-Schleife, die ihn speist.
+
+---
+
+### Wie gesteuert wurde: Root-Ascent
+
+Dieses Projekt wurde aktiv mit **[Root-Ascent](https://github.com/IrsanAI/root-ascent-method)** analysiert und gesteuert (Causal Ladder L1–L6):
+
+- **konkretes Incident** von **Root Cause** trennen
+- **Rival-Hypothesen** listen, bevor eine Diagnose festgeschrieben wird
+- **Hebel** und operative Sequenz wählen — kein reines Feature-Stapeln
+
+Deshalb gibt es Doctrine, eine human-gated Signal-Pipeline und den Kontrast zu kalten Märkten — nicht nur bunte Balken.  
+Wir veröffentlichen **keine** erfundenen „% schneller mit Root-Ascent“-Werte; die Methode selbst verbietet Fake-Impact-Prozente. Der Credit ist **Prozess-Transparenz**, kein Leaderboard.
 
 ---
 

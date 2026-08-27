@@ -31,20 +31,12 @@ Click the map to see **who is currently winning which territory** — and who is
 
 ---
 
-### Three Layers
+### Four layers on the board
 
-1. **Risk Board** — Territories (verticals) and the relative influence of the major players.
+1. **Risk Board** — Territories (verticals) and relative influence of the major players.
 2. **World Map** — Geographic dominance across continents (theater of operations).
 3. **Human Layer** — Live metrics that bridge board heat and theater intensity — humans as the feedback engine.
-
-The third layer is the one that matters most.
-
-Technology has always done this — the telephone, the smartphone, now AI agents.  
-It is useful. It takes work away. It diminishes some human skills and forces new ones.
-
-From the platform’s perspective, agents are the **key** that opens regulated markets and the data pools inside them.  
-Every correction, every accepted suggestion, every completed workflow becomes a reward signal.  
-The human sits at the end of the digital output chain and is simultaneously the origin of the learning signal.
+4. **Why / Doctrine** — Why these markets are the high ground (and which markets are deliberately low contest).
 
 ---
 
@@ -58,6 +50,19 @@ They are the **strongest available moats**.
 
 Whoever becomes the trusted, governed execution layer in these verticals gains a durable position.  
 This repository visualizes that battle — and the human feedback loop that feeds it.
+
+---
+
+### How it was steered: Root-Ascent
+
+This project was actively analyzed and steered with **[Root-Ascent](https://github.com/IrsanAI/root-ascent-method)** (causal ladder L1–L6):
+
+- separate **concrete incident** from **root cause**
+- list **rival hypotheses** before locking a diagnosis
+- choose **levers** and an operational sequence — not feature pile-up
+
+That process is why the board has Doctrine, a human-gated signal pipeline, and cold-market contrast — not only colored bars.  
+We do **not** publish invented “% faster with Root-Ascent” scores; the method itself forbids fake impact percentages. The credit is **process transparency**, not a leaderboard.
 
 ---
 

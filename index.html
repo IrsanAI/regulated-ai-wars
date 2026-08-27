@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>regulated-ai-wars — Strategic Conquest Map</title>
+<meta name="author" content="IrsanAI">
+<meta name="description" content="Strategy-sensing map of regulated AI verticals — an IrsanAI layer.">
 <link rel="stylesheet" href="assets/map.css">
 </head>
 <body>
@@ -11,10 +13,14 @@
   <div class="stamp" data-i18n="intro.stamp">CLASSIFIED // REGULATED VERTICALS</div>
   <h1>regulated-ai-wars</h1>
   <p data-i18n-html="intro.tagline">The high ground is under contest.<br>Markets. Players. And the humans who feed the loop.</p>
+  <p class="origin" data-i18n-html="intro.origin">An <a href="https://github.com/IrsanAI" target="_blank" rel="noopener">IrsanAI</a> strategy-sensing layer</p>
   <button class="enter" onclick="enterWarRoom()" data-i18n="intro.enter">ENTER WAR ROOM</button>
 </div>
 <header>
-  <h1>regulated-ai-wars <span data-i18n="header.subtitle">— Strategic Conquest Map</span><span class="classified-dot" title="Classified layer" onclick="triggerSurprise()"></span></h1>
+  <div class="brand-block">
+    <h1>regulated-ai-wars <span data-i18n="header.subtitle">— Strategic Conquest Map</span><span class="classified-dot" title="Classified layer" onclick="triggerSurprise()"></span></h1>
+    <a class="irsanai-mark" href="https://github.com/IrsanAI" target="_blank" rel="noopener" title="IrsanAI">IrsanAI</a>
+  </div>
   <div class="controls">
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" id="langEn" class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -101,6 +107,7 @@
         <div class="stamp" data-i18n="why.stamp">WHY THESE MARKETS</div>
         <h3 data-i18n="why.title">The high ground is regulated</h3>
         <p class="thesis" data-i18n-html="why.thesis"></p>
+        <p class="lens" data-i18n-html="why.lens"></p>
       </div>
       <div class="why-dims">
         <div class="why-dim"><span class="k" data-i18n="why.dim.data">Data density</span><span class="v" data-i18n="why.dim.dataV">Sticky records, workflows, audit trails</span></div>
@@ -128,6 +135,9 @@
     <h2 style="margin-top:12px" data-i18n="panel.events">Event Log</h2><div class="event-log" id="eventLog"></div>
   </div>
 </div>
+<footer class="site-footer">
+  <span data-i18n-html="footer.line"></span>
+</footer>
 <div class="modal" id="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
 <script src="assets/app.js"></script>
 <script src="assets/doctrine.js"></script>

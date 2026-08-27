@@ -16,6 +16,50 @@ The influence scores in `snapshot.json` are directional signals synthesized from
 
 ---
 
+## Trends, Movers & board evolution
+
+### Per-territory `trend`
+
+Each territory in a snapshot should carry a `trend` object keyed by **the same player ids** as `influence`:
+
+| Value | Meaning |
+|-------|--------|
+| `up` | Public signal supports climbing relative presence in this territory |
+| `down` | Public signal supports fading relative presence |
+| `stable` | No material directional signal this cycle |
+
+**Rule — full player coverage:** On every update, **all tracked players** are re-evaluated for each on-board territory. Players that did not move are marked `stable` — they are not dropped from the board. “Uninteresting this week” ≠ “removed from the universe.”
+
+### Global `movers` list
+
+Optional top-level `movers` array (0–8 items) for the ranking panel:
+
+```json
+{ "player": "google", "territory": "legal", "trend": "up", "delta": 2, "label": "Vertical launch closes gap" }
+```
+
+- Only include climbs/fades backed by **public signals**.
+- Empty `movers` is valid when nothing material changed.
+- Deltas are relative visualization points, not market-share points.
+
+### Territory lifecycle (cold → contested → hot)
+
+Markets are not frozen forever.
+
+| Stage | Where it lives | When |
+|-------|----------------|------|
+| **Cold / off-interest** | Why view “Low contest” + optional notes | Thin regulation, low switching cost, weak professional liability |
+| **Pipeline / off-board** | `pipeline` array | Named by players as next vertical, but not yet full board contest |
+| **On board (`normal` / `contested` / `hot`)** | `territories[]` | Public signals show sticky data + governance + multi-player contest |
+
+**Promotion:** A cold or pipeline market may be **added or upgraded** on the board when public signals show regulated stickiness and player contest (product launch, major partnership, specialist traction). Prefer adding via a documented signal + draft PR — not silent inflation.
+
+**Demotion:** A territory may cool (`hot` → `contested` → `normal`) or leave the active board if contest and regulated lock-in fade. Prefer demotion over deleting history; keep past snapshots under `data/history/`.
+
+**Why this matters:** An “uninteresting” market today can become high ground later (and vice versa). The board must be allowed to **grow and re-rank** territories as player attention and regulation shift — while staying honest about confidence.
+
+---
+
 ## Primary signals used (initial board — 2026-08-25)
 
 ### 1. Google Gemini Enterprise industry solutions
@@ -68,9 +112,11 @@ Continent colors reflect a simplified view of **where the major regulated-enterp
 ## How scores should be updated
 
 1. Prefer **public, citable signals** (product launches, official blogs, reputable analyst notes, major customer announcements).
-2. Change scores **directionally** — avoid false precision.
-3. Record the signal in the Event Log and, when useful, in this file or in a future `data/changelog.md`.
-4. Use the GitHub issue template **“Data / signal update”** for proposed changes.
+2. Change scores **directionally** — avoid false precision (typical max **±5** per player per territory unless a major launch).
+3. **Re-score every tracked player** on affected territories; set `stable` when quiet.
+4. Consider **territory promotion/demotion** when signals change the contest map — update `why.json` / pipeline notes if the high-ground set changes.
+5. Record the signal in the Event Log and, when useful, here or in `data/HISTORY.md`.
+6. Use the GitHub issue template **“Data / signal update”** or a draft PR from the signal pipeline.
 
 ---
 

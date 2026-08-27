@@ -4,21 +4,20 @@ Thank you for your interest in contributing.
 
 This project visualizes the competitive landscape of regulated AI verticals and the deeper human feedback loop that powers it. It is part of the [IrsanAI](https://github.com/IrsanAI) Human-AI stack.
 
-**Status:** Active prototype / pre-validation — see [ROADMAP.md](./ROADMAP.md).
+**Status:** Active prototype — signal pipeline validated (see ROADMAP.md).
 
 ## How to contribute
 
-### 1. Issues first (when available)
+### 1. Issues first
 - Prefer an issue before larger changes.
 - Use clear titles and describe the intent.
 - For data updates (influence scores, new players, events, territory promotion): reference public sources where possible.
+- Use the **Data / signal update** template when available.
 
-**Issue permissions note:** If GitHub settings temporarily restrict issue creation (anti-spam / early phase), you can still contribute via:
+**Issue permissions:** Issue creation is currently open to **All users**. If this ever changes (anti-spam / early-phase restriction), you can still contribute via:
 1. A **pull request** with a clear description and linked public sources, or
 2. Opening a discussion on the PR itself, or
-3. Contact via the [IrsanAI](https://github.com/IrsanAI) org profile.
-
-When issues are open to the public, use the **Data / signal update** template for board changes.
+3. Contact via the [IrsanAI](https://github.com/IrsanAI) profile.
 
 ### 2. Small, focused pull requests
 - One concern per PR.
@@ -39,7 +38,7 @@ When issues are open to the public, use the **Data / signal update** template fo
 - Improvements to the Human Layer narrative
 - Accessibility and performance
 - Documentation and examples
-- Validated signal pipeline dry-runs
+- Validated signal pipeline runs
 
 ### 5. What to avoid
 - Adding heavy frameworks without discussion
@@ -56,5 +55,5 @@ By contributing you agree that your contributions will be licensed under the MIT
 
 ---
 
-Questions? Open an issue when available, or a small PR.  
+Questions? Open an issue or a small PR.  
 Part of the IrsanAI Universe · steered with [Root-Ascent](https://github.com/IrsanAI/root-ascent-method).

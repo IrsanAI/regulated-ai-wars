@@ -10,6 +10,7 @@
       "why.title": "The high ground is regulated",
       "why.thesis": "Players do not fight for every AI use-case. They fight for <strong>regulated verticals</strong> where data is sticky, compliance is mandatory, and humans sit in the loop — every accepted suggestion is a reward signal into the platform.",
       "why.lens": "Framed through the <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> lens — strategy-sensing, not vendor scorekeeping.",
+      "why.method": "Steered with <a href=\"https://github.com/IrsanAI/root-ascent-method\" target=\"_blank\" rel=\"noopener\">Root-Ascent</a> (causal ladder L1–L6): separate incident from root cause, list rival hypotheses, then choose levers — so the board grows by intent, not feature pile-up.",
       "why.dim.data": "Data density",
       "why.dim.dataV": "Sticky records, workflows, audit trails",
       "why.dim.reg": "Regulation",
@@ -22,8 +23,8 @@
       "why.coldTitle": "Low contest / not the prize",
       "why.coldLead": "These markets may use AI — but they are not the sticky, regulated high ground this board tracks.",
       "why.score": "Contest gravity",
-      "intro.origin": "An <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> strategy-sensing layer",
-      "footer.line": "Thinking origin: <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> · <a href=\"https://github.com/IrsanAI/regulated-ai-wars\" target=\"_blank\" rel=\"noopener\">regulated-ai-wars</a> · relative estimates only"
+      "intro.origin": "An <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> strategy-sensing layer · steered with <a href=\"https://github.com/IrsanAI/root-ascent-method\" target=\"_blank\" rel=\"noopener\">Root-Ascent</a>",
+      "footer.line": "Thinking origin: <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> · method: <a href=\"https://github.com/IrsanAI/root-ascent-method\" target=\"_blank\" rel=\"noopener\">Root-Ascent</a> · <a href=\"https://github.com/IrsanAI/regulated-ai-wars\" target=\"_blank\" rel=\"noopener\">regulated-ai-wars</a> · relative estimates only"
     },
     de: {
       "nav.doctrine": "Warum",
@@ -32,6 +33,7 @@
       "why.title": "Das Hochland ist reguliert",
       "why.thesis": "Player kämpfen nicht um jeden KI-Use-Case. Sie kämpfen um <strong>regulierte Vertikalen</strong>, in denen Daten kleben, Compliance Pflicht ist und Menschen im Loop sitzen — jeder akzeptierte Vorschlag ist ein Reward-Signal in die Plattform.",
       "why.lens": "Gerahmt durch die <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a>-Linse — Strategy-Sensing, kein Vendor-Scorekeeping.",
+      "why.method": "Gesteuert mit <a href=\"https://github.com/IrsanAI/root-ascent-method\" target=\"_blank\" rel=\"noopener\">Root-Ascent</a> (Causal Ladder L1–L6): Incident von Root Cause trennen, Rival-Hypothesen listen, dann Hebel wählen — damit das Brett mit Intent wächst, nicht durch Feature-Stapel.",
       "why.dim.data": "Datendichte",
       "why.dim.dataV": "Klebrige Akten, Workflows, Audit-Trails",
       "why.dim.reg": "Regulierung",
@@ -44,8 +46,8 @@
       "why.coldTitle": "Geringer Contest / kein Hauptpreis",
       "why.coldLead": "Diese Märkte nutzen vielleicht KI — sie sind aber nicht das klebrige, regulierte Hochland, das dieses Brett trackt.",
       "why.score": "Contest-Schwerkraft",
-      "intro.origin": "Ein <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> Strategy-Sensing Layer",
-      "footer.line": "Thinking-Ursprung: <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> · <a href=\"https://github.com/IrsanAI/regulated-ai-wars\" target=\"_blank\" rel=\"noopener\">regulated-ai-wars</a> · nur relative Schätzungen"
+      "intro.origin": "Ein <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> Strategy-Sensing Layer · gesteuert mit <a href=\"https://github.com/IrsanAI/root-ascent-method\" target=\"_blank\" rel=\"noopener\">Root-Ascent</a>",
+      "footer.line": "Thinking-Ursprung: <a href=\"https://github.com/IrsanAI\" target=\"_blank\" rel=\"noopener\">IrsanAI</a> · Methode: <a href=\"https://github.com/IrsanAI/root-ascent-method\" target=\"_blank\" rel=\"noopener\">Root-Ascent</a> · <a href=\"https://github.com/IrsanAI/regulated-ai-wars\" target=\"_blank\" rel=\"noopener\">regulated-ai-wars</a> · nur relative Schätzungen"
     }
   };
 

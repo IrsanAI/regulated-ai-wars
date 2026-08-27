@@ -6,6 +6,7 @@ Board state over time. Each file in `history/` is a full snapshot compatible wit
 |------|------|--------|
 | 2026-08-25 | [`history/2026-08-25.json`](./history/2026-08-25.json) | Initial board — Gemini Enterprise Legal & FS launch |
 | 2026-08-26 | [`history/2026-08-26.json`](./history/2026-08-26.json) | D+1 — Legal gap closes; Healthcare goes HOT |
+| 2026-08-27 | [`history/2026-08-27.json`](./history/2026-08-27.json) | D+2 — Launch customer & connector confirmation (pipeline dry-run validated) |
 
 **Current live board:** [`snapshot.json`](./snapshot.json) (should match the latest history entry unless a draft is in progress).
 

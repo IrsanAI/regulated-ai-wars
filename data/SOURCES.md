@@ -60,6 +60,21 @@ Markets are not frozen forever.
 
 ---
 
+## Concrete example — D+2 dry-run (2026-08-27)
+
+**Signal:** Additional public coverage of the 25 Aug 2026 Gemini Enterprise for Legal + Financial Services launch (named launch customers, deep connectors into iManage/Harvey/NetDocuments/Relativity, Financial Research agent, Deutsche Bank as design partner).
+
+**Effect applied (small deltas only):**
+- Legal: Google +2 (33), Microsoft –1 (30), Specialists –1 (25)
+- Finance: Google +1 (34)
+- Movers list reduced to the two confirmed climbs
+- All other players re-evaluated → `stable`
+- No new territory promotion (Healthcare already HOT)
+
+This run validated the full pipeline rules (public signal only, small deltas, full player coverage, human gate via draft PR).
+
+---
+
 ## Primary signals used (initial board — 2026-08-25)
 
 ### 1. Google Gemini Enterprise industry solutions

@@ -30,8 +30,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SNAPSHOT = ROOT / "data" / "snapshot.json"
-DEFAULT_SOURCES = ROOT / "data" / "SOURCES.md"
-DEFAULT_PROMPT = ROOT / "pipeline" / "PROMPT.md"
 DEFAULT_OUT = ROOT / "pipeline" / "out"
 
 PROVIDERS = {
@@ -42,6 +40,8 @@ PROVIDERS = {
         "default_model": "openai/gpt-oss-120b",
         "label": "Groq",
         "json_mode": True,
+        # Free on_demand TPM for this model is tight (~8k); keep requests small.
+        "max_tokens": 4096,
     },
     "xai": {
         "api_url": "https://api.x.ai/v1/chat/completions",
@@ -50,8 +50,25 @@ PROVIDERS = {
         "default_model": "grok-4-latest",
         "label": "xAI",
         "json_mode": True,
+        "max_tokens": 8192,
     },
 }
+
+COMPACT_SYSTEM = """You update the regulated-ai-wars board (Risk-style map of regulated AI verticals).
+Return ONE JSON object only (no markdown). Keys required:
+meta, players, territories, geoDominance, events, pipeline, movers.
+
+Rules:
+- Relative influence only; per territory influence values should sum ~100 (85–115 ok).
+- status: hot | contested | normal | cold
+- trend per player on a territory: up | stable | down when signal is material
+- Evaluate ALL known players; do not invent product launches
+- Prefer primary public signals (press / product) over rumor
+- meta.snapshotDate = today (YYYY-MM-DD); meta.note = short English summary of changes
+- Keep territory ids and player ids from the current board; do not invent new territory ids
+- events: short list (max 5) of {time, text}; pipeline: string list of upcoming verticals
+- movers: optional list of {player, territory, trend, delta, label}
+"""
 
 
 def die(msg: str, code: int = 1) -> None:
@@ -67,6 +84,106 @@ def load_text(path: Path) -> str:
 
 def load_json(path: Path) -> dict:
     return json.loads(load_text(path))
+
+
+def slim_board(snap: dict) -> dict:
+    """Shrink snapshot for free-tier TPM limits while keeping ids/structure."""
+    players = {}
+    for k, v in (snap.get("players") or {}).items():
+        if not isinstance(v, dict):
+            continue
+        players[k] = {
+            "id": v.get("id", k),
+            "name": v.get("name", k),
+            "momentum": v.get("momentum", "stable"),
+        }
+    territories = []
+    for t in snap.get("territories") or []:
+        if not isinstance(t, dict):
+            continue
+        territories.append(
+            {
+                "id": t.get("id"),
+                "name": t.get("name"),
+                "status": t.get("status"),
+                "influence": t.get("influence") or {},
+                "trend": t.get("trend") or {},
+            }
+        )
+    geo = {}
+    for k, v in (snap.get("geoDominance") or {}).items():
+        if not isinstance(v, dict):
+            continue
+        geo[k] = {
+            "dominant": v.get("dominant"),
+            "intensity": v.get("intensity"),
+            "trend": v.get("trend", "stable"),
+        }
+    return {
+        "meta": {
+            "snapshotDate": (snap.get("meta") or {}).get("snapshotDate"),
+            "version": (snap.get("meta") or {}).get("version", "0.3"),
+        },
+        "players": players,
+        "territories": territories,
+        "geoDominance": geo,
+        "pipeline": (snap.get("pipeline") or [])[:6],
+        "events": (snap.get("events") or [])[:2],
+        "movers": (snap.get("movers") or [])[:5],
+    }
+
+
+def merge_draft(previous: dict, draft: dict) -> dict:
+    """Fill missing presentation fields from previous board when model omits them."""
+    out = dict(draft)
+    # players: restore role/hex/short if model dropped them
+    prev_p = previous.get("players") or {}
+    new_p = out.get("players") or {}
+    merged_p = {}
+    for k, base in prev_p.items():
+        merged = dict(base) if isinstance(base, dict) else {"id": k}
+        if k in new_p and isinstance(new_p[k], dict):
+            merged.update({kk: vv for kk, vv in new_p[k].items() if vv is not None})
+        merged_p[k] = merged
+    for k, v in new_p.items():
+        if k not in merged_p:
+            merged_p[k] = v
+    out["players"] = merged_p
+
+    # territories: restore meta/note if missing
+    prev_t = {t.get("id"): t for t in previous.get("territories") or [] if isinstance(t, dict)}
+    merged_t = []
+    for t in out.get("territories") or []:
+        if not isinstance(t, dict):
+            continue
+        tid = t.get("id")
+        base = dict(prev_t.get(tid) or {})
+        base.update({kk: vv for kk, vv in t.items() if vv is not None})
+        if "meta" not in base and tid in prev_t:
+            base["meta"] = prev_t[tid].get("meta", "")
+        if "note" not in base and tid in prev_t:
+            base["note"] = prev_t[tid].get("note", "")
+        merged_t.append(base)
+    out["territories"] = merged_t
+
+    # geo: restore note/focus
+    prev_g = previous.get("geoDominance") or {}
+    new_g = out.get("geoDominance") or {}
+    merged_g = {}
+    for k, base in prev_g.items():
+        merged = dict(base) if isinstance(base, dict) else {}
+        if k in new_g and isinstance(new_g[k], dict):
+            merged.update({kk: vv for kk, vv in new_g[k].items() if vv is not None})
+        merged_g[k] = merged
+    out["geoDominance"] = merged_g
+
+    if "pipeline" not in out:
+        out["pipeline"] = previous.get("pipeline") or []
+    if "events" not in out:
+        out["events"] = previous.get("events") or []
+    if "movers" not in out:
+        out["movers"] = previous.get("movers") or []
+    return out
 
 
 def rough_validate(snap: dict, previous: dict) -> list[str]:
@@ -115,7 +232,6 @@ def rough_validate(snap: dict, previous: dict) -> list[str]:
 
 
 def extract_json_object(text: str) -> dict | None:
-    """Best-effort: fenced block, whole body, or first balanced {{...}}."""
     if not text or not text.strip():
         return None
     text = text.strip()
@@ -165,8 +281,8 @@ def extract_json_object(text: str) -> dict | None:
 def extract_blocks(content: str) -> tuple[str, dict]:
     md_blocks = re.findall(r"```(?:markdown|md)\s*([\s\S]*?)```", content, flags=re.IGNORECASE)
     rationale = md_blocks[0].strip() if md_blocks else content.split("```json")[0].strip()
-    if len(rationale) > 4000:
-        rationale = rationale[:4000] + "\n…"
+    if len(rationale) > 2000:
+        rationale = rationale[:2000] + "\n…"
 
     draft = extract_json_object(content)
     if draft is None:
@@ -186,12 +302,13 @@ def call_chat(
     api_key: str,
     *,
     json_mode: bool = False,
+    max_tokens: int = 4096,
     out_dir: Path | None = None,
 ) -> str:
     payload: dict = {
         "model": model,
         "temperature": 0.2,
-        "max_tokens": 8192,
+        "max_tokens": max_tokens,
         "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
@@ -207,22 +324,20 @@ def call_chat(
         headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}",
-            "User-Agent": "regulated-ai-wars-pipeline/0.3",
+            "User-Agent": "regulated-ai-wars-pipeline/0.4",
         },
         method="POST",
     )
     try:
         with urllib.request.urlopen(req, timeout=180) as resp:
-            raw = resp.read().decode("utf-8")
-            body = json.loads(raw)
+            body = json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="replace")
-        # Retry once without json_mode if API rejects response_format
         if json_mode and e.code in (400, 422) and "response_format" in err_body.lower():
             print(f"{label}: response_format not accepted — retry plain", file=sys.stderr)
             return call_chat(
                 api_url, label, system, user, model, api_key,
-                json_mode=False, out_dir=out_dir,
+                json_mode=False, max_tokens=max_tokens, out_dir=out_dir,
             )
         die(f"{label} HTTP {e.code}: {err_body[:800]}")
     except urllib.error.URLError as e:
@@ -238,7 +353,6 @@ def call_chat(
         msg = body["choices"][0]["message"]
         content = msg.get("content")
         if content is None or (isinstance(content, str) and not content.strip()):
-            # Some models put text under other keys
             alt = msg.get("reasoning") or msg.get("reasoning_content") or ""
             if isinstance(alt, str) and alt.strip():
                 content = alt
@@ -249,7 +363,6 @@ def call_chat(
                     f"message_keys={list(msg.keys())}"
                 )
         if isinstance(content, list):
-            # OpenAI-style multimodal content parts
             content = "".join(
                 p.get("text", "") if isinstance(p, dict) else str(p) for p in content
             )
@@ -274,11 +387,11 @@ def resolve_provider() -> tuple[str, dict, str, str]:
     return name, cfg, api_key, model
 
 
-def compact_signals(text: str, max_chars: int = 3500) -> str:
+def compact_signals(text: str, max_chars: int = 1800) -> str:
     text = (text or "").strip()
     if len(text) <= max_chars:
         return text
-    return text[:max_chars].rsplit("\n", 1)[0] + "\n…(signals truncated for model context)\n"
+    return text[:max_chars].rsplit("\n", 1)[0] + "\n…(signals truncated)\n"
 
 
 def main() -> None:
@@ -295,43 +408,29 @@ def main() -> None:
     signals = compact_signals(signals)
 
     previous = load_json(snapshot_path)
-    sources = load_text(DEFAULT_SOURCES)
-    sources_head = "\n".join(sources.splitlines()[:60])
-    contract = load_text(DEFAULT_PROMPT)
+    slim = slim_board(previous)
+    board_json = json.dumps(slim, ensure_ascii=False, separators=(",", ":"))
 
     today = date.today().isoformat()
-    system = (
-        contract
-        + "\n\n## Methodology excerpt (SOURCES.md)\n\n"
-        + sources_head
-        + "\n\nYou MUST respond with a single JSON object only (the next board snapshot). "
-        "No markdown fences. Include meta.note summarizing signal-driven changes."
+    system = COMPACT_SYSTEM
+    user = "\n".join(
+        [
+            f"Today: {today}",
+            "Current board (slim JSON):",
+            board_json,
+            "",
+            "Public signals:",
+            signals if signals else "(none — keep board stable; say so in meta.note)",
+            "",
+            "Return the next full snapshot JSON object only.",
+        ]
     )
 
-    # Smaller board payload for the model: keep structure, drop long notes if needed
-    board = previous
-    board_json = json.dumps(board, ensure_ascii=False)
-    if len(board_json) > 12000:
-        board_json = json.dumps(board, ensure_ascii=False, separators=(",", ":"))
-
-    user_parts = [
-        f"Today's date: {today}",
-        "Current board snapshot (JSON):",
-        board_json,
-        "",
-        "New public signals to consider:",
-        signals
-        if signals
-        else (
-            "(none provided — keep board stable unless high-confidence public knowledge; "
-            "say so in meta.note)"
-        ),
-        "",
-        "Return ONLY the next full snapshot JSON object."
-    ]
-    user = "\n".join(user_parts)
-
-    print(f"Calling {cfg['label']} model={model} …", flush=True)
+    approx_chars = len(system) + len(user)
+    print(
+        f"Calling {cfg['label']} model={model} (prompt≈{approx_chars} chars) …",
+        flush=True,
+    )
     content = call_chat(
         cfg["api_url"],
         cfg["label"],
@@ -340,11 +439,13 @@ def main() -> None:
         model,
         api_key,
         json_mode=bool(cfg.get("json_mode")),
+        max_tokens=int(cfg.get("max_tokens", 4096)),
         out_dir=out_dir,
     )
     (out_dir / "raw_response.md").write_text(content or "", encoding="utf-8")
 
     rationale, draft = extract_blocks(content)
+    draft = merge_draft(previous, draft)
 
     meta = draft.setdefault("meta", {})
     if not meta.get("snapshotDate"):
@@ -362,6 +463,7 @@ def main() -> None:
         "validation_errors": errors,
         "ok": len(errors) == 0,
         "had_signals": bool(signals),
+        "prompt_chars": approx_chars,
     }
     (out_dir / "validation.json").write_text(
         json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"

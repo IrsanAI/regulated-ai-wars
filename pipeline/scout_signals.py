@@ -3,7 +3,7 @@
 regulated-ai-wars — public signal scout (RSS / Google News).
 
 No API key. Collects recent headlines relevant to regulated AI verticals
-and writes a SIGNAL_TEXT blob for the LLM board pipeline.
+and writes a compact SIGNAL_TEXT blob for the LLM board pipeline.
 
 Outputs:
   pipeline/out/scout.json   — structured hits
@@ -11,7 +11,7 @@ Outputs:
   stdout                    — same as scout.md (for GITHUB_OUTPUT)
 
 Env:
-  SCOUT_MAX_ITEMS   (default 12)
+  SCOUT_MAX_ITEMS   (default 8)
   SCOUT_OUT_DIR     (default pipeline/out)
   SCOUT_DAYS        (default 10) — soft filter when pubDate parseable
 """
@@ -32,10 +32,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = Path(os.environ.get("SCOUT_OUT_DIR", str(ROOT / "pipeline" / "out")))
-MAX_ITEMS = int(os.environ.get("SCOUT_MAX_ITEMS", "12"))
+MAX_ITEMS = int(os.environ.get("SCOUT_MAX_ITEMS", "8"))
 DAYS = int(os.environ.get("SCOUT_DAYS", "10"))
 
-# Intent-aligned queries: regulated verticals + named players (board high ground)
 QUERIES = [
     '"Gemini Enterprise" (Legal OR "Financial Services" OR Healthcare)',
     "Microsoft Copilot (healthcare OR legal OR insurance OR government)",
@@ -84,7 +83,6 @@ def parse_rss(xml_bytes: bytes, query: str) -> list[dict]:
     for item in channel.findall("item"):
         title = strip_html((item.findtext("title") or "").strip())
         link = (item.findtext("link") or "").strip()
-        desc = strip_html((item.findtext("description") or "").strip())
         pub_raw = (item.findtext("pubDate") or "").strip()
         pub_iso = ""
         if pub_raw:
@@ -97,13 +95,19 @@ def parse_rss(xml_bytes: bytes, query: str) -> list[dict]:
                 pub_iso = dt.astimezone(timezone.utc).strftime("%Y-%m-%d")
             except (TypeError, ValueError, IndexError):
                 pub_iso = ""
-        if not title or not link:
+        if not title:
             continue
+        # Prefer short source token from "Title - Source" pattern; drop mega redirect URLs
+        source = ""
+        if " - " in title:
+            maybe = title.rsplit(" - ", 1)
+            if len(maybe) == 2 and len(maybe[1]) < 60:
+                source = maybe[1].strip()
         out.append(
             {
-                "title": title,
-                "link": link,
-                "snippet": desc[:280],
+                "title": title[:180],
+                "source": source,
+                "link": link[:120] if link else "",
                 "published": pub_iso,
                 "query": query,
             }
@@ -133,9 +137,9 @@ def main() -> None:
         try:
             raw = fetch(url)
             hits = parse_rss(raw, q)
-            collected.extend(hits[:5])  # per-query cap
+            collected.extend(hits[:4])
             print(f"scout: query ok ({len(hits)} raw) — {q[:60]}", file=sys.stderr)
-        except Exception as e:  # noqa: BLE001 — keep scout resilient
+        except Exception as e:  # noqa: BLE001
             errors.append(f"{q[:40]}: {e}")
             print(f"scout: query fail — {q[:50]}: {e}", file=sys.stderr)
 
@@ -164,18 +168,13 @@ def main() -> None:
 
     lines = [
         "## Scouted public signals (Google News RSS)",
-        "",
-        "Relative board methodology still applies — these are candidate headlines only.",
-        "Prefer primary-source product launches over rumor.",
+        "Candidate headlines only — prefer primary product launches over rumor.",
         "",
     ]
     for i, it in enumerate(items, 1):
-        when = f" ({it['published']})" if it.get("published") else ""
-        lines.append(f"{i}. **{it['title']}**{when}")
-        lines.append(f"   Link: {it['link']}")
-        if it.get("snippet"):
-            lines.append(f"   Note: {it['snippet'][:200]}")
-        lines.append("")
+        when = f" [{it['published']}]" if it.get("published") else ""
+        src = f" ({it['source']})" if it.get("source") else ""
+        lines.append(f"{i}. {it['title']}{when}{src}")
 
     md = "\n".join(lines).rstrip() + "\n"
     (OUT / "scout.md").write_text(md, encoding="utf-8")

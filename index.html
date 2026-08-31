@@ -14,6 +14,7 @@
   <h1>regulated-ai-wars</h1>
   <p data-i18n-html="intro.tagline">The high ground is under contest.<br>Markets. Players. And the humans who feed the loop.</p>
   <p class="origin" data-i18n-html="intro.origin">An <a href="https://github.com/IrsanAI" target="_blank" rel="noopener">IrsanAI</a> strategy-sensing layer · steered with <a href="https://github.com/IrsanAI/root-ascent-method" target="_blank" rel="noopener">Root-Ascent</a></p>
+  <p class="intro-estimate" data-i18n="estimate.banner">Relative estimates · not market share · not live telemetry</p>
   <button class="enter" onclick="enterWarRoom()" data-i18n="intro.enter">ENTER WAR ROOM</button>
 </div>
 <header>
@@ -33,10 +34,11 @@
     <select id="snapshotSelect" onchange="loadSnapshotFromSelect()" title="Board snapshot"><option value="current">Current</option></select>
     <span class="timestamp" id="lastUpdate">Snapshot: —</span>
     <button onclick="replayIntro()" data-i18n="nav.intro" title="Replay intro">Intro</button>
-    <button onclick="simulateUpdate()" data-i18n="nav.sim">↻ Update</button>
+    <button onclick="simulateUpdate()" data-i18n="nav.sim" title="Local demo only — not a scout merge">Demo drift</button>
     <button class="primary" onclick="resetBoard()" data-i18n="nav.reset">Reset</button>
   </div>
 </header>
+<div class="estimate-banner" role="note" data-i18n="estimate.banner">Relative estimates · not market share · not live telemetry</div>
 <div class="main">
   <div class="panel">
     <h2 data-i18n="panel.players">Big Players & Contenders</h2>
@@ -50,7 +52,7 @@
     <div class="cycle-box" id="cycleBox">
       <h2 data-i18n="cycle.title">Data cycle</h2>
       <p class="cycle-how" data-i18n-html="cycle.how"></p>
-      <div class="cycle-next"><span data-i18n="cycle.next">Next scheduled check</span><strong id="cycleCountdown">—</strong></div>
+      <div class="cycle-next"><span data-i18n="cycle.next">Next automatic signal scout</span><strong id="cycleCountdown">—</strong></div>
       <div class="cycle-meta" id="cycleMeta"></div>
     </div>
   </div>
@@ -77,10 +79,11 @@
         </svg>
         <div class="world-hud">
           <div class="tag"><span class="live-dot"></span><span data-i18n="world.theater">Theater of operations</span></div>
-          <div class="tag" data-i18n="world.footprint">Regulated AI footprint</div>
+          <div class="tag" id="worldBoardStamp" data-i18n="world.footprint">Regulated AI footprint</div>
         </div>
       </div>
       <div class="intensity-bar"><span data-i18n="world.low">Low</span><div class="grad"></div><span data-i18n="world.high">High intensity</span></div>
+      <p class="world-estimate" data-i18n="estimate.short">Relative footprint · not telemetry</p>
       <div class="world-legend" id="worldLegend"></div>
     </div>
     <div class="human-view" id="humanView">
@@ -129,7 +132,9 @@
     </div>
   </div>
   <div class="panel">
-    <div class="metrics-box"><strong data-i18n="panel.signals">Live Signals</strong><br><span id="metricsText">…</span></div>
+    <div class="metrics-box"><strong data-i18n="panel.signals">Live Signals</strong><br><span id="metricsText">…</span>
+      <div class="metrics-estimate" data-i18n="estimate.short">Relative estimates only</div>
+    </div>
     <h2 data-i18n="panel.movers">Market Movers</h2>
     <div class="movers-legend">
       <span class="trend-pill up" data-i18n="trend.up">▲ Climbing</span>

@@ -3,24 +3,31 @@
     {
       "id": "2026-08-25",
       "date": "2026-08-25",
-      "label": "Initial board — Gemini Enterprise Legal & FS launch",
+      "label": "Initial board \u2014 Gemini Enterprise Legal & FS launch",
       "file": "2026-08-25.json",
       "note": "First public snapshot. Google Legal + Financial Services preview; Healthcare/Life Sciences/Retail on roadmap."
     },
     {
       "id": "2026-08-26",
       "date": "2026-08-26",
-      "label": "D+1 — Legal gap closes; Healthcare goes HOT",
+      "label": "D+1 \u2014 Legal gap closes; Healthcare goes HOT",
       "file": "2026-08-26.json",
       "note": "Post-launch pressure: Google matches Microsoft on Legal; Healthcare elevated as market prices next vertical."
     },
     {
       "id": "2026-08-27",
       "date": "2026-08-27",
-      "label": "D+2 — Launch customer & connector confirmation",
+      "label": "D+2 \u2014 Launch customer & connector confirmation",
       "file": "2026-08-27.json",
       "note": "Additional public detail on launch customers, deep legal connectors and Financial Research agent confirms Google momentum. Pipeline dry-run validated."
+    },
+    {
+      "id": "2026-08-31",
+      "date": "2026-08-31",
+      "label": "Signal draft \u2014 2026-08-31",
+      "file": "2026-08-31.json",
+      "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services."
     }
   ],
-  "current": "2026-08-27"
+  "current": "2026-08-31"
 }

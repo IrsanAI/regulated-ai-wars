@@ -1,0 +1,9 @@
+/* Phase B/C elevation — load after map.css */
+.lead-gap{display:flex;align-items:center;gap:6px;margin:4px 0 2px;font-size:.62rem;flex-wrap:wrap}
+.lead-gap .lead-name{font-weight:700;font-variant-numeric:tabular-nums}
+.lead-gap .gap-label{color:var(--muted);font-variant-numeric:tabular-nums}
+.contest-meter{flex:1;min-width:36px;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;max-width:72px}
+.contest-meter i{display:block;height:100%;background:linear-gradient(90deg,rgba(245,158,11,.35),rgba(239,68,68,.75));border-radius:2px}
+.continent.fading{filter:saturate(.55) brightness(.9)}
+.beacon-ring.pulse{animation:beaconPulse 2.4s ease-out infinite}
+.beacon-ring:not(.pulse){opacity:.25}

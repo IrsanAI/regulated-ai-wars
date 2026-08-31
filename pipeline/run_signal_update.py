@@ -39,9 +39,9 @@ PROVIDERS = {
         "api_url": "https://api.groq.com/openai/v1/chat/completions",
         "key_env": "GROQ_API_KEY",
         "model_env": "GROQ_MODEL",
-        # Llama 3.3 70B free-tier shut down 2026-08-16; see Groq deprecations.
         "default_model": "openai/gpt-oss-120b",
         "label": "Groq",
+        "json_mode": True,
     },
     "xai": {
         "api_url": "https://api.x.ai/v1/chat/completions",
@@ -49,6 +49,7 @@ PROVIDERS = {
         "model_env": "XAI_MODEL",
         "default_model": "grok-4-latest",
         "label": "xAI",
+        "json_mode": True,
     },
 }
 
@@ -69,7 +70,6 @@ def load_json(path: Path) -> dict:
 
 
 def rough_validate(snap: dict, previous: dict) -> list[str]:
-    """Lightweight structural checks (no external jsonschema dep)."""
     errs: list[str] = []
     for key in ("meta", "players", "territories", "geoDominance", "events", "pipeline"):
         if key not in snap:
@@ -114,38 +114,92 @@ def rough_validate(snap: dict, previous: dict) -> list[str]:
     return errs
 
 
+def extract_json_object(text: str) -> dict | None:
+    """Best-effort: fenced block, whole body, or first balanced {{...}}."""
+    if not text or not text.strip():
+        return None
+    text = text.strip()
+
+    fenced = re.findall(r"```json\s*([\s\S]*?)```", text, flags=re.IGNORECASE)
+    for block in reversed(fenced):
+        try:
+            return json.loads(block.strip())
+        except json.JSONDecodeError:
+            continue
+
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    start = text.find("{")
+    if start < 0:
+        return None
+    depth = 0
+    in_str = False
+    esc = False
+    for i in range(start, len(text)):
+        ch = text[i]
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+        elif ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                try:
+                    return json.loads(text[start : i + 1])
+                except json.JSONDecodeError:
+                    return None
+    return None
+
+
 def extract_blocks(content: str) -> tuple[str, dict]:
-    """Extract rationale markdown and JSON snapshot from model response."""
-    json_blocks = re.findall(r"```json\s*([\s\S]*?)```", content, flags=re.IGNORECASE)
     md_blocks = re.findall(r"```(?:markdown|md)\s*([\s\S]*?)```", content, flags=re.IGNORECASE)
-
     rationale = md_blocks[0].strip() if md_blocks else content.split("```json")[0].strip()
+    if len(rationale) > 4000:
+        rationale = rationale[:4000] + "\n…"
 
-    if not json_blocks:
-        try:
-            return rationale, json.loads(content)
-        except json.JSONDecodeError as e:
-            die(f"model response contained no parseable JSON: {e}")
-
-    last_err = None
-    for block in reversed(json_blocks):
-        try:
-            return rationale, json.loads(block.strip())
-        except json.JSONDecodeError as e:
-            last_err = e
-    die(f"failed to parse JSON blocks: {last_err}")
-    raise AssertionError("unreachable")
+    draft = extract_json_object(content)
+    if draft is None:
+        die(
+            "model response contained no parseable JSON "
+            f"(len={len(content or '')}, head={repr((content or '')[:200])})"
+        )
+    return rationale, draft
 
 
-def call_chat(api_url: str, label: str, system: str, user: str, model: str, api_key: str) -> str:
-    payload = {
+def call_chat(
+    api_url: str,
+    label: str,
+    system: str,
+    user: str,
+    model: str,
+    api_key: str,
+    *,
+    json_mode: bool = False,
+    out_dir: Path | None = None,
+) -> str:
+    payload: dict = {
         "model": model,
         "temperature": 0.2,
+        "max_tokens": 8192,
         "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ],
     }
+    if json_mode:
+        payload["response_format"] = {"type": "json_object"}
+
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         api_url,
@@ -153,21 +207,53 @@ def call_chat(api_url: str, label: str, system: str, user: str, model: str, api_
         headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {api_key}",
-            "User-Agent": "regulated-ai-wars-pipeline/0.2",
+            "User-Agent": "regulated-ai-wars-pipeline/0.3",
         },
         method="POST",
     )
     try:
         with urllib.request.urlopen(req, timeout=180) as resp:
-            body = json.loads(resp.read().decode("utf-8"))
+            raw = resp.read().decode("utf-8")
+            body = json.loads(raw)
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="replace")
+        # Retry once without json_mode if API rejects response_format
+        if json_mode and e.code in (400, 422) and "response_format" in err_body.lower():
+            print(f"{label}: response_format not accepted — retry plain", file=sys.stderr)
+            return call_chat(
+                api_url, label, system, user, model, api_key,
+                json_mode=False, out_dir=out_dir,
+            )
         die(f"{label} HTTP {e.code}: {err_body[:800]}")
     except urllib.error.URLError as e:
         die(f"{label} network error: {e}")
 
+    if out_dir is not None:
+        (out_dir / "api_response.json").write_text(
+            json.dumps(body, indent=2, ensure_ascii=False)[:200000] + "\n",
+            encoding="utf-8",
+        )
+
     try:
-        return body["choices"][0]["message"]["content"]
+        msg = body["choices"][0]["message"]
+        content = msg.get("content")
+        if content is None or (isinstance(content, str) and not content.strip()):
+            # Some models put text under other keys
+            alt = msg.get("reasoning") or msg.get("reasoning_content") or ""
+            if isinstance(alt, str) and alt.strip():
+                content = alt
+            else:
+                die(
+                    f"empty model content from {label}. "
+                    f"finish_reason={body['choices'][0].get('finish_reason')}; "
+                    f"message_keys={list(msg.keys())}"
+                )
+        if isinstance(content, list):
+            # OpenAI-style multimodal content parts
+            content = "".join(
+                p.get("text", "") if isinstance(p, dict) else str(p) for p in content
+            )
+        return str(content)
     except (KeyError, IndexError, TypeError):
         die(f"unexpected {label} response shape: {json.dumps(body)[:500]}")
     raise AssertionError("unreachable")
@@ -188,6 +274,13 @@ def resolve_provider() -> tuple[str, dict, str, str]:
     return name, cfg, api_key, model
 
 
+def compact_signals(text: str, max_chars: int = 3500) -> str:
+    text = (text or "").strip()
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars].rsplit("\n", 1)[0] + "\n…(signals truncated for model context)\n"
+
+
 def main() -> None:
     provider_name, cfg, api_key, model = resolve_provider()
 
@@ -199,37 +292,57 @@ def main() -> None:
     signal_file = os.environ.get("SIGNAL_FILE", "").strip()
     if signal_file:
         signals = (signals + "\n" + Path(signal_file).read_text(encoding="utf-8")).strip()
+    signals = compact_signals(signals)
 
     previous = load_json(snapshot_path)
     sources = load_text(DEFAULT_SOURCES)
-    sources_head = "\n".join(sources.splitlines()[:80])
+    sources_head = "\n".join(sources.splitlines()[:60])
     contract = load_text(DEFAULT_PROMPT)
 
     today = date.today().isoformat()
-    system = contract + "\n\n## Methodology excerpt (SOURCES.md)\n\n" + sources_head
+    system = (
+        contract
+        + "\n\n## Methodology excerpt (SOURCES.md)\n\n"
+        + sources_head
+        + "\n\nYou MUST respond with a single JSON object only (the next board snapshot). "
+        "No markdown fences. Include meta.note summarizing signal-driven changes."
+    )
+
+    # Smaller board payload for the model: keep structure, drop long notes if needed
+    board = previous
+    board_json = json.dumps(board, ensure_ascii=False)
+    if len(board_json) > 12000:
+        board_json = json.dumps(board, ensure_ascii=False, separators=(",", ":"))
 
     user_parts = [
         f"Today's date: {today}",
         "Current board snapshot (JSON):",
-        "```json",
-        json.dumps(previous, ensure_ascii=False, indent=2),
-        "```",
+        board_json,
         "",
         "New public signals to consider:",
         signals
         if signals
         else (
-            "(none provided — only propose changes if you have high-confidence "
-            "public knowledge; otherwise keep board stable and say so)"
+            "(none provided — keep board stable unless high-confidence public knowledge; "
+            "say so in meta.note)"
         ),
         "",
-        "Produce the next snapshot following the contract.",
+        "Return ONLY the next full snapshot JSON object."
     ]
     user = "\n".join(user_parts)
 
-    print(f"Calling {cfg['label']} model={model} …")
-    content = call_chat(cfg["api_url"], cfg["label"], system, user, model, api_key)
-    (out_dir / "raw_response.md").write_text(content, encoding="utf-8")
+    print(f"Calling {cfg['label']} model={model} …", flush=True)
+    content = call_chat(
+        cfg["api_url"],
+        cfg["label"],
+        system,
+        user,
+        model,
+        api_key,
+        json_mode=bool(cfg.get("json_mode")),
+        out_dir=out_dir,
+    )
+    (out_dir / "raw_response.md").write_text(content or "", encoding="utf-8")
 
     rationale, draft = extract_blocks(content)
 
@@ -238,6 +351,8 @@ def main() -> None:
         meta["snapshotDate"] = today
     if not meta.get("version"):
         meta["version"] = previous.get("meta", {}).get("version", "0.3")
+    if not meta.get("note"):
+        meta["note"] = "Signal draft (auto)"
 
     errors = rough_validate(draft, previous)
     report = {
@@ -251,7 +366,7 @@ def main() -> None:
     (out_dir / "validation.json").write_text(
         json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    (out_dir / "rationale.md").write_text(rationale + "\n", encoding="utf-8")
+    (out_dir / "rationale.md").write_text((rationale or meta.get("note", "")) + "\n", encoding="utf-8")
     (out_dir / "draft-snapshot.json").write_text(
         json.dumps(draft, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )

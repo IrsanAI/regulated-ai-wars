@@ -1,8 +1,8 @@
 {
   "meta": {
     "snapshotDate": "2026-08-31",
-    "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services.",
-    "version": "0.4.1"
+    "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services. Geo paint recalibrated: intensity = confidence-weighted footprint, not land ownership.",
+    "version": "0.4.2"
   },
   "players": {
     "google": {
@@ -249,39 +249,39 @@
   "geoDominance": {
     "na": {
       "dominant": "microsoft",
-      "intensity": 0.82,
+      "intensity": 0.78,
       "trend": "stable",
-      "note": "Microsoft still densest; Google Legal/FS launch continues to compress the gap."
+      "note": "Strongest public enterprise density (Copilot/Azure). Relative footprint — not ownership."
     },
     "sa": {
       "dominant": "microsoft",
-      "intensity": 0.55,
+      "intensity": 0.28,
       "trend": "stable",
-      "note": "Unchanged."
+      "note": "Thin public signal; low-confidence footprint only."
     },
     "eu": {
       "dominant": "microsoft",
-      "intensity": 0.67,
+      "intensity": 0.58,
       "trend": "stable",
-      "note": "Unchanged; Google regulated push keeps pressure."
+      "note": "Enterprise density moderate-high; Google regulated push keeps pressure."
     },
     "af": {
       "dominant": "microsoft",
-      "intensity": 0.4,
+      "intensity": 0.18,
       "trend": "stable",
-      "note": "Unchanged."
+      "note": "Very thin public evidence — dim on purpose; not a conquest claim."
     },
     "as": {
       "dominant": "google",
-      "intensity": 0.7,
+      "intensity": 0.68,
       "trend": "up",
-      "note": "Slight further intensity rise from industry-solution narrative."
+      "note": "Google-weighted industry narrative; relative footprint."
     },
     "oc": {
       "dominant": "microsoft",
-      "intensity": 0.6,
+      "intensity": 0.35,
       "trend": "stable",
-      "note": "Unchanged."
+      "note": "Moderate enterprise presence; limited vertical signal depth."
     }
   },
   "pipeline": [

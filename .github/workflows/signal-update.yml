@@ -2,12 +2,12 @@ name: Signal update (LLM)
 
 on:
   schedule:
-    # Monday 06:00 UTC — runs API only if open issues labeled `signal` exist
+    # Monday 06:00 UTC — scout public RSS, then LLM draft if hits (or signal issues)
     - cron: "0 6 * * 1"
   workflow_dispatch:
     inputs:
       signals:
-        description: "Public signals (product launches, analyst notes, announcements)"
+        description: "Extra public signals (merged with scout + signal issues)"
         required: false
         type: string
         default: ""
@@ -29,6 +29,11 @@ on:
         required: false
         type: boolean
         default: true
+      skip_scout:
+        description: "Skip RSS scout (use only pasted signals / issues)"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -47,7 +52,36 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Collect signals (dispatch input + open issues labeled signal)
+      - name: RSS signal scout
+        id: scout
+        env:
+          SKIP_SCOUT: ${{ github.event.inputs.skip_scout || 'false' }}
+        run: |
+          set -euo pipefail
+          mkdir -p pipeline/out
+          if [ "$SKIP_SCOUT" = "true" ]; then
+            echo "Scout skipped by input."
+            echo "(scout skipped)" > pipeline/out/scout.md
+            echo '{"hitCount":0,"items":[],"note":"skipped"}' > pipeline/out/scout.json
+            echo "hit_count=0" >> "$GITHUB_OUTPUT"
+            echo "has_hits=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python pipeline/scout_signals.py > pipeline/out/scout.stdout.md
+          # Prefer scout.md written by script
+          if [ -f pipeline/out/scout.md ]; then
+            cp pipeline/out/scout.md pipeline/out/scout.stdout.md
+          fi
+          HITS=$(python -c "import json; print(json.load(open('pipeline/out/scout.json')).get('hitCount',0))")
+          echo "hit_count=$HITS" >> "$GITHUB_OUTPUT"
+          if [ "$HITS" -gt 0 ]; then
+            echo "has_hits=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_hits=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Scout hits: $HITS"
+
+      - name: Collect signals (scout + dispatch + issues labeled signal)
         id: signals
         env:
           GH_TOKEN: ${{ github.token }}
@@ -55,9 +89,26 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         run: |
           set -euo pipefail
-          SIG="$INPUT_SIGNALS"
+          SIG=""
 
-          # Open issues with label `signal` (public, citable text in title/body)
+          if [ -f pipeline/out/scout.md ]; then
+            SCOUT_BODY=$(cat pipeline/out/scout.md)
+            if ! echo "$SCOUT_BODY" | grep -q 'no recent public headlines'; then
+              SIG="${SCOUT_BODY}"
+              echo "Using scout headlines."
+            else
+              echo "Scout reported no headlines."
+            fi
+          fi
+
+          if [ -n "$INPUT_SIGNALS" ]; then
+            if [ -n "$SIG" ]; then
+              SIG="${SIG}\n\n---\n## Manual signals (workflow_dispatch)\n\n${INPUT_SIGNALS}"
+            else
+              SIG="## Manual signals (workflow_dispatch)\n\n${INPUT_SIGNALS}"
+            fi
+          fi
+
           ISSUE_BLOB=""
           if command -v gh >/dev/null 2>&1; then
             ISSUE_BLOB=$(gh issue list \
@@ -72,16 +123,13 @@ jobs:
 
           if [ -n "$ISSUE_BLOB" ]; then
             if [ -n "$SIG" ]; then
-              SIG="${SIG}\n\n---\nSignals from open issues (label: signal):\n\n${ISSUE_BLOB}"
+              SIG="${SIG}\n\n---\n## Open issues (label: signal)\n\n${ISSUE_BLOB}"
             else
-              SIG="Signals from open issues (label: signal):\n\n${ISSUE_BLOB}"
+              SIG="## Open issues (label: signal)\n\n${ISSUE_BLOB}"
             fi
             echo "Found open signal issues."
-          else
-            echo "No open issues with label signal."
           fi
 
-          # Persist for the pipeline step
           {
             echo "text<<RAW_SIGNALS"
             echo "$SIG"
@@ -90,10 +138,10 @@ jobs:
 
           if [ -z "$SIG" ]; then
             if [ "$EVENT_NAME" = "schedule" ]; then
-              echo "Scheduled run with no signals and no signal-issues — skip API (save quota)."
+              echo "Schedule: no scout hits, no issues, no manual text — skip API."
               echo "skip_all=true" >> "$GITHUB_OUTPUT"
             else
-              echo "Manual run with empty signals — pipeline may keep board stable."
+              echo "Manual run with empty combined signals — pipeline may keep board stable."
               echo "skip_all=false" >> "$GITHUB_OUTPUT"
             fi
           else
@@ -113,13 +161,11 @@ jobs:
           if [ "$P" = "groq" ]; then
             if [ -z "$GROQ_API_KEY" ]; then
               echo "GROQ_API_KEY secret is not set."
-              echo "Create a free key at https://console.groq.com/keys"
-              echo "Then add Repository secret GROQ_API_KEY (gsk_...)."
               exit 1
             fi
           elif [ "$P" = "xai" ]; then
             if [ -z "$XAI_API_KEY" ]; then
-              echo "XAI_API_KEY secret is not set (and xAI requires paid credits)."
+              echo "XAI_API_KEY secret is not set."
               exit 1
             fi
           else
@@ -140,18 +186,18 @@ jobs:
           python pipeline/run_signal_update.py
 
       - name: Upload artifacts
-        if: steps.signals.outputs.skip_all != 'true'
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: signal-draft
           path: pipeline/out/
+          if-no-files-found: ignore
 
       - name: PR gate
         if: steps.signals.outputs.skip_all != 'true'
         id: gate
         run: |
           OPEN="${{ github.event.inputs.open_pr }}"
-          # schedule always opens draft PR when signals existed
           if [ "${{ github.event_name }}" = "schedule" ]; then
             echo "skip=false" >> "$GITHUB_OUTPUT"
           elif [ "$OPEN" = "false" ]; then
@@ -199,7 +245,7 @@ jobs:
 
           mkdir -p pipeline/out
           git add data/snapshot.json "data/history/${DATE}.json" data/history/index.json
-          git add -f pipeline/out/rationale.md pipeline/out/validation.json || true
+          git add -f pipeline/out/rationale.md pipeline/out/validation.json pipeline/out/scout.json pipeline/out/scout.md || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
@@ -208,18 +254,24 @@ jobs:
           git commit -m "chore(data): signal draft snapshot ${DATE}"
           git push -u origin "$BRANCH"
 
-          echo "Branch pushed: $BRANCH"
-          echo "Manual PR link: https://github.com/${{ github.repository }}/compare/main...${BRANCH}?expand=1"
-
           BODY_FILE=$(mktemp)
           {
             echo "## Automated signal draft"
             echo
-            echo "Generated by \`pipeline/run_signal_update.py\` (Groq/xAI OpenAI-compatible API)."
+            echo "Sources may include:"
+            echo "- **RSS scout** (Google News queries for regulated verticals)"
+            echo "- Open issues labeled \`signal\`"
+            echo "- Manual workflow_dispatch text"
+            echo
             echo "**Review before merge** — scores remain relative estimates."
             echo
-            echo "Signals may include open GitHub issues labeled \`signal\`."
-            echo
+            if [ -f pipeline/out/scout.json ]; then
+              echo "### Scout"
+              echo '```json'
+              python -c "import json; d=json.load(open('pipeline/out/scout.json')); print(json.dumps({k:d.get(k) for k in ('scoutedAt','hitCount','queryCount')}, indent=2))"
+              echo '```'
+              echo
+            fi
             echo "### Validation"
             echo '```json'
             cat pipeline/out/validation.json
@@ -229,7 +281,7 @@ jobs:
             cat pipeline/out/rationale.md
             echo
             echo "---"
-            echo "Sources methodology: \`data/SOURCES.md\`"
+            echo "Methodology: \`data/SOURCES.md\` · Scout: \`pipeline/scout_signals.py\`"
           } > "$BODY_FILE"
 
           if gh pr create \
@@ -240,8 +292,7 @@ jobs:
             --head "$BRANCH"; then
             echo "Draft PR created."
           else
-            echo "::warning::Could not auto-create PR (often: Actions not allowed to create PRs)."
-            echo "Enable: Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests"
-            echo "Or open manually: https://github.com/${{ github.repository }}/compare/main...${BRANCH}?expand=1"
+            echo "::warning::Could not auto-create PR."
+            echo "Open: https://github.com/${{ github.repository }}/compare/main...${BRANCH}?expand=1"
             exit 0
           fi

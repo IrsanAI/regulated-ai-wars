@@ -16,6 +16,38 @@ The influence scores in `snapshot.json` are directional signals synthesized from
 
 ---
 
+## Visual authority vs. estimates (dashboard paradox)
+
+Bars, maps, and ▲▼ movers **look** like hard data. They are not.
+
+- The UI shows a permanent estimate strip (*Relative estimates · not market share · not live telemetry*) so authority is not implied by chrome alone.
+- **Leader / gap / contest meter** on territory cards are **client-derived** from the same relative `influence` integers — not a second data source and not market share.
+- Geographic fills on the World Map are ordinal footprint intensity, not country-level research.
+
+If a visual ever feels more precise than this document allows, trust **this document**, not the pixels.
+
+---
+
+## Client-derived board metrics (no pipeline required)
+
+These are computed in the browser from `influence` (see `assets/board-logic.js`). Snapshots **may** later include an optional `pressure` object; until then the client is source of truth for display.
+
+| Metric | Formula (concept) | UI |
+|--------|-------------------|----|
+| **Leader + score** | `argmax(influence)` | Territory card |
+| **Gap** | top − second | Territory card + detail modal |
+| **Contest index** | mix of leader gap and how many players sit within ~10 pts of the leader (0–1) | Thin meter on card |
+
+Optional future snapshot shape (not required):
+
+```json
+"pressure": { "contestIndex": 0.72, "leaderGap": 7, "humanLoop": "high" }
+```
+
+Pipeline authors should **not** invent precise contest percentages; prefer omitting `pressure` and letting the client derive it.
+
+---
+
 ## Trends, Movers & board evolution
 
 ### Per-territory `trend`
@@ -116,11 +148,12 @@ This run validated the full pipeline rules (public signal only, small deltas, fu
 
 ## Geographic dominance (World Map)
 
-Continent colors reflect a simplified view of **where the major regulated-enterprise AI footprint is currently strongest**, not country-level market research.
+Continent / theater colors reflect a simplified view of **where the major regulated-enterprise AI footprint is currently strongest**, not country-level market research.
 
 - **North America / Europe / Oceania:** Microsoft-weighted (Copilot + Azure density in large enterprises).
 - **Asia:** Google-weighted (Cloud + regional enterprise activity).
 - Intensities are ordinal, not precise.
+- Land geometry may use Natural Earth–class coastlines for legibility; **color still comes only from `geoDominance`**, not from per-country data.
 
 ---
 

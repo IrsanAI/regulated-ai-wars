@@ -1,0 +1,31 @@
+/* Epistemic humility — visible authority dampers */
+.estimate-banner{
+  text-align:center;
+  font-size:.65rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:6px 12px;
+  border-bottom:1px solid var(--border);
+  background:rgba(148,163,184,.06);
+}
+.intro-estimate{
+  margin-top:16px!important;
+  font-size:.72rem!important;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:rgba(148,163,184,.85)!important;
+  max-width:360px;
+  opacity:0;
+  animation:fadeIn .6s 1.2s forwards;
+}
+.world-estimate,.metrics-estimate{
+  text-align:center;
+  font-size:.62rem;
+  color:var(--muted);
+  margin:2px 0 6px;
+  letter-spacing:.04em;
+}
+.metrics-estimate{text-align:left;margin-top:8px;opacity:.85}
+.main{height:calc(100vh - 112px)}
+@media(max-width:1100px){.main{height:auto}}

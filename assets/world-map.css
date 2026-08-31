@@ -1,0 +1,5 @@
+/* Phase D — land polygons */
+.land-poly{transition:fill-opacity .35s,filter .35s}
+.land-poly:hover{stroke:#fff!important;stroke-width:1.2!important;filter:brightness(1.2)}
+.land-poly.high-intensity{animation:pulseGlow 3.2s ease-in-out infinite}
+.land-poly.fading{filter:saturate(.55) brightness(.9)}

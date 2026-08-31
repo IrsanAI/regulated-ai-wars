@@ -29,6 +29,11 @@
     };
   }
 
+  function intensityOpacity(intensity) {
+    const i = Math.max(0, Math.min(1, Number(intensity) || 0));
+    return 0.06 + Math.pow(i, 1.4) * 0.58;
+  }
+
   function gapLabel() {
     try {
       return typeof t === "function" ? t("board.gap") : "gap";
@@ -117,19 +122,24 @@
       const p = PLAYERS[data.dominant];
       if (!p) return;
       el.style.fill = p.hex;
-      el.style.opacity = 0.28 + data.intensity * 0.55;
+      el.style.opacity = intensityOpacity(data.intensity);
       const tr = data.trend || "stable";
-      el.classList.toggle("high-intensity", data.intensity >= 0.7 && tr === "up");
+      const intensity = data.intensity || 0;
+      el.classList.toggle("high-intensity", intensity >= 0.7 && tr === "up");
       el.classList.toggle("fading", tr === "down");
+      el.classList.toggle("low-intensity", intensity < 0.35);
       el.onclick = () => showGeoDetail(id);
       const [cx, cy] = CENTROIDS[id] || [0, 0];
       const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
       g.setAttribute("class", "beacon");
+      g.setAttribute("opacity", intensity < 0.35 ? "0.55" : "1");
       g.innerHTML = `<circle class="beacon-ring${
-        tr === "up" ? " pulse" : ""
-      }" cx="${cx}" cy="${cy}" r="4" stroke="${p.hex}"/><circle class="beacon-core" cx="${cx}" cy="${cy}" r="3.2" fill="${p.hex}"/>`;
+        tr === "up" && intensity >= 0.55 ? " pulse" : ""
+      }" cx="${cx}" cy="${cy}" r="4" stroke="${p.hex}"/><circle class="beacon-core" cx="${cx}" cy="${cy}" r="${
+        intensity < 0.35 ? 2.2 : 3.2
+      }" fill="${p.hex}"/>`;
       beacons.appendChild(g);
-      if (tr === "up" || tr === "down") {
+      if ((tr === "up" || tr === "down") && intensity >= 0.4) {
         const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
         label.setAttribute("x", cx + 10);
         label.setAttribute("y", cy + 4);
@@ -178,7 +188,6 @@
     else body.appendChild(chip);
   };
 
-  // Inject minimal i18n fallbacks
   if (typeof I18N !== "undefined") {
     if (I18N.en) {
       I18N.en["board.gap"] = I18N.en["board.gap"] || "gap";
@@ -187,7 +196,8 @@
         I18N.en["estimate.banner"] ||
         "Relative estimates · not market share · not live telemetry";
       I18N.en["estimate.short"] =
-        I18N.en["estimate.short"] || "Relative estimates only";
+        I18N.en["estimate.short"] ||
+        "Theater footprint · not ownership · not market share";
       I18N.en["nav.sim"] = "Demo drift";
     }
     if (I18N.de) {
@@ -197,12 +207,12 @@
         I18N.de["estimate.banner"] ||
         "Relative Schätzungen · kein Marktanteil · keine Telemetrie";
       I18N.de["estimate.short"] =
-        I18N.de["estimate.short"] || "Nur relative Schätzungen";
+        I18N.de["estimate.short"] ||
+        "Theater-Fußabdruck · kein Besitz · kein Marktanteil";
       I18N.de["nav.sim"] = "Demo-Drift";
     }
   }
 
-  // Re-render once DOM + snapshot ready
   function refresh() {
     try {
       if (typeof renderBoard === "function") renderBoard();
@@ -217,7 +227,6 @@
   } else {
     setTimeout(refresh, 80);
   }
-  // After external snapshot
   const prev = window.loadExternalSnapshot;
   if (typeof prev === "function") {
     window.loadExternalSnapshot = async function () {

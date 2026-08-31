@@ -42,6 +42,11 @@
     <h2 data-i18n="panel.players">Big Players & Contenders</h2>
     <div id="playersList"></div>
     <div style="margin-top:14px"><h2 data-i18n="panel.pipeline">Off-Board / Pipeline</h2><div class="pipeline" id="pipeline"></div></div>
+    <div class="changes-box" id="changesBox">
+      <h2 data-i18n="panel.changes">What changed</h2>
+      <p class="changes-vs" id="changesHeadline" data-i18n="changes.vs">vs previous board</p>
+      <div id="changesList" class="changes-list"></div>
+    </div>
     <div class="cycle-box" id="cycleBox">
       <h2 data-i18n="cycle.title">Data cycle</h2>
       <p class="cycle-how" data-i18n-html="cycle.how"></p>
@@ -142,5 +147,6 @@
 <div class="modal" id="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
 <script src="assets/app.js"></script>
 <script src="assets/doctrine.js"></script>
+<script src="assets/changes.js"></script>
 </body>
 </html>

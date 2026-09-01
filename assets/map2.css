@@ -1,0 +1,52 @@
+/* Map v2 — node signal board (preview) */
+.map2-panel{
+  position:relative;
+  flex:1;
+  min-height:280px;
+  background:#10141c;
+  border:1px solid rgba(140,160,190,.14);
+  border-radius:8px;
+  overflow:hidden;
+}
+.map2-panel svg{display:block;width:100%;height:100%;min-height:280px}
+.map2-scan{
+  position:absolute;top:0;bottom:0;width:120px;
+  background:linear-gradient(90deg,transparent,rgba(120,190,255,.45),transparent);
+  opacity:.28;pointer-events:none;mix-blend-mode:screen;
+  animation:map2sweep 9s linear infinite;
+}
+@keyframes map2sweep{0%{transform:translateX(-120px)}100%{transform:translateX(110%)}}
+.map2-grid{stroke:rgba(140,160,190,.09);stroke-width:1}
+.map2-dot{fill:rgba(150,165,190,.22)}
+.map2-node{cursor:pointer}
+.map2-node:focus-visible{outline:1px solid #8b93a6;outline-offset:3px}
+.map2-label{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9px;fill:#8b93a6}
+.map2-ticker{
+  margin-top:8px;padding:8px 10px;border-radius:6px;
+  background:#0a0d13;border:1px solid rgba(140,160,190,.14);
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.7rem;
+  color:#8b93a6;line-height:1.55;max-height:88px;overflow-y:auto
+}
+.map2-ticker .pos{color:#7fd88f}
+.map2-ticker .tag{color:#5b6272}
+.map2-detail{
+  margin-top:8px;min-height:56px;padding:10px 12px;border-radius:6px;
+  background:#10141c;border:1px solid rgba(140,160,190,.14);
+  font-size:.78rem;color:#8b93a6
+}
+.map2-detail .d-title{color:#e2e6ee;font-weight:600;font-size:.85rem;margin-bottom:4px}
+.map2-detail .d-meta{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.65rem;color:#5b6272;margin-top:6px}
+.map2-conf{
+  display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:8px;
+  font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.62rem;color:#5b6272
+}
+.map2-banner{
+  font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;
+  color:#5b6272;margin-bottom:6px
+}
+.world-view.map2-active .world-svg-wrap,
+.world-view.map2-active .intensity-bar,
+.world-view.map2-active .world-estimate,
+.world-view.map2-active .world-legend{display:none!important}
+.world-view.map2-active .map2-root{display:flex;flex-direction:column;flex:1;min-height:0}
+.map2-root{display:none}

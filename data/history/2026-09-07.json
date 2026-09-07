@@ -1,0 +1,418 @@
+{
+  "meta": {
+    "snapshotDate": "2026-09-07",
+    "note": "Google gains in Legal and Finance; Microsoft strengthens Government; specialist rises in Life Sciences; OpenAI loses share amid lawsuit",
+    "version": "0.4.2"
+  },
+  "players": {
+    "google": {
+      "id": "google",
+      "name": "Google",
+      "short": "G",
+      "hex": "#4285F4",
+      "role": "Hyperscaler – Industry Solutions",
+      "momentum": "up"
+    },
+    "microsoft": {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "short": "MS",
+      "hex": "#F25022",
+      "role": "Hyperscaler – Copilot Ecosystem",
+      "momentum": "stable"
+    },
+    "anthropic": {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "short": "A",
+      "hex": "#C15F3C",
+      "role": "Foundation Lab – Enterprise LLM",
+      "momentum": "up"
+    },
+    "openai": {
+      "id": "openai",
+      "name": "OpenAI",
+      "short": "OAI",
+      "hex": "#10A37F",
+      "role": "Foundation Lab",
+      "momentum": "down"
+    },
+    "aws": {
+      "id": "aws",
+      "name": "AWS",
+      "short": "AWS",
+      "hex": "#FF9900",
+      "role": "Hyperscaler – Bedrock",
+      "momentum": "stable"
+    },
+    "specialist": {
+      "id": "specialist",
+      "name": "Vertical Specialists",
+      "short": "VS",
+      "hex": "#A855F7",
+      "role": "Harvey, Healthcare AI etc.",
+      "momentum": "up"
+    },
+    "ibm": {
+      "id": "ibm",
+      "name": "IBM / Governance",
+      "short": "IBM",
+      "hex": "#0F62FE",
+      "role": "Governance-first",
+      "momentum": "stable"
+    }
+  },
+  "territories": [
+    {
+      "id": "legal",
+      "name": "Legal",
+      "meta": "Contracts • Research • Compliance",
+      "status": "hot",
+      "influence": {
+        "google": 40,
+        "microsoft": 31,
+        "specialist": 21,
+        "anthropic": 7,
+        "openai": 1
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "up",
+        "specialist": "down",
+        "anthropic": "down",
+        "openai": "down"
+      },
+      "note": "D+2: Additional confirmation via launch customers + deep connectors (iManage, Harvey, NetDocuments etc.). Google continues to close the gap."
+    },
+    {
+      "id": "finance",
+      "name": "Financial Services",
+      "meta": "Capital Markets • KYC • Risk",
+      "status": "hot",
+      "influence": {
+        "google": 39,
+        "microsoft": 30,
+        "anthropic": 12,
+        "openai": 7,
+        "aws": 5,
+        "specialist": 7
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "down",
+        "anthropic": "stable",
+        "openai": "down",
+        "aws": "down",
+        "specialist": "up"
+      },
+      "note": "D+2: Financial Research agent + named design partners (Deutsche Bank, CME) reinforce Google’s upward pressure."
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare",
+      "meta": "EHR • Documentation • Prior Auth",
+      "status": "hot",
+      "influence": {
+        "microsoft": 33,
+        "specialist": 25,
+        "google": 18,
+        "anthropic": 12,
+        "openai": 8,
+        "ibm": 4
+      },
+      "trend": {
+        "google": "stable",
+        "microsoft": "stable",
+        "specialist": "stable",
+        "anthropic": "stable",
+        "openai": "down",
+        "ibm": "stable"
+      },
+      "note": "Still HOT. Roadmap confirmation keeps Google positioned as near-term entrant."
+    },
+    {
+      "id": "lifesci",
+      "name": "Life Sciences",
+      "meta": "GxP • R&D • Regulatory",
+      "status": "contested",
+      "influence": {
+        "google": 21,
+        "microsoft": 23,
+        "specialist": 22,
+        "anthropic": 15,
+        "ibm": 12,
+        "openai": 7
+      },
+      "trend": {
+        "google": "down",
+        "microsoft": "down",
+        "specialist": "up",
+        "anthropic": "stable",
+        "ibm": "stable",
+        "openai": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "insurance",
+      "name": "Insurance",
+      "meta": "Underwriting • Claims • Compliance",
+      "status": "normal",
+      "influence": {
+        "microsoft": 35,
+        "google": 17,
+        "anthropic": 12,
+        "aws": 12,
+        "openai": 9,
+        "specialist": 15
+      },
+      "trend": {
+        "microsoft": "stable",
+        "google": "up",
+        "anthropic": "stable",
+        "aws": "stable",
+        "openai": "stable",
+        "specialist": "down"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "gov",
+      "name": "Government",
+      "meta": "Case Mgmt • Security • Citizens",
+      "status": "normal",
+      "influence": {
+        "microsoft": 41,
+        "google": 19,
+        "ibm": 15,
+        "aws": 11,
+        "anthropic": 10,
+        "openai": 4
+      },
+      "trend": {
+        "microsoft": "up",
+        "google": "stable",
+        "ibm": "stable",
+        "aws": "stable",
+        "anthropic": "stable",
+        "openai": "down"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "profsvcs",
+      "name": "Professional Services",
+      "meta": "Consulting • Audit • Tax",
+      "status": "contested",
+      "influence": {
+        "microsoft": 37,
+        "google": 21,
+        "anthropic": 17,
+        "openai": 10,
+        "specialist": 10,
+        "aws": 5
+      },
+      "trend": {
+        "microsoft": "up",
+        "google": "down",
+        "anthropic": "up",
+        "openai": "down",
+        "specialist": "up",
+        "aws": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "retail",
+      "name": "Retail",
+      "meta": "Customer Data • Supply • Compliance",
+      "status": "normal",
+      "influence": {
+        "google": 27,
+        "microsoft": 29,
+        "aws": 20,
+        "openai": 10,
+        "anthropic": 8,
+        "specialist": 6
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "stable",
+        "aws": "stable",
+        "openai": "stable",
+        "anthropic": "stable",
+        "specialist": "down"
+      },
+      "note": "Still on Google roadmap. No material new signal this cycle."
+    }
+  ],
+  "geoDominance": {
+    "na": {
+      "dominant": "microsoft",
+      "intensity": 0.78,
+      "trend": "stable",
+      "note": "Strongest public enterprise density (Copilot/Azure). Relative footprint — not ownership."
+    },
+    "sa": {
+      "dominant": "microsoft",
+      "intensity": 0.28,
+      "trend": "stable",
+      "note": "Thin public signal; low-confidence footprint only."
+    },
+    "eu": {
+      "dominant": "microsoft",
+      "intensity": 0.58,
+      "trend": "stable",
+      "note": "Enterprise density moderate-high; Google regulated push keeps pressure."
+    },
+    "af": {
+      "dominant": "microsoft",
+      "intensity": 0.18,
+      "trend": "stable",
+      "note": "Very thin public evidence — dim on purpose; not a conquest claim."
+    },
+    "as": {
+      "dominant": "google",
+      "intensity": 0.7,
+      "trend": "up",
+      "note": "Google-weighted industry narrative; relative footprint."
+    },
+    "oc": {
+      "dominant": "microsoft",
+      "intensity": 0.35,
+      "trend": "stable",
+      "note": "Moderate enterprise presence; limited vertical signal depth."
+    }
+  },
+  "pipeline": [
+    "Healthcare (Google) — near-term",
+    "Life Sciences (Google)",
+    "Retail (Google)",
+    "More Prof. Services",
+    "Insurance depth",
+    "Gov vertical agents",
+    "Legal AI agents (Google)"
+  ],
+  "events": [
+    {
+      "time": "2026-09-06",
+      "text": "MSCI integrates Gemini Enterprise data capabilities for Financial Services"
+    },
+    "",
+    {
+      "time": "2026-09-05",
+      "text": "Seattle Times and Newsday sue OpenAI and Microsoft over copyright infringement"
+    },
+    "",
+    {
+      "time": "2026-09-04",
+      "text": "Google Cloud launches Gemini Enterprise for Financial and Legal sectors"
+    },
+    "",
+    {
+      "time": "2026-09-03",
+      "text": "FlowX.AI joins Google Cloud Marketplace to advance specialized AI agents"
+    },
+    "",
+    {
+      "time": "2026-09-01",
+      "text": "Google Cloud extends industry AI push with Gemini Enterprise for Legal"
+    }
+  ],
+  "movers": [
+    {
+      "player": "google",
+      "territory": "legal",
+      "trend": "up",
+      "delta": 3,
+      "label": "Legal launch and deep connectors boost share"
+    },
+    {
+      "player": "microsoft",
+      "territory": "legal",
+      "trend": "up",
+      "delta": 1,
+      "label": "Relativity & Descrybe integrations add share"
+    },
+    "",
+    {
+      "player": "specialist",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -2,
+      "label": "Share ceded to Google"
+    },
+    "",
+    {
+      "player": "anthropic",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -1,
+      "label": "Reduced share as Google gains"
+    },
+    "",
+    {
+      "player": "openai",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -1,
+      "label": "Reduced share amid lawsuit"
+    },
+    "",
+    {
+      "player": "google",
+      "territory": "finance",
+      "trend": "up",
+      "delta": 1,
+      "label": "MSCI integration reinforces momentum"
+    },
+    "",
+    {
+      "player": "microsoft",
+      "territory": "finance",
+      "trend": "down",
+      "delta": -1,
+      "label": "Competitive pressure from Google"
+    },
+    "",
+    {
+      "player": "specialist",
+      "territory": "finance",
+      "trend": "up",
+      "delta": 1,
+      "label": "FlowX marketplace partnership"
+    },
+    "",
+    {
+      "player": "openai",
+      "territory": "finance",
+      "trend": "down",
+      "delta": -1,
+      "label": "Share erosion due to lawsuit"
+    },
+    "",
+    {
+      "player": "specialist",
+      "territory": "lifesci",
+      "trend": "up",
+      "delta": 2,
+      "label": "FlowX partnership lifts specialist share"
+    },
+    "",
+    {
+      "player": "google",
+      "territory": "lifesci",
+      "trend": "down",
+      "delta": -1,
+      "label": "Share shift to specialists"
+    },
+    "",
+    {
+      "player": "microsoft",
+      "territory": "lifesci",
+      "trend": "down",
+      "delta": -1,
+      "label": "Share shift to specialists"
+    }
+  ]
+}

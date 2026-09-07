@@ -1,9 +1,9 @@
 {
   "provider": "groq",
   "model": "openai/gpt-oss-120b",
-  "snapshotDate": "2026-08-31",
+  "snapshotDate": "2026-09-07",
   "validation_errors": [],
   "ok": true,
   "had_signals": true,
-  "prompt_chars": 5888
+  "prompt_chars": 6125
 }

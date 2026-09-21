@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "snapshotDate": "2026-09-21",
+    "note": "Google gains in Legal, Finance, Healthcare; Microsoft strengthens Government and Professional Services; Anthropic makes modest gains in Legal and Government; specialist and OpenAI lose share.",
+    "version": "0.4.2"
+  },
+  "players": {
+    "google": {
+      "id": "google",
+      "name": "Google",
+      "short": "G",
+      "hex": "#4285F4",
+      "role": "Hyperscaler – Industry Solutions",
+      "momentum": "up"
+    },
+    "microsoft": {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "short": "MS",
+      "hex": "#F25022",
+      "role": "Hyperscaler – Copilot Ecosystem",
+      "momentum": "stable"
+    },
+    "anthropic": {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "short": "A",
+      "hex": "#C15F3C",
+      "role": "Foundation Lab – Enterprise LLM",
+      "momentum": "up"
+    },
+    "openai": {
+      "id": "openai",
+      "name": "OpenAI",
+      "short": "OAI",
+      "hex": "#10A37F",
+      "role": "Foundation Lab",
+      "momentum": "down"
+    },
+    "aws": {
+      "id": "aws",
+      "name": "AWS",
+      "short": "AWS",
+      "hex": "#FF9900",
+      "role": "Hyperscaler – Bedrock",
+      "momentum": "stable"
+    },
+    "specialist": {
+      "id": "specialist",
+      "name": "Vertical Specialists",
+      "short": "VS",
+      "hex": "#A855F7",
+      "role": "Harvey, Healthcare AI etc.",
+      "momentum": "up"
+    },
+    "ibm": {
+      "id": "ibm",
+      "name": "IBM / Governance",
+      "short": "IBM",
+      "hex": "#0F62FE",
+      "role": "Governance-first",
+      "momentum": "stable"
+    }
+  },
+  "territories": [
+    {
+      "id": "legal",
+      "name": "Legal",
+      "meta": "Contracts • Research • Compliance",
+      "status": "hot",
+      "influence": {
+        "google": 38,
+        "microsoft": 32,
+        "specialist": 19,
+        "anthropic": 9,
+        "openai": 2
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "up",
+        "specialist": "down",
+        "anthropic": "up",
+        "openai": "down"
+      },
+      "note": "D+2: Additional confirmation via launch customers + deep connectors (iManage, Harvey, NetDocuments etc.). Google continues to close the gap."
+    },
+    {
+      "id": "finance",
+      "name": "Financial Services",
+      "meta": "Capital Markets • KYC • Risk",
+      "status": "hot",
+      "influence": {
+        "google": 40,
+        "microsoft": 28,
+        "anthropic": 14,
+        "openai": 6,
+        "aws": 5,
+        "specialist": 7
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "down",
+        "anthropic": "up",
+        "openai": "down",
+        "aws": "stable",
+        "specialist": "down"
+      },
+      "note": "D+2: Financial Research agent + named design partners (Deutsche Bank, CME) reinforce Google’s upward pressure."
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare",
+      "meta": "EHR • Documentation • Prior Auth",
+      "status": "hot",
+      "influence": {
+        "google": 21,
+        "microsoft": 37,
+        "specialist": 20,
+        "anthropic": 11,
+        "openai": 7,
+        "ibm": 4
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "up",
+        "specialist": "down",
+        "anthropic": "down",
+        "openai": "down",
+        "ibm": "stable"
+      },
+      "note": "Still HOT. Roadmap confirmation keeps Google positioned as near-term entrant."
+    },
+    {
+      "id": "lifesci",
+      "name": "Life Sciences",
+      "meta": "GxP • R&D • Regulatory",
+      "status": "contested",
+      "influence": {
+        "google": 24,
+        "microsoft": 24,
+        "specialist": 18,
+        "anthropic": 15,
+        "ibm": 12,
+        "openai": 7
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "stable",
+        "specialist": "down",
+        "anthropic": "stable",
+        "ibm": "stable",
+        "openai": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "insurance",
+      "name": "Insurance",
+      "meta": "Underwriting • Claims • Compliance",
+      "status": "normal",
+      "influence": {
+        "microsoft": 37,
+        "google": 15,
+        "anthropic": 12,
+        "aws": 12,
+        "openai": 9,
+        "specialist": 15
+      },
+      "trend": {
+        "microsoft": "up",
+        "google": "down",
+        "anthropic": "stable",
+        "aws": "stable",
+        "openai": "stable",
+        "specialist": "down"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "gov",
+      "name": "Government",
+      "meta": "Case Mgmt • Security • Citizens",
+      "status": "normal",
+      "influence": {
+        "microsoft": 43,
+        "google": 18,
+        "ibm": 11,
+        "aws": 11,
+        "anthropic": 12,
+        "openai": 5
+      },
+      "trend": {
+        "microsoft": "up",
+        "google": "down",
+        "ibm": "down",
+        "aws": "stable",
+        "anthropic": "up",
+        "openai": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "profsvcs",
+      "name": "Professional Services",
+      "meta": "Consulting • Audit • Tax",
+      "status": "contested",
+      "influence": {
+        "microsoft": 39,
+        "google": 20,
+        "anthropic": 18,
+        "openai": 10,
+        "specialist": 8,
+        "aws": 5
+      },
+      "trend": {
+        "microsoft": "up",
+        "google": "down",
+        "anthropic": "up",
+        "openai": "stable",
+        "specialist": "stable",
+        "aws": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "retail",
+      "name": "Retail",
+      "meta": "Customer Data • Supply • Compliance",
+      "status": "normal",
+      "influence": {
+        "google": 25,
+        "microsoft": 31,
+        "aws": 18,
+        "openai": 10,
+        "anthropic": 8,
+        "specialist": 8
+      },
+      "trend": {
+        "google": "down",
+        "microsoft": "up",
+        "aws": "down",
+        "openai": "stable",
+        "anthropic": "stable",
+        "specialist": "stable"
+      },
+      "note": "Still on Google roadmap. No material new signal this cycle."
+    }
+  ],
+  "geoDominance": {
+    "na": {
+      "dominant": "microsoft",
+      "intensity": 0.8,
+      "trend": "up",
+      "note": "Strongest public enterprise density (Copilot/Azure). Relative footprint — not ownership."
+    },
+    "sa": {
+      "dominant": "microsoft",
+      "intensity": 0.28,
+      "trend": "stable",
+      "note": "Thin public signal; low-confidence footprint only."
+    },
+    "eu": {
+      "dominant": "microsoft",
+      "intensity": 0.58,
+      "trend": "stable",
+      "note": "Enterprise density moderate-high; Google regulated push keeps pressure."
+    },
+    "af": {
+      "dominant": "microsoft",
+      "intensity": 0.18,
+      "trend": "stable",
+      "note": "Very thin public evidence — dim on purpose; not a conquest claim."
+    },
+    "as": {
+      "dominant": "google",
+      "intensity": 0.68,
+      "trend": "up",
+      "note": "Google-weighted industry narrative; relative footprint."
+    },
+    "oc": {
+      "dominant": "microsoft",
+      "intensity": 0.35,
+      "trend": "stable",
+      "note": "Moderate enterprise presence; limited vertical signal depth."
+    }
+  },
+  "pipeline": [
+    "Healthcare (Google) — near-term",
+    "Financial Services (Google)",
+    "Professional Services (Microsoft)",
+    "Government AI agents (Microsoft)",
+    "Life Sciences (Google)"
+  ],
+  "events": [
+    {
+      "time": "2026-09-17",
+      "text": "Google expands AI‑driven health platform partnership in the US."
+    },
+    {
+      "time": "2026-09-17",
+      "text": "Google Cloud launches Gemini Enterprise for Financial Services."
+    },
+    {
+      "time": "2026-09-17",
+      "text": "Microsoft reveals 40,000 enterprise agents powering AI across verticals."
+    },
+    {
+      "time": "2026-09-15",
+      "text": "Microsoft 365 G7: Intelligence + Trust released for Government and Legal markets."
+    },
+    {
+      "time": "2026-09-21",
+      "text": "Claude compliance beta enables enterprise compliance teams to pull Chrome transcripts."
+    }
+  ],
+  "movers": [
+    {
+      "player": "google",
+      "territory": "healthcare",
+      "trend": "up",
+      "delta": 5,
+      "label": "US health platform partnership"
+    },
+    {
+      "player": "microsoft",
+      "territory": "gov",
+      "trend": "up",
+      "delta": 3,
+      "label": "365 G7 trust suite"
+    },
+    {
+      "player": "anthropic",
+      "territory": "legal",
+      "trend": "up",
+      "delta": 1,
+      "label": "Claude compliance beta gains legal share"
+    },
+    {
+      "player": "specialist",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -4,
+      "label": "Share ceded to Google"
+    },
+    {
+      "player": "openai",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -1,
+      "label": "Reduced share as Google gains"
+    }
+  ]
+}

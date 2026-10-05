@@ -1,7 +1,7 @@
 {
   "meta": {
-    "snapshotDate": "2026-08-31",
-    "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services. Geo paint recalibrated: intensity = confidence-weighted footprint, not land ownership.",
+    "snapshotDate": "2026-10-05",
+    "note": "Google gains in legal, finance and insurance; Microsoft boosts healthcare; Anthropic academy lifts its influence across several verticals; specialist loses share in multiple territories.",
     "version": "0.4.2"
   },
   "players": {
@@ -69,17 +69,17 @@
       "meta": "Contracts • Research • Compliance",
       "status": "hot",
       "influence": {
-        "google": 37,
+        "google": 40,
         "microsoft": 30,
-        "specialist": 23,
-        "anthropic": 8,
-        "openai": 2
+        "specialist": 21,
+        "anthropic": 10,
+        "openai": 1
       },
       "trend": {
         "google": "up",
         "microsoft": "stable",
         "specialist": "down",
-        "anthropic": "down",
+        "anthropic": "up",
         "openai": "down"
       },
       "note": "D+2: Additional confirmation via launch customers + deep connectors (iManage, Harvey, NetDocuments etc.). Google continues to close the gap."
@@ -90,12 +90,12 @@
       "meta": "Capital Markets • KYC • Risk",
       "status": "hot",
       "influence": {
-        "google": 38,
+        "google": 42,
         "microsoft": 31,
         "anthropic": 12,
-        "openai": 8,
+        "openai": 7,
         "aws": 5,
-        "specialist": 6
+        "specialist": 3
       },
       "trend": {
         "google": "up",
@@ -113,8 +113,8 @@
       "meta": "EHR • Documentation • Prior Auth",
       "status": "hot",
       "influence": {
-        "microsoft": 33,
-        "specialist": 25,
+        "microsoft": 37,
+        "specialist": 23,
         "google": 18,
         "anthropic": 12,
         "openai": 8,
@@ -138,16 +138,16 @@
       "influence": {
         "google": 22,
         "microsoft": 24,
-        "specialist": 20,
-        "anthropic": 15,
+        "specialist": 18,
+        "anthropic": 18,
         "ibm": 12,
-        "openai": 7
+        "openai": 6
       },
       "trend": {
         "google": "up",
         "microsoft": "stable",
         "specialist": "down",
-        "anthropic": "stable",
+        "anthropic": "up",
         "ibm": "stable",
         "openai": "stable"
       },
@@ -160,19 +160,19 @@
       "status": "normal",
       "influence": {
         "microsoft": 35,
-        "google": 16,
+        "google": 20,
         "anthropic": 12,
         "aws": 12,
-        "openai": 9,
-        "specialist": 16
+        "openai": 8,
+        "specialist": 13
       },
       "trend": {
         "microsoft": "stable",
-        "google": "stable",
+        "google": "up",
         "anthropic": "stable",
         "aws": "stable",
-        "openai": "stable",
-        "specialist": "stable"
+        "openai": "down",
+        "specialist": "down"
       },
       "note": "No material new signal this cycle."
     },
@@ -207,9 +207,9 @@
       "influence": {
         "microsoft": 37,
         "google": 22,
-        "anthropic": 17,
+        "anthropic": 20,
         "openai": 11,
-        "specialist": 8,
+        "specialist": 6,
         "aws": 5
       },
       "trend": {
@@ -302,16 +302,16 @@
       "text": "Google expands Gemini Enterprise to Financial Services with research agent and design partners."
     },
     {
-      "time": "2026-08-31",
-      "text": "Microsoft offers 60% discount on Dragon Copilot, accelerating healthcare AI adoption."
+      "time": "2026-09-28",
+      "text": "Google Cloud launches Gemini Enterprise for insurance and financial services via Beinsure partnership."
     },
     {
-      "time": "2026-08-27",
-      "text": "D+2 refinement: Additional public detail on Gemini Enterprise Legal/FS launch customers, connectors and governance claims confirms Google momentum."
+      "time": "2026-09-30",
+      "text": "Microsoft announces AI acceleration program for healthcare, boosting human capacity."
     },
     {
-      "time": "2026-08-26",
-      "text": "D+1 snapshot: Google closes Legal gap with Microsoft; Healthcare elevated to HOT as market prices next vertical."
+      "time": "2026-10-02",
+      "text": "Anthropic commits $100M to Claude Frontier Academy to train 10,000 enterprise AI engineers."
     }
   ],
   "movers": [
@@ -319,8 +319,8 @@
       "player": "google",
       "territory": "legal",
       "trend": "up",
-      "delta": 4,
-      "label": "Launch customers + deep legal connectors confirm gap‑closing"
+      "delta": 3,
+      "label": "Continued legal adoption, deep connectors"
     },
     {
       "player": "specialist",
@@ -330,102 +330,102 @@
       "label": "Share ceded to Google"
     },
     {
+      "player": "anthropic",
+      "territory": "legal",
+      "trend": "up",
+      "delta": 2,
+      "label": "Claude Frontier Academy drives enterprise uptake"
+    },
+    {
       "player": "openai",
       "territory": "legal",
       "trend": "down",
       "delta": -1,
-      "label": "Reduced share as Google gains"
-    },
-    {
-      "player": "anthropic",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -1,
-      "label": "Reduced share as Google gains"
+      "label": "Share erosion as competitors expand"
     },
     {
       "player": "google",
       "territory": "finance",
       "trend": "up",
       "delta": 4,
-      "label": "Financial research agent + design partners reinforce momentum"
-    },
-    {
-      "player": "microsoft",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "aws",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
+      "label": "Gemini Enterprise for insurance/finance gains customers"
     },
     {
       "player": "specialist",
       "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "openai",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -1,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "microsoft",
-      "territory": "healthcare",
-      "trend": "up",
-      "delta": 4,
-      "label": "60% Dragon Copilot discount drives adoption"
-    },
-    {
-      "player": "specialist",
-      "territory": "healthcare",
       "trend": "down",
       "delta": -3,
-      "label": "Share ceded to Microsoft"
+      "label": "Specialist loses share to Google"
     },
     {
-      "player": "google",
-      "territory": "healthcare",
+      "player": "openai",
+      "territory": "finance",
       "trend": "down",
       "delta": -1,
-      "label": "Relative loss as Microsoft gains"
+      "label": "Share erosion"
+    },
+    {
+      "player": "microsoft",
+      "territory": "healthcare",
+      "trend": "up",
+      "delta": 4,
+      "label": "Healthcare AI acceleration program"
+    },
+    {
+      "player": "specialist",
+      "territory": "healthcare",
+      "trend": "down",
+      "delta": -2,
+      "label": "Specialist loses share to Microsoft"
     },
     {
       "player": "google",
+      "territory": "insurance",
+      "trend": "up",
+      "delta": 4,
+      "label": "Insurance vertical Gemini Enterprise rollout"
+    },
+    {
+      "player": "specialist",
+      "territory": "insurance",
+      "trend": "down",
+      "delta": -3,
+      "label": "Specialist loses share"
+    },
+    {
+      "player": "openai",
+      "territory": "insurance",
+      "trend": "down",
+      "delta": -1,
+      "label": "Share erosion"
+    },
+    {
+      "player": "anthropic",
       "territory": "lifesci",
       "trend": "up",
-      "delta": 2,
-      "label": "Google pushes Life Sciences pipeline"
+      "delta": 3,
+      "label": "Academy boosts talent pipeline"
     },
     {
       "player": "specialist",
       "territory": "lifesci",
       "trend": "down",
       "delta": -2,
-      "label": "Share ceded to Google"
+      "label": "Specialist loses share"
     },
     {
       "player": "anthropic",
       "territory": "profsvcs",
       "trend": "up",
-      "delta": 2,
-      "label": "Claude for Teachers Enterprise expands Anthropic reach"
+      "delta": 3,
+      "label": "Academy drives professional services adoption"
     },
     {
       "player": "specialist",
       "territory": "profsvcs",
       "trend": "down",
       "delta": -2,
-      "label": "Share ceded to Anthropic"
+      "label": "Specialist loses share"
     }
   ]
 }

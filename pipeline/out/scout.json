@@ -1,63 +1,63 @@
 {
-  "scoutedAt": "2026-08-31T15:28:59Z",
+  "scoutedAt": "2026-10-12T14:44:06Z",
   "queryCount": 8,
   "hitCount": 8,
   "errors": [],
   "items": [
     {
-      "title": "Google Cloud Launches Gemini Enterprise for Legal - Google Cloud Press Corner",
+      "title": "Zip US Collaborates with Google Cloud to Build AI-Native Product Factory with Gemini Enterprise - Google Cloud Press Corner",
       "source": "Google Cloud Press Corner",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPRmlZd053NG9sRl9sWlp6MU9xSGpRenBhVFR2QmRGV3E5Umo2ekxUY082dmEzZEFOVXF",
-      "published": "2026-08-25",
+      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPSXZ6SWZJb3haRGl3Rjh2RDktdWRXNEY2eUwtNzhqaFJDdGZnTEZxRHZBV0gydnFYckt",
+      "published": "2026-10-08",
       "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
     },
     {
-      "title": "Google Launches Gemini Enterprise for Legal - Artificial Lawyer",
-      "source": "Artificial Lawyer",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNM2JWOXNQU3p6c0hibzc3Q0xNRWE2cWlFTk8xZ09KVnhJRUt4RFRub09qZlo4VkhpTW9",
-      "published": "2026-08-25",
+      "title": "Google introduces Gemini agent as a universal AI agent for enterprise work - FoneArena.com",
+      "source": "FoneArena.com",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQUzZCSVFQd18tS09ua0xEUnRSSm1ZUGw2bGdXX291Q3YzbkIxZy1fa1hqNXNLZUhxRlN",
+      "published": "2026-10-08",
       "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
     },
     {
-      "title": "Google expands Gemini Enterprise AI platform for law firms, lawyers - Reuters",
-      "source": "Reuters",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZk81aGh3d2lJX0FucWpwclltdnRJd3RqNVpTWnhMeGNBU3FUeWRIby1lcEpQQ3NOT1V",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "How Google Cloud’s Gemini Enterprise Financial Push At Alphabet (GOOGL) Has Changed Its Investment Story - simplywall.st",
-      "source": "simplywall.st",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQS1BneTJZajVaWkpYRnB6UjlyeXJ3eTFWcFRTT3E4ZVFJRTgwdkIwMnNpOEdtNUt3WTk",
-      "published": "2026-08-31",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Microsoft’s 60% Dragon Copilot discount forces a new way to measure digital health ROI - MarketScale",
-      "source": "MarketScale",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNNVc0NGt2SzNnWlNVNHozQTNYV082aE5GOGo2Zm5WSnpfaDFQMm13a3JJaWlxOHVkQVJ",
-      "published": "2026-08-30",
+      "title": "Cooper Norcross Health pilots Microsoft AI tool to support nurses - NJBIZ",
+      "source": "NJBIZ",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9fVnVLSTBEVEZhdGY3Z05DaWxTUFJxTVpORTRUZzRJemx4bC0yc1JLektFNmpEZjhHbXV",
+      "published": "2026-10-07",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "County To Get Some AI Help Running Things - The Rhino Times of Greensboro -",
-      "source": "The Rhino Times of Greensboro -",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1RQzZyV25oTjdWOHRUMFNpM2dUa19qc1dUOVJBREFhLWlLRW5jQjgxOEVNYTBfRWtNUHd",
-      "published": "2026-08-29",
+      "title": "MLC School becomes first Australian school to deploy Security Copilot - Microsoft",
+      "source": "Microsoft",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOanlwTVNNMU1Pd2ZsV1pwU2NUS3cyYmZQdXh0eEFqamctNmsxMWNXSEk1N3BEYTFvdy1",
+      "published": "2026-10-03",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Microsoft Promises Copyright Protection for Copilot Customers - UC Today",
-      "source": "UC Today",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdU5QV19STGJkdUpxQ2ZoVjdieExIZ0twVXNfM3R5MlExVzBqZVppbERnSVFOTXZ4UHR",
-      "published": "2026-08-22",
+      "title": "MCIT, Microsoft review Copilot Adoption Programme across govt entities - The Peninsula Qatar",
+      "source": "The Peninsula Qatar",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQMzhHbHZ5VFZhUEtfZkt0Z0FtcDlSazJsUkdfZkxOT20xYlFmOGdyeFRRMW96TEltYkZ",
+      "published": "2026-10-12",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Anthropic opens free Claude for Teachers Enterprise access to U.S. schools and districts - EdTech Innovation Hub",
-      "source": "EdTech Innovation Hub",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMHBhQ0hkQngtZnVxUFU2a3hNUGxIVHZEYnRqWjBsRV9SeUllUlVxYTRDaUZQMTAxVXI",
-      "published": "2026-08-30",
+      "title": "Council expands AI use to improve services for residents - Bracknell News",
+      "source": "Bracknell News",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQaUVpWHhNU2ZqTUxXVDE3SU1iWVU3Z0pDU0xucWhJeENubFFsNF95SW9sc3NLeDFac2d",
+      "published": "2026-10-12",
+      "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
+    },
+    {
+      "title": "HCLTech, Anthropic to Expand Enterprise Agentic AI Deployments - Analytics India Magazine",
+      "source": "Analytics India Magazine",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQdG93SHRPNXJVTk1WUUo4U1ZUbjg4QUJXR3NhWXZ4Q0w1T05iS2VKem03eHdWUk1wVE5",
+      "published": "2026-10-12",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "HCLTech To Build Agentic AI Solutions With Anthropic's Claude - Rediff",
+      "source": "Rediff",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxObWQtN3hpb3Yza2pkRVd0TnF3dnVJZG1JaDFhQkUyT0x2R1VSbnpTUUt6N2NoeTVLMm1",
+      "published": "2026-10-12",
       "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
     }
   ]

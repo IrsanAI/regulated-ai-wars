@@ -27,7 +27,14 @@
       "label": "Signal draft \u2014 2026-08-31",
       "file": "2026-08-31.json",
       "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services."
+    },
+    {
+      "id": "2026-10-19",
+      "date": "2026-10-19",
+      "label": "Signal draft \u2014 2026-10-19",
+      "file": "2026-10-19.json",
+      "note": "Microsoft\u2019s Copilot for Legal lifts its legal share; Google cedes ground. Anthropic\u2019s Claude enterprise, code\u2011review GA and Workday partnership boost its influence in Finance and Professional Services. Updated movers and events reflect thes"
     }
   ],
-  "current": "2026-08-31"
+  "current": "2026-10-19"
 }

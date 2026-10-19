@@ -1,63 +1,63 @@
 {
-  "scoutedAt": "2026-08-31T15:28:59Z",
+  "scoutedAt": "2026-10-19T12:29:05Z",
   "queryCount": 8,
   "hitCount": 8,
   "errors": [],
   "items": [
     {
-      "title": "Google Cloud Launches Gemini Enterprise for Legal - Google Cloud Press Corner",
-      "source": "Google Cloud Press Corner",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPRmlZd053NG9sRl9sWlp6MU9xSGpRenBhVFR2QmRGV3E5Umo2ekxUY082dmEzZEFOVXF",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
+      "title": "Microsoft Launches Copilot for Legal, Becoming the Fourth AI Giant in Five Months to Build Out a Legal Vertical - LawSites",
+      "source": "LawSites",
+      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQcUZTeHFON0FiQ0pLTm51eGx1YXVsT3VHOHdMTmJVbFRVVVUyNzZCVnpUbmxPaXR3SkI",
+      "published": "2026-10-15",
+      "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Google Launches Gemini Enterprise for Legal - Artificial Lawyer",
+      "title": "Microsoft introduces Copilot for legal with circa 20 purpose-built legal skills - Legal IT Insider",
+      "source": "Legal IT Insider",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQYnB6Vk50amVmN0QyQUliVlZaZE1lR01QVXVVUTh3RmlKWlNYdEpuQ3cyT1FEMjZBZmY",
+      "published": "2026-10-15",
+      "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
+    },
+    {
+      "title": "Microsoft Launches Copilot for Legal – Brace for Impact! - Artificial Lawyer",
       "source": "Artificial Lawyer",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNM2JWOXNQU3p6c0hibzc3Q0xNRWE2cWlFTk8xZ09KVnhJRUt4RFRub09qZlo4VkhpTW9",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Google expands Gemini Enterprise AI platform for law firms, lawyers - Reuters",
-      "source": "Reuters",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZk81aGh3d2lJX0FucWpwclltdnRJd3RqNVpTWnhMeGNBU3FUeWRIby1lcEpQQ3NOT1V",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "How Google Cloud’s Gemini Enterprise Financial Push At Alphabet (GOOGL) Has Changed Its Investment Story - simplywall.st",
-      "source": "simplywall.st",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQS1BneTJZajVaWkpYRnB6UjlyeXJ3eTFWcFRTT3E4ZVFJRTgwdkIwMnNpOEdtNUt3WTk",
-      "published": "2026-08-31",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Microsoft’s 60% Dragon Copilot discount forces a new way to measure digital health ROI - MarketScale",
-      "source": "MarketScale",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNNVc0NGt2SzNnWlNVNHozQTNYV082aE5GOGo2Zm5WSnpfaDFQMm13a3JJaWlxOHVkQVJ",
-      "published": "2026-08-30",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNRENsbnZuMnE1bUdIbzZZTGk4czRMLU5SUHduR3Y3cFhZY3NIajJZaUx1aF9hbFBSaGZ",
+      "published": "2026-10-15",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "County To Get Some AI Help Running Things - The Rhino Times of Greensboro -",
-      "source": "The Rhino Times of Greensboro -",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1RQzZyV25oTjdWOHRUMFNpM2dUa19qc1dUOVJBREFhLWlLRW5jQjgxOEVNYTBfRWtNUHd",
-      "published": "2026-08-29",
+      "title": "Microsoft Launches Legal Skills Within Copilot, Furthering Move Into Legal Tech - Law.com",
+      "source": "Law.com",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOVnZhTVNQWUhNTU1INWtYdGlGLVFGVmdRNk5TaW4xeHNhR1RlbVRVMDhiUlZxaG9paXN",
+      "published": "2026-10-15",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Microsoft Promises Copyright Protection for Copilot Customers - UC Today",
-      "source": "UC Today",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdU5QV19STGJkdUpxQ2ZoVjdieExIZ0twVXNfM3R5MlExVzBqZVppbERnSVFOTXZ4UHR",
-      "published": "2026-08-22",
-      "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
+      "title": "Anthropic: Claude, Enterprise AI Agents and $965bn Valuation - AI Magazine",
+      "source": "AI Magazine",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQX094N1RhQldFWjZOUkwzUGVGUUVNNDlobGlRLTZGMUxvVXB0WGJXUjE2Zl8tRGt1b2h",
+      "published": "2026-10-19",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
     },
     {
-      "title": "Anthropic opens free Claude for Teachers Enterprise access to U.S. schools and districts - EdTech Innovation Hub",
-      "source": "EdTech Innovation Hub",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMHBhQ0hkQngtZnVxUFU2a3hNUGxIVHZEYnRqWjBsRV9SeUllUlVxYTRDaUZQMTAxVXI",
-      "published": "2026-08-30",
+      "title": "Some Accenture employees spent $1,000 a month on Anthropic’s Claude AI, company will now centrally fund $ - The Times of India",
+      "source": "The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMiswJBVV95cUxOLXpERy1xQkZsdG5FbVJaVENMLVMyZXNUbWNqb2ZHb2hkUkRBdWNwclQ0LTF0RkE0V2t",
+      "published": "2026-10-17",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "Anthropic makes Code Review generally available, with $50,000 in credits attached - The Next Web",
+      "source": "The Next Web",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFAxYTh2YzlldTFFWDBDTnRIUEpQQXZkRkpWQWhnNVBOM0VHbl9zMzB4M1NMWW1UYVFPWVo",
+      "published": "2026-10-15",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "Workday and Anthropic Partner to Bring Claude AI Reasoning Into Enterprise HR and Finance Workflows - Konsulteer",
+      "source": "Konsulteer",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQbHFKWDhodE5kcnQzNDlhNGQ3ZEhDazVXZ2d0am1zNWtER2JNV1RyVG1scFA3VkVVSjY",
+      "published": "2026-10-15",
       "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
     }
   ]

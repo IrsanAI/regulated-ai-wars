@@ -1,7 +1,7 @@
 {
   "meta": {
-    "snapshotDate": "2026-08-31",
-    "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services. Geo paint recalibrated: intensity = confidence-weighted footprint, not land ownership.",
+    "snapshotDate": "2026-10-19",
+    "note": "Microsoft’s Copilot for Legal lifts its legal share; Google cedes ground. Anthropic’s Claude enterprise, code‑review GA and Workday partnership boost its influence in Finance and Professional Services. Updated movers and events reflect these shifts.",
     "version": "0.4.2"
   },
   "players": {
@@ -19,7 +19,7 @@
       "short": "MS",
       "hex": "#F25022",
       "role": "Hyperscaler – Copilot Ecosystem",
-      "momentum": "stable"
+      "momentum": "up"
     },
     "anthropic": {
       "id": "anthropic",
@@ -69,15 +69,15 @@
       "meta": "Contracts • Research • Compliance",
       "status": "hot",
       "influence": {
-        "google": 37,
-        "microsoft": 30,
-        "specialist": 23,
-        "anthropic": 8,
+        "google": 32,
+        "microsoft": 38,
+        "specialist": 21,
+        "anthropic": 7,
         "openai": 2
       },
       "trend": {
-        "google": "up",
-        "microsoft": "stable",
+        "google": "down",
+        "microsoft": "up",
         "specialist": "down",
         "anthropic": "down",
         "openai": "down"
@@ -90,20 +90,20 @@
       "meta": "Capital Markets • KYC • Risk",
       "status": "hot",
       "influence": {
-        "google": 38,
-        "microsoft": 31,
-        "anthropic": 12,
+        "google": 36,
+        "microsoft": 29,
+        "anthropic": 16,
         "openai": 8,
         "aws": 5,
         "specialist": 6
       },
       "trend": {
-        "google": "up",
+        "google": "down",
         "microsoft": "down",
-        "anthropic": "stable",
-        "openai": "down",
-        "aws": "down",
-        "specialist": "down"
+        "anthropic": "up",
+        "openai": "stable",
+        "aws": "stable",
+        "specialist": "stable"
       },
       "note": "D+2: Financial Research agent + named design partners (Deutsche Bank, CME) reinforce Google’s upward pressure."
     },
@@ -206,15 +206,15 @@
       "status": "contested",
       "influence": {
         "microsoft": 37,
-        "google": 22,
-        "anthropic": 17,
+        "google": 20,
+        "anthropic": 19,
         "openai": 11,
         "specialist": 8,
         "aws": 5
       },
       "trend": {
         "microsoft": "up",
-        "google": "up",
+        "google": "down",
         "anthropic": "up",
         "openai": "stable",
         "specialist": "down",
@@ -285,7 +285,9 @@
     }
   },
   "pipeline": [
-    "Healthcare (Google) — near-term",
+    "Legal (Microsoft) — near‑term",
+    "Finance (Anthropic)",
+    "Healthcare (Google)",
     "Life Sciences (Google)",
     "Retail (Google)",
     "More Prof. Services",
@@ -294,134 +296,92 @@
   ],
   "events": [
     {
-      "time": "2026-08-31",
-      "text": "Google launches Gemini Enterprise for Legal, adding deep connectors and enterprise customers."
+      "time": "2026-10-15",
+      "text": "Microsoft launches Copilot for Legal with purpose‑built legal skills."
     },
     {
-      "time": "2026-08-31",
-      "text": "Google expands Gemini Enterprise to Financial Services with research agent and design partners."
+      "time": "2026-10-15",
+      "text": "Anthropic releases Claude Enterprise AI Agents targeting enterprise workflows."
     },
     {
-      "time": "2026-08-31",
-      "text": "Microsoft offers 60% discount on Dragon Copilot, accelerating healthcare AI adoption."
+      "time": "2026-10-15",
+      "text": "Anthropic makes Code Review generally available with $50k credits."
     },
     {
-      "time": "2026-08-27",
-      "text": "D+2 refinement: Additional public detail on Gemini Enterprise Legal/FS launch customers, connectors and governance claims confirms Google momentum."
+      "time": "2026-10-17",
+      "text": "Anthropic partners with Workday to embed Claude in HR and Finance workflows."
     },
     {
-      "time": "2026-08-26",
-      "text": "D+1 snapshot: Google closes Legal gap with Microsoft; Healthcare elevated to HOT as market prices next vertical."
+      "time": "2026-10-19",
+      "text": "Anthropic valued at $965bn after latest funding round."
     }
   ],
   "movers": [
     {
-      "player": "google",
+      "player": "microsoft",
       "territory": "legal",
       "trend": "up",
-      "delta": 4,
-      "label": "Launch customers + deep legal connectors confirm gap‑closing"
+      "delta": 8,
+      "label": "Copilot for Legal launch boosts share"
+    },
+    {
+      "player": "google",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -5,
+      "label": "Share ceded to Microsoft"
     },
     {
       "player": "specialist",
       "territory": "legal",
       "trend": "down",
-      "delta": -2,
-      "label": "Share ceded to Google"
-    },
-    {
-      "player": "openai",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -1,
-      "label": "Reduced share as Google gains"
+      "delta": -3,
+      "label": "Lost share to Microsoft"
     },
     {
       "player": "anthropic",
       "territory": "legal",
       "trend": "down",
       "delta": -1,
-      "label": "Reduced share as Google gains"
-    },
-    {
-      "player": "google",
-      "territory": "finance",
-      "trend": "up",
-      "delta": 4,
-      "label": "Financial research agent + design partners reinforce momentum"
-    },
-    {
-      "player": "microsoft",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "aws",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "specialist",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
+      "label": "Minor dip as Microsoft gains"
     },
     {
       "player": "openai",
-      "territory": "finance",
+      "territory": "legal",
       "trend": "down",
       "delta": -1,
-      "label": "Share shift to Google"
+      "label": "Share erosion amid Microsoft surge"
+    },
+    {
+      "player": "anthropic",
+      "territory": "finance",
+      "trend": "up",
+      "delta": 4,
+      "label": "Claude enterprise & Workday partnership expand finance footprint"
+    },
+    {
+      "player": "google",
+      "territory": "finance",
+      "trend": "down",
+      "delta": -2,
+      "label": "Share shift to Anthropic"
     },
     {
       "player": "microsoft",
-      "territory": "healthcare",
-      "trend": "up",
-      "delta": 4,
-      "label": "60% Dragon Copilot discount drives adoption"
-    },
-    {
-      "player": "specialist",
-      "territory": "healthcare",
-      "trend": "down",
-      "delta": -3,
-      "label": "Share ceded to Microsoft"
-    },
-    {
-      "player": "google",
-      "territory": "healthcare",
-      "trend": "down",
-      "delta": -1,
-      "label": "Relative loss as Microsoft gains"
-    },
-    {
-      "player": "google",
-      "territory": "lifesci",
-      "trend": "up",
-      "delta": 2,
-      "label": "Google pushes Life Sciences pipeline"
-    },
-    {
-      "player": "specialist",
-      "territory": "lifesci",
+      "territory": "finance",
       "trend": "down",
       "delta": -2,
-      "label": "Share ceded to Google"
+      "label": "Share shift to Anthropic"
     },
     {
       "player": "anthropic",
       "territory": "profsvcs",
       "trend": "up",
       "delta": 2,
-      "label": "Claude for Teachers Enterprise expands Anthropic reach"
+      "label": "Code Review GA boosts professional services presence"
     },
     {
-      "player": "specialist",
+      "player": "google",
       "territory": "profsvcs",
       "trend": "down",
       "delta": -2,

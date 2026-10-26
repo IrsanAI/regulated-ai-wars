@@ -1,7 +1,7 @@
 {
   "meta": {
-    "snapshotDate": "2026-08-31",
-    "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services. Geo paint recalibrated: intensity = confidence-weighted footprint, not land ownership.",
+    "snapshotDate": "2026-10-26",
+    "note": "Google gains modestly in Legal and Finance; Microsoft strengthens Legal, Government and Insurance; Anthropic surges in Finance, Healthcare, Professional Services and Government after enterprise contracts; OpenAI loses share in Legal, Finance and Government; Specialist declines in several verticals.",
     "version": "0.4.2"
   },
   "players": {
@@ -19,7 +19,7 @@
       "short": "MS",
       "hex": "#F25022",
       "role": "Hyperscaler – Copilot Ecosystem",
-      "momentum": "stable"
+      "momentum": "up"
     },
     "anthropic": {
       "id": "anthropic",
@@ -51,7 +51,7 @@
       "short": "VS",
       "hex": "#A855F7",
       "role": "Harvey, Healthcare AI etc.",
-      "momentum": "up"
+      "momentum": "down"
     },
     "ibm": {
       "id": "ibm",
@@ -69,15 +69,15 @@
       "meta": "Contracts • Research • Compliance",
       "status": "hot",
       "influence": {
-        "google": 37,
-        "microsoft": 30,
-        "specialist": 23,
-        "anthropic": 8,
-        "openai": 2
+        "google": 39,
+        "microsoft": 33,
+        "specialist": 20,
+        "anthropic": 7,
+        "openai": 1
       },
       "trend": {
         "google": "up",
-        "microsoft": "stable",
+        "microsoft": "up",
         "specialist": "down",
         "anthropic": "down",
         "openai": "down"
@@ -90,19 +90,19 @@
       "meta": "Capital Markets • KYC • Risk",
       "status": "hot",
       "influence": {
-        "google": 38,
-        "microsoft": 31,
-        "anthropic": 12,
-        "openai": 8,
-        "aws": 5,
-        "specialist": 6
+        "google": 37,
+        "microsoft": 30,
+        "anthropic": 16,
+        "openai": 6,
+        "aws": 7,
+        "specialist": 4
       },
       "trend": {
-        "google": "up",
-        "microsoft": "down",
-        "anthropic": "stable",
+        "google": "stable",
+        "microsoft": "stable",
+        "anthropic": "up",
         "openai": "down",
-        "aws": "down",
+        "aws": "stable",
         "specialist": "down"
       },
       "note": "D+2: Financial Research agent + named design partners (Deutsche Bank, CME) reinforce Google’s upward pressure."
@@ -113,20 +113,20 @@
       "meta": "EHR • Documentation • Prior Auth",
       "status": "hot",
       "influence": {
-        "microsoft": 33,
-        "specialist": 25,
-        "google": 18,
-        "anthropic": 12,
-        "openai": 8,
-        "ibm": 4
+        "microsoft": 34,
+        "specialist": 24,
+        "google": 16,
+        "anthropic": 18,
+        "openai": 6,
+        "ibm": 2
       },
       "trend": {
-        "google": "down",
-        "microsoft": "up",
+        "microsoft": "down",
         "specialist": "down",
-        "anthropic": "stable",
-        "openai": "stable",
-        "ibm": "stable"
+        "google": "down",
+        "anthropic": "up",
+        "openai": "down",
+        "ibm": "down"
       },
       "note": "Still HOT. Roadmap confirmation keeps Google positioned as near-term entrant."
     },
@@ -182,20 +182,20 @@
       "meta": "Case Mgmt • Security • Citizens",
       "status": "normal",
       "influence": {
-        "microsoft": 40,
-        "google": 19,
-        "ibm": 15,
-        "aws": 11,
-        "anthropic": 10,
-        "openai": 5
+        "microsoft": 44,
+        "google": 18,
+        "ibm": 16,
+        "aws": 10,
+        "anthropic": 9,
+        "openai": 3
       },
       "trend": {
-        "microsoft": "stable",
-        "google": "up",
+        "microsoft": "up",
+        "google": "down",
         "ibm": "stable",
         "aws": "stable",
-        "anthropic": "stable",
-        "openai": "stable"
+        "anthropic": "down",
+        "openai": "down"
       },
       "note": "No material new signal this cycle."
     },
@@ -205,15 +205,15 @@
       "meta": "Consulting • Audit • Tax",
       "status": "contested",
       "influence": {
-        "microsoft": 37,
-        "google": 22,
-        "anthropic": 17,
-        "openai": 11,
-        "specialist": 8,
-        "aws": 5
+        "microsoft": 36,
+        "google": 24,
+        "anthropic": 20,
+        "openai": 10,
+        "specialist": 6,
+        "aws": 4
       },
       "trend": {
-        "microsoft": "up",
+        "microsoft": "down",
         "google": "up",
         "anthropic": "up",
         "openai": "stable",
@@ -249,8 +249,8 @@
   "geoDominance": {
     "na": {
       "dominant": "microsoft",
-      "intensity": 0.78,
-      "trend": "stable",
+      "intensity": 0.8,
+      "trend": "up",
       "note": "Strongest public enterprise density (Copilot/Azure). Relative footprint — not ownership."
     },
     "sa": {
@@ -284,6 +284,28 @@
       "note": "Moderate enterprise presence; limited vertical signal depth."
     }
   },
+  "events": [
+    {
+      "time": "2026-10-19",
+      "text": "Google publishes Developer’s Guide for Gemini MCP apps, expanding enterprise tooling."
+    },
+    {
+      "time": "2026-10-21",
+      "text": "Microsoft releases AI in Government whitepaper, highlighting Copilot deployments."
+    },
+    {
+      "time": "2026-10-21",
+      "text": "U.S. HHS announces sole‑source Anthropic Claude contract for health agency workloads."
+    },
+    {
+      "time": "2026-10-24",
+      "text": "Swedish government blocks ChatGPT and Claude, retains Microsoft Copilot for public sector."
+    },
+    {
+      "time": "2026-10-25",
+      "text": "Anthropic merges Claude Chat and Cowork, targeting enterprise users."
+    }
+  ],
   "pipeline": [
     "Healthcare (Google) — near-term",
     "Life Sciences (Google)",
@@ -292,140 +314,62 @@
     "Insurance depth",
     "Gov vertical agents"
   ],
-  "events": [
-    {
-      "time": "2026-08-31",
-      "text": "Google launches Gemini Enterprise for Legal, adding deep connectors and enterprise customers."
-    },
-    {
-      "time": "2026-08-31",
-      "text": "Google expands Gemini Enterprise to Financial Services with research agent and design partners."
-    },
-    {
-      "time": "2026-08-31",
-      "text": "Microsoft offers 60% discount on Dragon Copilot, accelerating healthcare AI adoption."
-    },
-    {
-      "time": "2026-08-27",
-      "text": "D+2 refinement: Additional public detail on Gemini Enterprise Legal/FS launch customers, connectors and governance claims confirms Google momentum."
-    },
-    {
-      "time": "2026-08-26",
-      "text": "D+1 snapshot: Google closes Legal gap with Microsoft; Healthcare elevated to HOT as market prices next vertical."
-    }
-  ],
   "movers": [
     {
       "player": "google",
       "territory": "legal",
       "trend": "up",
-      "delta": 4,
-      "label": "Launch customers + deep legal connectors confirm gap‑closing"
-    },
-    {
-      "player": "specialist",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share ceded to Google"
-    },
-    {
-      "player": "openai",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -1,
-      "label": "Reduced share as Google gains"
-    },
-    {
-      "player": "anthropic",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -1,
-      "label": "Reduced share as Google gains"
-    },
-    {
-      "player": "google",
-      "territory": "finance",
-      "trend": "up",
-      "delta": 4,
-      "label": "Financial research agent + design partners reinforce momentum"
+      "delta": 2,
+      "label": "Gemini Enterprise gains legal connectors"
     },
     {
       "player": "microsoft",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "aws",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "specialist",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "openai",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -1,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "microsoft",
-      "territory": "healthcare",
+      "territory": "legal",
       "trend": "up",
-      "delta": 4,
-      "label": "60% Dragon Copilot discount drives adoption"
+      "delta": 3,
+      "label": "Copilot for Legal rollout"
     },
     {
       "player": "specialist",
-      "territory": "healthcare",
+      "territory": "legal",
       "trend": "down",
       "delta": -3,
-      "label": "Share ceded to Microsoft"
-    },
-    {
-      "player": "google",
-      "territory": "healthcare",
-      "trend": "down",
-      "delta": -1,
-      "label": "Relative loss as Microsoft gains"
-    },
-    {
-      "player": "google",
-      "territory": "lifesci",
-      "trend": "up",
-      "delta": 2,
-      "label": "Google pushes Life Sciences pipeline"
-    },
-    {
-      "player": "specialist",
-      "territory": "lifesci",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share ceded to Google"
+      "label": "Share ceded to Google/Microsoft"
     },
     {
       "player": "anthropic",
-      "territory": "profsvcs",
+      "territory": "finance",
       "trend": "up",
-      "delta": 2,
-      "label": "Claude for Teachers Enterprise expands Anthropic reach"
+      "delta": 4,
+      "label": "Claude enterprise win with Schwab"
     },
     {
-      "player": "specialist",
-      "territory": "profsvcs",
+      "player": "openai",
+      "territory": "finance",
       "trend": "down",
       "delta": -2,
-      "label": "Share ceded to Anthropic"
+      "label": "Lost share to Anthropic"
+    },
+    {
+      "player": "anthropic",
+      "territory": "healthcare",
+      "trend": "up",
+      "delta": 4,
+      "label": "HHS sole‑source Claude contract"
+    },
+    {
+      "player": "microsoft",
+      "territory": "gov",
+      "trend": "up",
+      "delta": 4,
+      "label": "Sweden keeps Microsoft Copilot"
+    },
+    {
+      "player": "openai",
+      "territory": "gov",
+      "trend": "down",
+      "delta": -2,
+      "label": "Swedish block on ChatGPT"
     }
   ]
 }

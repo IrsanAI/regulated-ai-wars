@@ -1,63 +1,63 @@
 {
-  "scoutedAt": "2026-08-31T15:28:59Z",
+  "scoutedAt": "2026-10-26T12:27:29Z",
   "queryCount": 8,
   "hitCount": 8,
   "errors": [],
   "items": [
     {
-      "title": "Google Cloud Launches Gemini Enterprise for Legal - Google Cloud Press Corner",
-      "source": "Google Cloud Press Corner",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPRmlZd053NG9sRl9sWlp6MU9xSGpRenBhVFR2QmRGV3E5Umo2ekxUY082dmEzZEFOVXF",
-      "published": "2026-08-25",
+      "title": "Developer’s guide to implementing MCP apps in Gemini - Google Cloud",
+      "source": "Google Cloud",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOdmE1UkowUEdCQ3Y0Z3hja3lBMmRmZEE2dXZqTFV0aDRFdW9maERWc2RtblFpem9uMHo",
+      "published": "2026-10-19",
       "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
     },
     {
-      "title": "Google Launches Gemini Enterprise for Legal - Artificial Lawyer",
-      "source": "Artificial Lawyer",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNM2JWOXNQU3p6c0hibzc3Q0xNRWE2cWlFTk8xZ09KVnhJRUt4RFRub09qZlo4VkhpTW9",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Google expands Gemini Enterprise AI platform for law firms, lawyers - Reuters",
-      "source": "Reuters",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZk81aGh3d2lJX0FucWpwclltdnRJd3RqNVpTWnhMeGNBU3FUeWRIby1lcEpQQ3NOT1V",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "How Google Cloud’s Gemini Enterprise Financial Push At Alphabet (GOOGL) Has Changed Its Investment Story - simplywall.st",
-      "source": "simplywall.st",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQS1BneTJZajVaWkpYRnB6UjlyeXJ3eTFWcFRTT3E4ZVFJRTgwdkIwMnNpOEdtNUt3WTk",
-      "published": "2026-08-31",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Microsoft’s 60% Dragon Copilot discount forces a new way to measure digital health ROI - MarketScale",
-      "source": "MarketScale",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNNVc0NGt2SzNnWlNVNHozQTNYV082aE5GOGo2Zm5WSnpfaDFQMm13a3JJaWlxOHVkQVJ",
-      "published": "2026-08-30",
+      "title": "Should Legal Tech Vendors Fear Microsoft's Copilot for Legal? - Law.com",
+      "source": "Law.com",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQanhmdjBuWUJXenQzTkwzWWdISWFwdFNvaVItcFpaX3BxcmhkSHdCdTFQLVU3N3hqREM",
+      "published": "2026-10-21",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "County To Get Some AI Help Running Things - The Rhino Times of Greensboro -",
-      "source": "The Rhino Times of Greensboro -",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1RQzZyV25oTjdWOHRUMFNpM2dUa19qc1dUOVJBREFhLWlLRW5jQjgxOEVNYTBfRWtNUHd",
-      "published": "2026-08-29",
+      "title": "Sweden's Government Offices Block ChatGPT and Claude, Keep Microsoft Copilot - Yahoo",
+      "source": "Yahoo",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQRlp4OE5aTFVlb21aR0dkS0xiSFd3ckZOT0VhYzR1dVlld0NhX1Q3TWZTWmVJcHJZQUh",
+      "published": "2026-10-24",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Microsoft Promises Copyright Protection for Copilot Customers - UC Today",
-      "source": "UC Today",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdU5QV19STGJkdUpxQ2ZoVjdieExIZ0twVXNfM3R5MlExVzBqZVppbERnSVFOTXZ4UHR",
-      "published": "2026-08-22",
+      "title": "AI in government: Benefits, use cases, and applications - Microsoft",
+      "source": "Microsoft",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE10ME5zZFRGUVVQY0ZHeF9oeXRfTlQ0Q3l1TTVhemh0Qy1GSnFuNk4tSDVQWVEwbGYzR2l",
+      "published": "2026-10-22",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Anthropic opens free Claude for Teachers Enterprise access to U.S. schools and districts - EdTech Innovation Hub",
-      "source": "EdTech Innovation Hub",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMHBhQ0hkQngtZnVxUFU2a3hNUGxIVHZEYnRqWjBsRV9SeUllUlVxYTRDaUZQMTAxVXI",
-      "published": "2026-08-30",
+      "title": "Sweden's government blocks ChatGPT and Claude, keeps Copilot - Notebookcheck",
+      "source": "Notebookcheck",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQdkJGLXdiMlliSjhNa0JIVUVTeXlPQmx2bDNfaEtxWU96MnEtc3JaUHkwWnBJXy1EcTN",
+      "published": "2026-10-25",
+      "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
+    },
+    {
+      "title": "Anthropic Merges Claude Chat and Cowork for Enterprise Users - PYMNTS.com",
+      "source": "PYMNTS.com",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPaXhaSHI3X3d5UmZNb1M5cnlUZEhGbFJ6Q0RVUWI4LVM2VmFpLW94XzVJQjBiUnN4akJ",
+      "published": "2026-10-25",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "HHS Plans Sole-Source Anthropic Claude Contract Ahead of Enterprise AI BPA - ExecutiveGov",
+      "source": "ExecutiveGov",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5LVTZDYmM3dFJ5NFBBOWdpTFE2cnBoTHh1VUY5ZXAxTjFSSnExeUNST0VYTFFKa1hlWnh",
+      "published": "2026-10-21",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "Schwab trumpeted Anthropic's Claude for all 16,000 of its RIAs, but a 20-seat enterprise minimum suddenly sidelines 11,000-plus small firms -- right before IMPACT 2026 - RIABiz",
+      "source": "RIABiz",
+      "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxPT0R4ZTBtQWtQMTBJWGx2NGV2TVNxRl9aa2liNDQ2SGJFVFEta0I2M2lhaEkwR2hWMmx",
+      "published": "2026-10-24",
       "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
     }
   ]

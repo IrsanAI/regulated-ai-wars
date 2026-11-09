@@ -1,0 +1,375 @@
+{
+  "meta": {
+    "snapshotDate": "2026-11-09",
+    "note": "Microsoft gains in Legal (Copilot trademark data) and Healthcare (Fabric+Formula5); Anthropic loses share across Legal, Professional Services due to security concerns; specialist picks up modest gains in Legal and Professional Services; retail sees slight AWS uplift from Adobe CX integration.",
+    "version": "0.4.2"
+  },
+  "players": {
+    "google": {
+      "id": "google",
+      "name": "Google",
+      "short": "G",
+      "hex": "#4285F4",
+      "role": "Hyperscaler – Industry Solutions",
+      "momentum": "up"
+    },
+    "microsoft": {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "short": "MS",
+      "hex": "#F25022",
+      "role": "Hyperscaler – Copilot Ecosystem",
+      "momentum": "stable"
+    },
+    "anthropic": {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "short": "A",
+      "hex": "#C15F3C",
+      "role": "Foundation Lab – Enterprise LLM",
+      "momentum": "up"
+    },
+    "openai": {
+      "id": "openai",
+      "name": "OpenAI",
+      "short": "OAI",
+      "hex": "#10A37F",
+      "role": "Foundation Lab",
+      "momentum": "down"
+    },
+    "aws": {
+      "id": "aws",
+      "name": "AWS",
+      "short": "AWS",
+      "hex": "#FF9900",
+      "role": "Hyperscaler – Bedrock",
+      "momentum": "stable"
+    },
+    "specialist": {
+      "id": "specialist",
+      "name": "Vertical Specialists",
+      "short": "VS",
+      "hex": "#A855F7",
+      "role": "Harvey, Healthcare AI etc.",
+      "momentum": "up"
+    },
+    "ibm": {
+      "id": "ibm",
+      "name": "IBM / Governance",
+      "short": "IBM",
+      "hex": "#0F62FE",
+      "role": "Governance-first",
+      "momentum": "stable"
+    }
+  },
+  "territories": [
+    {
+      "id": "legal",
+      "name": "Legal",
+      "meta": "Contracts • Research • Compliance",
+      "status": "hot",
+      "influence": {
+        "google": 35,
+        "microsoft": 34,
+        "specialist": 24,
+        "anthropic": 5,
+        "openai": 2
+      },
+      "trend": {
+        "google": "down",
+        "microsoft": "up",
+        "specialist": "up",
+        "anthropic": "down",
+        "openai": "stable"
+      },
+      "note": "D+2: Additional confirmation via launch customers + deep connectors (iManage, Harvey, NetDocuments etc.). Google continues to close the gap."
+    },
+    {
+      "id": "finance",
+      "name": "Financial Services",
+      "meta": "Capital Markets • KYC • Risk",
+      "status": "hot",
+      "influence": {
+        "google": 38,
+        "microsoft": 31,
+        "anthropic": 12,
+        "openai": 8,
+        "aws": 5,
+        "specialist": 6
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "down",
+        "anthropic": "stable",
+        "openai": "down",
+        "aws": "down",
+        "specialist": "down"
+      },
+      "note": "D+2: Financial Research agent + named design partners (Deutsche Bank, CME) reinforce Google’s upward pressure."
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare",
+      "meta": "EHR • Documentation • Prior Auth",
+      "status": "hot",
+      "influence": {
+        "microsoft": 38,
+        "specialist": 22,
+        "google": 16,
+        "anthropic": 10,
+        "openai": 7,
+        "ibm": 7
+      },
+      "trend": {
+        "microsoft": "up",
+        "specialist": "down",
+        "google": "down",
+        "anthropic": "down",
+        "openai": "stable",
+        "ibm": "up"
+      },
+      "note": "Still HOT. Roadmap confirmation keeps Google positioned as near-term entrant."
+    },
+    {
+      "id": "lifesci",
+      "name": "Life Sciences",
+      "meta": "GxP • R&D • Regulatory",
+      "status": "contested",
+      "influence": {
+        "google": 22,
+        "microsoft": 24,
+        "specialist": 20,
+        "anthropic": 15,
+        "ibm": 12,
+        "openai": 7
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "stable",
+        "specialist": "down",
+        "anthropic": "stable",
+        "ibm": "stable",
+        "openai": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "insurance",
+      "name": "Insurance",
+      "meta": "Underwriting • Claims • Compliance",
+      "status": "normal",
+      "influence": {
+        "microsoft": 35,
+        "google": 16,
+        "anthropic": 12,
+        "aws": 12,
+        "openai": 9,
+        "specialist": 16
+      },
+      "trend": {
+        "microsoft": "stable",
+        "google": "stable",
+        "anthropic": "stable",
+        "aws": "stable",
+        "openai": "stable",
+        "specialist": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "gov",
+      "name": "Government",
+      "meta": "Case Mgmt • Security • Citizens",
+      "status": "normal",
+      "influence": {
+        "microsoft": 40,
+        "google": 19,
+        "ibm": 15,
+        "aws": 11,
+        "anthropic": 10,
+        "openai": 5
+      },
+      "trend": {
+        "microsoft": "stable",
+        "google": "up",
+        "ibm": "stable",
+        "aws": "stable",
+        "anthropic": "stable",
+        "openai": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "profsvcs",
+      "name": "Professional Services",
+      "meta": "Consulting • Audit • Tax",
+      "status": "contested",
+      "influence": {
+        "microsoft": 37,
+        "google": 22,
+        "anthropic": 14,
+        "openai": 11,
+        "specialist": 11,
+        "aws": 5
+      },
+      "trend": {
+        "microsoft": "stable",
+        "google": "up",
+        "anthropic": "down",
+        "openai": "stable",
+        "specialist": "up",
+        "aws": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "retail",
+      "name": "Retail",
+      "meta": "Customer Data • Supply • Compliance",
+      "status": "normal",
+      "influence": {
+        "google": 26,
+        "microsoft": 30,
+        "aws": 21,
+        "openai": 10,
+        "anthropic": 8,
+        "specialist": 5
+      },
+      "trend": {
+        "google": "stable",
+        "microsoft": "stable",
+        "aws": "up",
+        "openai": "stable",
+        "anthropic": "stable",
+        "specialist": "down"
+      },
+      "note": "Still on Google roadmap. No material new signal this cycle."
+    }
+  ],
+  "geoDominance": {
+    "na": {
+      "dominant": "microsoft",
+      "intensity": 0.78,
+      "trend": "stable",
+      "note": "Strongest public enterprise density (Copilot/Azure). Relative footprint — not ownership."
+    },
+    "sa": {
+      "dominant": "microsoft",
+      "intensity": 0.28,
+      "trend": "stable",
+      "note": "Thin public signal; low-confidence footprint only."
+    },
+    "eu": {
+      "dominant": "microsoft",
+      "intensity": 0.58,
+      "trend": "stable",
+      "note": "Enterprise density moderate-high; Google regulated push keeps pressure."
+    },
+    "af": {
+      "dominant": "microsoft",
+      "intensity": 0.18,
+      "trend": "stable",
+      "note": "Very thin public evidence — dim on purpose; not a conquest claim."
+    },
+    "as": {
+      "dominant": "google",
+      "intensity": 0.68,
+      "trend": "up",
+      "note": "Google-weighted industry narrative; relative footprint."
+    },
+    "oc": {
+      "dominant": "microsoft",
+      "intensity": 0.35,
+      "trend": "stable",
+      "note": "Moderate enterprise presence; limited vertical signal depth."
+    }
+  },
+  "pipeline": [
+    "Healthcare (Google) — near-term",
+    "Life Sciences (Google)",
+    "Retail (Google)",
+    "More Prof. Services",
+    "Insurance depth",
+    "Gov vertical agents"
+  ],
+  "events": [
+    {
+      "time": "2026-11-06",
+      "text": "Forefront Dermatology cuts manual reporting 85% with Microsoft Fabric and Formula5."
+    },
+    {
+      "time": "2026-11-02",
+      "text": "Clarivate Connects Compumark Trademark Data to Microsoft Copilot."
+    },
+    {
+      "time": "2026-11-04",
+      "text": "Adobe Integrates Agentic CX Enterprise Coworker Into AI Platforms from Anthropic, Google, Microsoft, OpenAI and More."
+    },
+    {
+      "time": "2026-11-08",
+      "text": "Anthropic emails enterprise customers about possible data exposure (security incident)."
+    },
+    {
+      "time": "2026-11-06",
+      "text": "Anthropic Gives Managers Visibility Into Employees’ Claude Usage."
+    }
+  ],
+  "movers": [
+    {
+      "player": "microsoft",
+      "territory": "legal",
+      "trend": "up",
+      "delta": 4,
+      "label": "Copilot trademark data integration boosts legal share"
+    },
+    {
+      "player": "google",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -2,
+      "label": "Lost share to Microsoft in legal"
+    },
+    {
+      "player": "specialist",
+      "territory": "legal",
+      "trend": "up",
+      "delta": 1,
+      "label": "Harvey IPO talks increase specialist interest"
+    },
+    {
+      "player": "anthropic",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -3,
+      "label": "Security concerns reduce legal share"
+    },
+    {
+      "player": "microsoft",
+      "territory": "healthcare",
+      "trend": "up",
+      "delta": 5,
+      "label": "Fabric + Formula5 adoption in dermatology"
+    },
+    {
+      "player": "anthropic",
+      "territory": "professional services",
+      "trend": "down",
+      "delta": -3,
+      "label": "Security breach erodes trust"
+    },
+    {
+      "player": "specialist",
+      "territory": "professional services",
+      "trend": "up",
+      "delta": 3,
+      "label": "Gain from Anthropic issues"
+    },
+    {
+      "player": "aws",
+      "territory": "retail",
+      "trend": "up",
+      "delta": 1,
+      "label": "Adobe CX integration benefits AWS"
+    }
+  ]
+}

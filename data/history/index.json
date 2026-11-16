@@ -27,7 +27,14 @@
       "label": "Signal draft \u2014 2026-08-31",
       "file": "2026-08-31.json",
       "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services."
+    },
+    {
+      "id": "2026-11-16",
+      "date": "2026-11-16",
+      "label": "Signal draft \u2014 2026-11-16",
+      "file": "2026-11-16.json",
+      "note": "Google gains in Healthcare and Legal after Gemini launch and Microsoft legal plug\u2011ins; Microsoft loses share in Insurance due to outage concerns; Anthropic IPO lifts its Finance influence; minor adjustments across territories keep totals ne"
     }
   ],
-  "current": "2026-08-31"
+  "current": "2026-11-16"
 }

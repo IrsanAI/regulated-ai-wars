@@ -1,7 +1,7 @@
 {
   "meta": {
-    "snapshotDate": "2026-08-31",
-    "note": "Google gains legal and finance influence via Gemini Enterprise launch; Microsoft health push raises its healthcare share; specialist influence contracts across several verticals; anthropic up in professional services. Geo paint recalibrated: intensity = confidence-weighted footprint, not land ownership.",
+    "snapshotDate": "2026-11-16",
+    "note": "Google gains in Healthcare and Legal after Gemini launch and Microsoft legal plug‑ins; Microsoft loses share in Insurance due to outage concerns; Anthropic IPO lifts its Finance influence; minor adjustments across territories keep totals near 100.",
     "version": "0.4.2"
   },
   "players": {
@@ -69,18 +69,18 @@
       "meta": "Contracts • Research • Compliance",
       "status": "hot",
       "influence": {
-        "google": 37,
-        "microsoft": 30,
-        "specialist": 23,
-        "anthropic": 8,
+        "google": 35,
+        "microsoft": 34,
+        "specialist": 20,
+        "anthropic": 7,
         "openai": 2
       },
       "trend": {
-        "google": "up",
-        "microsoft": "stable",
+        "google": "down",
+        "microsoft": "up",
         "specialist": "down",
         "anthropic": "down",
-        "openai": "down"
+        "openai": "stable"
       },
       "note": "D+2: Additional confirmation via launch customers + deep connectors (iManage, Harvey, NetDocuments etc.). Google continues to close the gap."
     },
@@ -90,20 +90,20 @@
       "meta": "Capital Markets • KYC • Risk",
       "status": "hot",
       "influence": {
-        "google": 38,
-        "microsoft": 31,
-        "anthropic": 12,
-        "openai": 8,
+        "google": 37,
+        "microsoft": 29,
+        "anthropic": 14,
+        "openai": 7,
         "aws": 5,
-        "specialist": 6
+        "specialist": 8
       },
       "trend": {
-        "google": "up",
+        "google": "stable",
         "microsoft": "down",
-        "anthropic": "stable",
+        "anthropic": "up",
         "openai": "down",
-        "aws": "down",
-        "specialist": "down"
+        "aws": "stable",
+        "specialist": "up"
       },
       "note": "D+2: Financial Research agent + named design partners (Deutsche Bank, CME) reinforce Google’s upward pressure."
     },
@@ -113,18 +113,18 @@
       "meta": "EHR • Documentation • Prior Auth",
       "status": "hot",
       "influence": {
-        "microsoft": 33,
-        "specialist": 25,
-        "google": 18,
-        "anthropic": 12,
+        "google": 23,
+        "microsoft": 31,
+        "specialist": 23,
+        "anthropic": 11,
         "openai": 8,
         "ibm": 4
       },
       "trend": {
-        "google": "down",
-        "microsoft": "up",
+        "google": "up",
+        "microsoft": "down",
         "specialist": "down",
-        "anthropic": "stable",
+        "anthropic": "down",
         "openai": "stable",
         "ibm": "stable"
       },
@@ -136,20 +136,20 @@
       "meta": "GxP • R&D • Regulatory",
       "status": "contested",
       "influence": {
-        "google": 22,
-        "microsoft": 24,
-        "specialist": 20,
-        "anthropic": 15,
-        "ibm": 12,
-        "openai": 7
+        "google": 24,
+        "microsoft": 26,
+        "specialist": 19,
+        "anthropic": 14,
+        "ibm": 11,
+        "openai": 6
       },
       "trend": {
         "google": "up",
-        "microsoft": "stable",
+        "microsoft": "up",
         "specialist": "down",
-        "anthropic": "stable",
+        "anthropic": "down",
         "ibm": "stable",
-        "openai": "stable"
+        "openai": "down"
       },
       "note": "No material new signal this cycle."
     },
@@ -159,20 +159,20 @@
       "meta": "Underwriting • Claims • Compliance",
       "status": "normal",
       "influence": {
-        "microsoft": 35,
-        "google": 16,
-        "anthropic": 12,
-        "aws": 12,
-        "openai": 9,
-        "specialist": 16
+        "microsoft": 32,
+        "google": 18,
+        "anthropic": 13,
+        "aws": 10,
+        "openai": 10,
+        "specialist": 17
       },
       "trend": {
-        "microsoft": "stable",
-        "google": "stable",
-        "anthropic": "stable",
-        "aws": "stable",
-        "openai": "stable",
-        "specialist": "stable"
+        "microsoft": "down",
+        "google": "up",
+        "anthropic": "up",
+        "aws": "down",
+        "openai": "up",
+        "specialist": "up"
       },
       "note": "No material new signal this cycle."
     },
@@ -294,138 +294,57 @@
   ],
   "events": [
     {
-      "time": "2026-08-31",
-      "text": "Google launches Gemini Enterprise for Legal, adding deep connectors and enterprise customers."
+      "time": "2026-11-10",
+      "text": "Google Cloud launches Gemini for Healthcare, expanding AI services in the sector."
     },
     {
-      "time": "2026-08-31",
-      "text": "Google expands Gemini Enterprise to Financial Services with research agent and design partners."
+      "time": "2026-11-13",
+      "text": "Litera adds plug‑ins for Microsoft Copilot for Legal, boosting Microsoft’s legal AI offering."
     },
     {
-      "time": "2026-08-31",
-      "text": "Microsoft offers 60% discount on Dragon Copilot, accelerating healthcare AI adoption."
+      "time": "2026-11-14",
+      "text": "Microsoft restores Outlook and Teams after global outage, mitigating service concerns."
     },
     {
-      "time": "2026-08-27",
-      "text": "D+2 refinement: Additional public detail on Gemini Enterprise Legal/FS launch customers, connectors and governance claims confirms Google momentum."
-    },
-    {
-      "time": "2026-08-26",
-      "text": "D+1 snapshot: Google closes Legal gap with Microsoft; Healthcare elevated to HOT as market prices next vertical."
+      "time": "2026-11-16",
+      "text": "Anthropic files for IPO, signaling growth and increased enterprise focus."
     }
   ],
   "movers": [
     {
       "player": "google",
+      "territory": "healthcare",
+      "trend": "up",
+      "delta": 5,
+      "label": "Gemini for Healthcare launch"
+    },
+    {
+      "player": "microsoft",
       "territory": "legal",
       "trend": "up",
       "delta": 4,
-      "label": "Launch customers + deep legal connectors confirm gap‑closing"
-    },
-    {
-      "player": "specialist",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share ceded to Google"
-    },
-    {
-      "player": "openai",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -1,
-      "label": "Reduced share as Google gains"
+      "label": "Litera plug‑ins for Copilot Legal"
     },
     {
       "player": "anthropic",
-      "territory": "legal",
-      "trend": "down",
-      "delta": -1,
-      "label": "Reduced share as Google gains"
-    },
-    {
-      "player": "google",
       "territory": "finance",
       "trend": "up",
-      "delta": 4,
-      "label": "Financial research agent + design partners reinforce momentum"
+      "delta": 2,
+      "label": "IPO anticipation lifts finance presence"
     },
     {
       "player": "microsoft",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "aws",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "specialist",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "openai",
-      "territory": "finance",
-      "trend": "down",
-      "delta": -1,
-      "label": "Share shift to Google"
-    },
-    {
-      "player": "microsoft",
-      "territory": "healthcare",
-      "trend": "up",
-      "delta": 4,
-      "label": "60% Dragon Copilot discount drives adoption"
-    },
-    {
-      "player": "specialist",
-      "territory": "healthcare",
+      "territory": "insurance",
       "trend": "down",
       "delta": -3,
-      "label": "Share ceded to Microsoft"
+      "label": "Outage concerns reduce insurance share"
     },
     {
       "player": "google",
-      "territory": "healthcare",
-      "trend": "down",
-      "delta": -1,
-      "label": "Relative loss as Microsoft gains"
-    },
-    {
-      "player": "google",
-      "territory": "lifesci",
+      "territory": "insurance",
       "trend": "up",
       "delta": 2,
-      "label": "Google pushes Life Sciences pipeline"
-    },
-    {
-      "player": "specialist",
-      "territory": "lifesci",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share ceded to Google"
-    },
-    {
-      "player": "anthropic",
-      "territory": "profsvcs",
-      "trend": "up",
-      "delta": 2,
-      "label": "Claude for Teachers Enterprise expands Anthropic reach"
-    },
-    {
-      "player": "specialist",
-      "territory": "profsvcs",
-      "trend": "down",
-      "delta": -2,
-      "label": "Share ceded to Anthropic"
+      "label": "Enterprise push gains insurance clients"
     }
   ]
 }

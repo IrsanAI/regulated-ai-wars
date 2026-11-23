@@ -1,64 +1,64 @@
 {
-  "scoutedAt": "2026-08-31T15:28:59Z",
+  "scoutedAt": "2026-11-23T17:37:21Z",
   "queryCount": 8,
   "hitCount": 8,
   "errors": [],
   "items": [
     {
-      "title": "Google Cloud Launches Gemini Enterprise for Legal - Google Cloud Press Corner",
-      "source": "Google Cloud Press Corner",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPRmlZd053NG9sRl9sWlp6MU9xSGpRenBhVFR2QmRGV3E5Umo2ekxUY082dmEzZEFOVXF",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Google Launches Gemini Enterprise for Legal - Artificial Lawyer",
-      "source": "Artificial Lawyer",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNM2JWOXNQU3p6c0hibzc3Q0xNRWE2cWlFTk8xZ09KVnhJRUt4RFRub09qZlo4VkhpTW9",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Google expands Gemini Enterprise AI platform for law firms, lawyers - Reuters",
-      "source": "Reuters",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZk81aGh3d2lJX0FucWpwclltdnRJd3RqNVpTWnhMeGNBU3FUeWRIby1lcEpQQ3NOT1V",
-      "published": "2026-08-25",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "How Google Cloud’s Gemini Enterprise Financial Push At Alphabet (GOOGL) Has Changed Its Investment Story - simplywall.st",
-      "source": "simplywall.st",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQS1BneTJZajVaWkpYRnB6UjlyeXJ3eTFWcFRTT3E4ZVFJRTgwdkIwMnNpOEdtNUt3WTk",
-      "published": "2026-08-31",
-      "query": "\"Gemini Enterprise\" (Legal OR \"Financial Services\" OR Healthcare)"
-    },
-    {
-      "title": "Microsoft’s 60% Dragon Copilot discount forces a new way to measure digital health ROI - MarketScale",
-      "source": "MarketScale",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNNVc0NGt2SzNnWlNVNHozQTNYV082aE5GOGo2Zm5WSnpfaDFQMm13a3JJaWlxOHVkQVJ",
-      "published": "2026-08-30",
+      "title": "Copilot at Microsoft Ignite: Expanding what’s possible with intelligence built for work - Microsoft",
+      "source": "Microsoft",
+      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNQm5ka2JwWW41TURfckR5a2x4U0tSLTdudWZpb1lxc0ZqSk54UWFKckFVMUlXSUJGcE5",
+      "published": "2026-11-17",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "County To Get Some AI Help Running Things - The Rhino Times of Greensboro -",
-      "source": "The Rhino Times of Greensboro -",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1RQzZyV25oTjdWOHRUMFNpM2dUa19qc1dUOVJBREFhLWlLRW5jQjgxOEVNYTBfRWtNUHd",
-      "published": "2026-08-29",
+      "title": "Manulife turns AI leadership into everyday productivity with Microsoft 365 Copilot - Microsoft",
+      "source": "Microsoft",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxONzdWSkpxaDdZN21lSXViXzNzVG9LWElCa2dyTzNBMFNpTUVOd1dQTjB6ZzR5WEowWkl",
+      "published": "2026-11-17",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Microsoft Promises Copyright Protection for Copilot Customers - UC Today",
-      "source": "UC Today",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdU5QV19STGJkdUpxQ2ZoVjdieExIZ0twVXNfM3R5MlExVzBqZVppbERnSVFOTXZ4UHR",
-      "published": "2026-08-22",
+      "title": "Trusted intelligence in banking, insurance, and capital markets: Six firms show how - Microsoft",
+      "source": "Microsoft",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQNlV3WVEyTkxkcEV5RXgtejNrODd0eTUtZjhma1pCcG5pYVVkVmFrQkMtaVdJdkQtVHJ",
+      "published": "2026-11-18",
       "query": "Microsoft Copilot (healthcare OR legal OR insurance OR government)"
     },
     {
-      "title": "Anthropic opens free Claude for Teachers Enterprise access to U.S. schools and districts - EdTech Innovation Hub",
-      "source": "EdTech Innovation Hub",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMHBhQ0hkQngtZnVxUFU2a3hNUGxIVHZEYnRqWjBsRV9SeUllUlVxYTRDaUZQMTAxVXI",
-      "published": "2026-08-30",
+      "title": "Anthropic’s $81.3 Billion IPO: What Claude Buyers and Partners Should Watch - Channel Insider",
+      "source": "Channel Insider",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPcGtNY3pmczZFbkV2NWZ4ODJWSEhXZHgtWEduOHNPMGxkeTZ4VlBtRk8xNVJaQnNxZFc",
+      "published": "2026-11-23",
       "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "Anthropic (ANT) Puts Claude Into Enterprise Security As Its AI Builds Successors - Yahoo Finance",
+      "source": "Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcG00NjY3R0Z5aTZDYkNMa2R3Q1F0blZvSHN5N1lGckwxa0R3LWdjc3ZIMFphcUxDdC1",
+      "published": "2026-11-22",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "Anthropic’s blockbuster IPO raises the stakes for its enterprise AI business - Fortune",
+      "source": "Fortune",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNMnpWbF9hNVdsbHV0M2wxRHpwV2w4NkNLZldaRHJGdTFyWWlJQUVZQ3BRY3lwaFFEeFR",
+      "published": "2026-11-19",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "Zero Trust for AI Agents: Anthropic's 3-Tier Guide - explainx.ai",
+      "source": "explainx.ai",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOSGZETjRubFZfbVNCWWU0WmIzQ1RwUlRRVjJyQmUxWlF2dlp4OUFWam1CakVkVGdoNTZ",
+      "published": "2026-11-22",
+      "query": "Anthropic enterprise (Claude OR healthcare OR legal)"
+    },
+    {
+      "title": "Harvey AI grows LatAm footprint with São Paulo team - Latin Lawyer",
+      "source": "Latin Lawyer",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPS0JaU1lkOGxFUFBELUg0aDFBRFU3VlByN1pRSUhlX1l3enB6WkNBdjhGbG5pYS1hbER",
+      "published": "2026-11-23",
+      "query": "\"Harvey AI\" OR \"Harvey legal\" AI"
     }
   ]
 }

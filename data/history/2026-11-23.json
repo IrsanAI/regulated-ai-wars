@@ -1,0 +1,367 @@
+{
+  "meta": {
+    "snapshotDate": "2026-11-23",
+    "note": "Microsoft gains in finance, insurance and professional services after Ignite Copilot launch and banking use cases; Anthropic IPO and security push boost its influence across most verticals; Specialist expands legal footprint in LatAm; Google slips slightly in several territories as competitors accelerate.",
+    "version": "0.4.2"
+  },
+  "players": {
+    "google": {
+      "id": "google",
+      "name": "Google",
+      "short": "G",
+      "hex": "#4285F4",
+      "role": "Hyperscaler – Industry Solutions",
+      "momentum": "up"
+    },
+    "microsoft": {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "short": "MS",
+      "hex": "#F25022",
+      "role": "Hyperscaler – Copilot Ecosystem",
+      "momentum": "stable"
+    },
+    "anthropic": {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "short": "A",
+      "hex": "#C15F3C",
+      "role": "Foundation Lab – Enterprise LLM",
+      "momentum": "up"
+    },
+    "openai": {
+      "id": "openai",
+      "name": "OpenAI",
+      "short": "OAI",
+      "hex": "#10A37F",
+      "role": "Foundation Lab",
+      "momentum": "down"
+    },
+    "aws": {
+      "id": "aws",
+      "name": "AWS",
+      "short": "AWS",
+      "hex": "#FF9900",
+      "role": "Hyperscaler – Bedrock",
+      "momentum": "stable"
+    },
+    "specialist": {
+      "id": "specialist",
+      "name": "Vertical Specialists",
+      "short": "VS",
+      "hex": "#A855F7",
+      "role": "Harvey, Healthcare AI etc.",
+      "momentum": "up"
+    },
+    "ibm": {
+      "id": "ibm",
+      "name": "IBM / Governance",
+      "short": "IBM",
+      "hex": "#0F62FE",
+      "role": "Governance-first",
+      "momentum": "stable"
+    }
+  },
+  "territories": [
+    {
+      "id": "legal",
+      "name": "Legal",
+      "meta": "Contracts • Research • Compliance",
+      "status": "hot",
+      "influence": {
+        "google": 36,
+        "microsoft": 29,
+        "specialist": 25,
+        "anthropic": 8,
+        "openai": 2
+      },
+      "trend": {
+        "google": "down",
+        "microsoft": "down",
+        "specialist": "up",
+        "anthropic": "stable",
+        "openai": "stable"
+      },
+      "note": "D+2: Additional confirmation via launch customers + deep connectors (iManage, Harvey, NetDocuments etc.). Google continues to close the gap."
+    },
+    {
+      "id": "finance",
+      "name": "Financial Services",
+      "meta": "Capital Markets • KYC • Risk",
+      "status": "hot",
+      "influence": {
+        "google": 35,
+        "microsoft": 35,
+        "anthropic": 14,
+        "openai": 7,
+        "aws": 5,
+        "specialist": 4
+      },
+      "trend": {
+        "google": "down",
+        "microsoft": "up",
+        "anthropic": "up",
+        "openai": "down",
+        "aws": "stable",
+        "specialist": "down"
+      },
+      "note": "D+2: Financial Research agent + named design partners (Deutsche Bank, CME) reinforce Google’s upward pressure."
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare",
+      "meta": "EHR • Documentation • Prior Auth",
+      "status": "hot",
+      "influence": {
+        "microsoft": 33,
+        "specialist": 25,
+        "google": 18,
+        "anthropic": 13,
+        "openai": 8,
+        "ibm": 3
+      },
+      "trend": {
+        "google": "stable",
+        "microsoft": "stable",
+        "specialist": "stable",
+        "anthropic": "up",
+        "openai": "stable",
+        "ibm": "down"
+      },
+      "note": "Still HOT. Roadmap confirmation keeps Google positioned as near-term entrant."
+    },
+    {
+      "id": "lifesci",
+      "name": "Life Sciences",
+      "meta": "GxP • R&D • Regulatory",
+      "status": "contested",
+      "influence": {
+        "google": 24,
+        "microsoft": 22,
+        "specialist": 18,
+        "anthropic": 17,
+        "ibm": 12,
+        "openai": 7
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "down",
+        "specialist": "down",
+        "anthropic": "up",
+        "ibm": "stable",
+        "openai": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "insurance",
+      "name": "Insurance",
+      "meta": "Underwriting • Claims • Compliance",
+      "status": "normal",
+      "influence": {
+        "microsoft": 39,
+        "google": 13,
+        "anthropic": 14,
+        "aws": 11,
+        "openai": 9,
+        "specialist": 14
+      },
+      "trend": {
+        "google": "down",
+        "microsoft": "up",
+        "anthropic": "up",
+        "aws": "down",
+        "openai": "stable",
+        "specialist": "down"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "gov",
+      "name": "Government",
+      "meta": "Case Mgmt • Security • Citizens",
+      "status": "normal",
+      "influence": {
+        "microsoft": 40,
+        "google": 18,
+        "ibm": 15,
+        "aws": 11,
+        "anthropic": 11,
+        "openai": 5
+      },
+      "trend": {
+        "google": "down",
+        "microsoft": "stable",
+        "ibm": "stable",
+        "aws": "stable",
+        "anthropic": "up",
+        "openai": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "profsvcs",
+      "name": "Professional Services",
+      "meta": "Consulting • Audit • Tax",
+      "status": "contested",
+      "influence": {
+        "microsoft": 39,
+        "google": 23,
+        "anthropic": 18,
+        "openai": 10,
+        "specialist": 5,
+        "aws": 5
+      },
+      "trend": {
+        "google": "up",
+        "microsoft": "up",
+        "anthropic": "up",
+        "openai": "down",
+        "specialist": "down",
+        "aws": "stable"
+      },
+      "note": "No material new signal this cycle."
+    },
+    {
+      "id": "retail",
+      "name": "Retail",
+      "meta": "Customer Data • Supply • Compliance",
+      "status": "normal",
+      "influence": {
+        "google": 26,
+        "microsoft": 29,
+        "aws": 20,
+        "openai": 10,
+        "anthropic": 9,
+        "specialist": 6
+      },
+      "trend": {
+        "google": "stable",
+        "microsoft": "stable",
+        "aws": "stable",
+        "openai": "stable",
+        "anthropic": "up",
+        "specialist": "down"
+      },
+      "note": "Still on Google roadmap. No material new signal this cycle."
+    }
+  ],
+  "geoDominance": {
+    "na": {
+      "dominant": "microsoft",
+      "intensity": 0.78,
+      "trend": "stable",
+      "note": "Strongest public enterprise density (Copilot/Azure). Relative footprint — not ownership."
+    },
+    "sa": {
+      "dominant": "microsoft",
+      "intensity": 0.28,
+      "trend": "stable",
+      "note": "Thin public signal; low-confidence footprint only."
+    },
+    "eu": {
+      "dominant": "microsoft",
+      "intensity": 0.58,
+      "trend": "stable",
+      "note": "Enterprise density moderate-high; Google regulated push keeps pressure."
+    },
+    "af": {
+      "dominant": "microsoft",
+      "intensity": 0.18,
+      "trend": "stable",
+      "note": "Very thin public evidence — dim on purpose; not a conquest claim."
+    },
+    "as": {
+      "dominant": "google",
+      "intensity": 0.68,
+      "trend": "up",
+      "note": "Google-weighted industry narrative; relative footprint."
+    },
+    "oc": {
+      "dominant": "microsoft",
+      "intensity": 0.35,
+      "trend": "stable",
+      "note": "Moderate enterprise presence; limited vertical signal depth."
+    }
+  },
+  "events": [
+    {
+      "time": "2026-11-17",
+      "text": "Microsoft Ignite showcases new Copilot extensions for work, emphasizing finance and insurance use cases."
+    },
+    {
+      "time": "2026-11-17",
+      "text": "Manulife adopts Microsoft 365 Copilot to boost productivity across its financial services."
+    },
+    {
+      "time": "2026-11-18",
+      "text": "Microsoft publishes \"Trusted intelligence in banking, insurance, and capital markets\" case study series."
+    },
+    {
+      "time": "2026-11-22",
+      "text": "Anthropic releases enterprise‑grade Claude security suite, targeting AI‑driven risk management."
+    },
+    {
+      "time": "2026-11-23",
+      "text": "Anthropic completes $81.3 B IPO, positioning itself as a major AI infrastructure player."
+    }
+  ],
+  "pipeline": [
+    "Legal (Specialist) – LatAm expansion",
+    "Finance (Microsoft) – Copilot for Banking",
+    "Insurance (Microsoft) – AI risk assessment",
+    "Professional Services (Microsoft) – AI workflow automation",
+    "Life Sciences (Google) – Next‑gen data platforms"
+  ],
+  "movers": [
+    {
+      "player": "google",
+      "territory": "legal",
+      "trend": "down",
+      "delta": -1,
+      "label": "Slight share loss as specialist gains"
+    },
+    {
+      "player": "specialist",
+      "territory": "legal",
+      "trend": "up",
+      "delta": 2,
+      "label": "Harvey AI LatAm rollout boosts legal share"
+    },
+    {
+      "player": "microsoft",
+      "territory": "finance",
+      "trend": "up",
+      "delta": 4,
+      "label": "Copilot banking agents drive finance gain"
+    },
+    {
+      "player": "anthropic",
+      "territory": "finance",
+      "trend": "up",
+      "delta": 2,
+      "label": "IPO capital fuels finance influence"
+    },
+    {
+      "player": "microsoft",
+      "territory": "insurance",
+      "trend": "up",
+      "delta": 4,
+      "label": "AI risk tools win insurance contracts"
+    },
+    {
+      "player": "anthropic",
+      "territory": "insurance",
+      "trend": "up",
+      "delta": 2,
+      "label": "Security suite adopted by insurers"
+    },
+    {
+      "player": "google",
+      "territory": "lifesci",
+      "trend": "down",
+      "delta": -2,
+      "label": "Google share slips to specialist focus"
+    }
+  ]
+}
